@@ -1,16 +1,22 @@
 package org.example.softfun_funsoft;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Launcher extends Application {
+import java.io.IOException;
 
-    public static void main(String[] args) {
-        launch(args);
+public class Launcher extends Application {
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MainMenu.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.show();
     }
 
-    @Override
-    public void start(Stage primaryStage) {
-
+    public static void main(String[] args) {
+        launch();
     }
 }
