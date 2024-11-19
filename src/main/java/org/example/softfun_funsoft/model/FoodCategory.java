@@ -4,7 +4,6 @@ public class FoodCategory {
 
     private String name;
     private String imgSrc;
-    private double price;
     private String color;
 
     public String getName() {
@@ -21,14 +20,6 @@ public class FoodCategory {
 
     public void setImgSrc(String imgSrc) {
         this.imgSrc = imgSrc;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public String getColor() {
