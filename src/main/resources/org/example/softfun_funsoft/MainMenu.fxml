@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="788.0" prefWidth="1542.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.MenuPage">
+<AnchorPane prefHeight="788.0" prefWidth="1542.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.Launcher">
    <children>
       <Rectangle fill="WHITE" height="784.0" stroke="#f2e8c6" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
       <Rectangle fill="#982b1c" height="78.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
@@ -22,7 +22,7 @@
       </Text>
       <ScrollPane id="scroll-pane" hbarPolicy="NEVER" layoutX="27.0" layoutY="95.0" prefHeight="596.0" prefWidth="194.0" stylesheets="@css/style.css" vbarPolicy="NEVER">
          <content>
-          <AnchorPane id="background" fx:id="rightScrollPane" minHeight="0.0" minWidth="0.0" prefHeight="1000.0" stylesheets="@style.css">
+          <AnchorPane id="background" fx:id="rightScrollPane" minHeight="0.0" minWidth="0.0" prefHeight="1000.0">
                <children>
                   <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#f2e8c6" height="175.0" layoutX="14.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="161.0" />
                   <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#f2e8c6" height="175.0" layoutX="14.0" layoutY="214.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="161.0" />
@@ -32,9 +32,9 @@
                </children></AnchorPane>
          </content>
       </ScrollPane>
-      <ScrollPane id="background" hbarPolicy="NEVER" layoutX="244.0" layoutY="158.0" prefHeight="534.0" prefWidth="1279.0" stylesheets="@style.css" vbarPolicy="NEVER">
+      <ScrollPane id="background1" hbarPolicy="NEVER" layoutX="244.0" layoutY="158.0" prefHeight="534.0" prefWidth="1279.0"  vbarPolicy="NEVER">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="966.0" prefWidth="1278.0" style="-fx-background: transparent;" stylesheets="@style.css">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="966.0" prefWidth="1278.0" style="-fx-background: transparent;" >
                <children>
                   <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#f2e8c6" height="281.0" layoutX="36.0" layoutY="27.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="269.0" />
                   <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#f2e8c6" height="281.0" layoutX="347.0" layoutY="27.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="269.0" />
@@ -75,7 +75,7 @@
       <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="48.0" layoutX="1105.0" layoutY="732.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="385.0" />
       <Text fill="#399918" layoutX="1216.0" layoutY="766.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Save Changes">
          <font>
-            //tama ban
+
             <Font name="Gill Sans MT" size="30.0" />
          </font>
       </Text>
