@@ -1,6 +1,7 @@
 module org.example.softfun_funsoft {
     requires javafx.controls;
     requires javafx.fxml;
+    requires com.jfoenix;
 
     requires com.dlsc.formsfx;
 
