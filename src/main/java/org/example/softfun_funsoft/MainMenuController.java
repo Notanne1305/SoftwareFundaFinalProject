@@ -33,10 +33,14 @@ public class MainMenuController implements Initializable {
     @FXML
     private VBox vbox;
 
+    @FXML
+    private GridPane categoryGrid;
+
 
 
 
     private List<Food> foods = new ArrayList<>();
+    private List<FoodCategory> categories = new ArrayList<>();
 
     private List<Food> getData(){
         List<Food> foods = new ArrayList<>();
@@ -60,7 +64,7 @@ public class MainMenuController implements Initializable {
         for(int i = 0; i < 20; i++){
             FoodCategory category = new FoodCategory();
             category.setName("No Name");
-            category.setImgSrc("/pic_resources/Fries.jpg");
+            category.setImgSrc("/pic_resources/Nuggets.jpg");
             category.setColor("#f2f2f2");
 
             categories.add(category);
@@ -69,18 +73,15 @@ public class MainMenuController implements Initializable {
 
     }
 
-    public void embedItems(){
+    public void embedItems() {
         int column = 0;
         int row = 1;
         try {
             for (int i = 0; i < foods.size(); i++) {
-                System.out.println(foods.get(i).getName());
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("Item.fxml"));
 
                 AnchorPane anchorPane = fxmlLoader.load();
-
-
                 ItemController itemController = fxmlLoader.getController();
                 itemController.setData(foods.get(i));
 
@@ -90,62 +91,63 @@ public class MainMenuController implements Initializable {
                 }
 
                 grid.add(anchorPane, column++, row);
-
-//                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
-//                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
-//                grid.setMaxWidth(Region.USE_PREF_SIZE);
-//
-//
-//                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
-//                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
-//                grid.setMaxHeight(Region.USE_PREF_SIZE);
-
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
 
                 GridPane.setMargin(anchorPane, new Insets(10));
-
             }
-        }catch(IOException e){
-            e.printStackTrace();
 
+            scroll.setFitToWidth(true);
+            scroll.widthProperty().addListener((obs, oldVal, newVal) -> {
+                grid.setPrefWidth(newVal.doubleValue());
+            });
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     public void embedCategories(){
-        int column = 0;
         int row = 1;
+        int column = 0;
+
         try {
-            for (int i = 0; i < foods.size(); i++) {
-                System.out.println(foods.get(i).getName());
+            for (int i = 0; i < categories.size(); i++) {
+                System.out.println(categories.get(i).getName());
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("Item.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("ItemCategory.fxml"));
 
                 AnchorPane anchorPane = fxmlLoader.load();
 
 
-                ItemController itemController = fxmlLoader.getController();
-                itemController.setData(foods.get(i));
+                ItemCategoryController itemController = fxmlLoader.getController();
+                itemController.setData(categories.get(i));
 
-//                if (column == 4) {
-//                    column = 0;
-//                    row++;
-//                }
-
-                vbox.getChildren().add(anchorPane);
-
-//                grid.add(anchorPane, column++, row);
+                if (column == 1) {
+                    column = 0;
+                    row++;
+                }
 
 
-//                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
-//                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
-//                grid.setMaxWidth(Region.USE_PREF_SIZE);
-//
-//
-//                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
-//                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
-//                grid.setMaxHeight(Region.USE_PREF_SIZE);
+                categoryGrid.add(anchorPane, column++, row);
+                categoryGrid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                categoryGrid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                categoryGrid.setMaxWidth(Region.USE_PREF_SIZE);
 
 
-                GridPane.setMargin(anchorPane, new Insets(10));
+                categoryGrid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                categoryGrid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                categoryGrid.setMaxHeight(Region.USE_PREF_SIZE);
+                if (i == 0) {
+                    // No top margin for the first item
+                    GridPane.setMargin(anchorPane, new Insets(0, 10, 10, 10));
+                } else {
+                    // Standard margin for all other items
+                    GridPane.setMargin(anchorPane, new Insets(10));
+                }
+
+
+//                GridPane.setMargin(anchorPane, new Insets(10));
 
             }
         }catch(IOException e){
@@ -159,6 +161,7 @@ public class MainMenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         foods.addAll(getData());
+        categories.addAll(getCategories());
         embedItems();
         embedCategories();
 

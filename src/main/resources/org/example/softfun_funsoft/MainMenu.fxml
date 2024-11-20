@@ -2,7 +2,6 @@
 
 <!--<?import com.jfoenix.controls.JFXButton?>-->
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
@@ -10,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -19,27 +17,24 @@
 <AnchorPane prefHeight="788.0" prefWidth="1542.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.MainMenuController">
    <children>
       <Rectangle fill="WHITE" height="784.0" stroke="#f2e8c6" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
-      <Rectangle fill="#982b1c" height="78.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
-      <Text layoutX="247.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Time Favourites" wrappingWidth="611.4736022949219">
+      <Rectangle fill="#982b1c" height="78.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1548.0" />
+      <Text layoutX="338.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Time Favourites" wrappingWidth="611.4736022949219">
          <font>
             <Font name="Gill Sans MT" size="67.0" />
          </font>
       </Text>
-      <ScrollPane id="scroll-pane" fx:id="leftScroll" hbarPolicy="NEVER" layoutX="27.0" layoutY="95.0" prefHeight="596.0" prefWidth="194.0" stylesheets="@css/style.css" vbarPolicy="NEVER">
+      <ScrollPane id="scroll-pane" fx:id="leftScroll" hbarPolicy="NEVER" layoutX="67.0" layoutY="95.0" prefHeight="596.0" prefWidth="204.0" stylesheets="@css/style.css" vbarPolicy="NEVER">
          <content>
-          <AnchorPane id="background" minHeight="0.0" minWidth="0.0" prefHeight="1000.0" prefWidth="193.0">
-               <children>
-                  <VBox fx:id="vbox" alignment="TOP_CENTER" prefHeight="596.0" prefWidth="194.0" spacing="20.0">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </VBox>
-               </children></AnchorPane>
+            <GridPane fx:id="categoryGrid" prefHeight="0.0" prefWidth="40.0">
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" />
+               </rowConstraints>
+            </GridPane>
          </content>
       </ScrollPane>
-      <ScrollPane id="background1" fx:id="scroll" hbarPolicy="NEVER" layoutX="244.0" layoutY="158.0" prefHeight="534.0" prefWidth="1279.0" vbarPolicy="NEVER">
+      <ScrollPane id="background1" fx:id="scroll" hbarPolicy="NEVER" layoutX="337.0" layoutY="158.0" prefHeight="534.0" prefWidth="1186.0" vbarPolicy="NEVER">
          <content>
-            <GridPane fx:id="grid" prefHeight="0.0" prefWidth="40.0">
+            <GridPane fx:id="grid" alignment="CENTER" prefHeight="0.0" prefWidth="40.0">
                <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" />
                </rowConstraints>
