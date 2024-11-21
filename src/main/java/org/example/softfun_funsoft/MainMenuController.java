@@ -4,12 +4,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
-import org.example.softfun_funsoft.ItemController;
 import org.example.softfun_funsoft.model.Food;
 import org.example.softfun_funsoft.model.FoodCategory;
 
@@ -21,6 +20,13 @@ import java.util.ResourceBundle;
 
 public class MainMenuController implements Initializable {
 
+
+    @FXML
+    private GridPane categoryGrid;
+
+    @FXML
+    private Label confirmPanelItemname;
+
     @FXML
     private GridPane grid;
 
@@ -28,17 +34,19 @@ public class MainMenuController implements Initializable {
     private ScrollPane leftScroll;
 
     @FXML
+    private AnchorPane orderPanel;
+
+    @FXML
+    private Label orderPanelItemPrice;
+
+    @FXML
     private ScrollPane scroll;
 
-    @FXML
-    private VBox vbox;
-
-    @FXML
-    private GridPane categoryGrid;
 
 
 
 
+    private MyItemListener myItemListener;
     private List<Food> foods = new ArrayList<>();
     private List<FoodCategory> categories = new ArrayList<>();
 
@@ -83,7 +91,7 @@ public class MainMenuController implements Initializable {
 
                 AnchorPane anchorPane = fxmlLoader.load();
                 ItemController itemController = fxmlLoader.getController();
-                itemController.setData(foods.get(i));
+                itemController.setData(foods.get(i), myItemListener);
 
                 if (column == 4) {
                     column = 0;
@@ -106,6 +114,26 @@ public class MainMenuController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    public void cancelButton(){
+        orderPanel.setVisible(false);
+    }
+
+    private void setChosenFood(Food food){
+
+    }
+
+//    private void notification(){
+//        String title = "Congratulations sir";
+//        String message = "You've successfully created your first Tray Notification";
+//        Notification notification = Notifications.SUCCESS;
+//
+//        TrayNotification tray = new TrayNotification();
+//        tray.setTitle(title);
+//        tray.setMessage(message);
+//        tray.setNotification(notification);
+//        tray.showAndWait();
+//    }
 
     public void embedCategories(){
         int row = 1;
@@ -162,6 +190,19 @@ public class MainMenuController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         foods.addAll(getData());
         categories.addAll(getCategories());
+
+
+        myItemListener = new MyItemListener() {
+            @Override
+            public void onclickListener(Food food) {
+                System.out.println("I have been called");
+//                setChosenFood(food);
+                orderPanel.setVisible(true);
+            }
+        };
+
+
+
         embedItems();
         embedCategories();
 
