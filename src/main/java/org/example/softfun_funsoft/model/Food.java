@@ -5,6 +5,7 @@ public class Food {
     private String imgSrc;
     private double price;
     private String color;
+    private String category;
 
     public String getName() {
         return name;
@@ -36,5 +37,13 @@ public class Food {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

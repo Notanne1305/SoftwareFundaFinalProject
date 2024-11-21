@@ -47,36 +47,71 @@ public class MainMenuController implements Initializable {
 
 
     private MyItemListener myItemListener;
+    private MyCategoryListener myCategoryListener;
     private List<Food> foods = new ArrayList<>();
     private List<FoodCategory> categories = new ArrayList<>();
+    private List<Food> itemByCategory = new ArrayList<>();
+
+
 
     private List<Food> getData(){
         List<Food> foods = new ArrayList<>();
+        Food food;
 
-        for(int i = 0; i < 20; i++){
-            Food food = new Food();
-            food.setName("No Name");
-            food.setPrice(100.0);
-            food.setImgSrc("/pic_resources/Fries.jpg");
-            food.setColor("#f2f2f2");
+        food = new Food();
+        food.setName("Big Burger");
+        food.setCategory("Burger");
+        food.setPrice(100.0);
+        food.setImgSrc("/pic_resources/Big Burger.jpg");
+        food.setColor("#f2f2f2");
+        foods.add(food);
 
-            foods.add(food);
-        }
+        food = new Food();
+        food.setName("Cheese Burger");
+        food.setCategory("Burger");
+        food.setPrice(100.0);
+        food.setImgSrc("/pic_resources/Cheese Burger.jpg");
+        food.setColor("#f2f2f2");
+        foods.add(food);
+
+        food = new Food();
+        food.setName("Chicken");
+        food.setCategory("Chicken");
+        food.setPrice(100.0);
+        food.setImgSrc("/pic_resources/Chicken.jpg");
+        food.setColor("#f2f2f2");
+        foods.add(food);
+
+
+        food = new Food();
+        food.setName("Spicy Chicken");
+        food.setCategory("Chicken");
+        food.setPrice(100.0);
+        food.setImgSrc("/pic_resources/Chicken Spicy.jpg");
+        food.setColor("#f2f2f2");
+        foods.add(food);
+
         return foods;
 
     }
 
     private List<FoodCategory> getCategories(){
         List<FoodCategory> categories = new ArrayList<>();
+        FoodCategory category;
 
-        for(int i = 0; i < 20; i++){
-            FoodCategory category = new FoodCategory();
-            category.setName("No Name");
-            category.setImgSrc("/pic_resources/Nuggets.jpg");
-            category.setColor("#f2f2f2");
+        category = new FoodCategory();
+        category.setName("Chicken");
+        category.setImgSrc("/pic_resources/Chicken.jpg");
+        category.setColor("#f2f2f2");
+        categories.add(category);
 
-            categories.add(category);
-        }
+        category = new FoodCategory();
+        category.setName("Burger");
+        category.setImgSrc("/pic_resources/Big Burger.jpg");
+        category.setColor("#f2f2f2");
+        categories.add(category);
+
+
         return categories;
 
     }
@@ -149,7 +184,7 @@ public class MainMenuController implements Initializable {
 
 
                 ItemCategoryController itemController = fxmlLoader.getController();
-                itemController.setData(categories.get(i));
+                itemController.setData(categories.get(i), myCategoryListener);
 
                 if (column == 1) {
                     column = 0;
@@ -185,6 +220,53 @@ public class MainMenuController implements Initializable {
 
     }
 
+    public List<Food> getItemsByCategory(String category){
+        List<Food> itemByCategory = new ArrayList<>();
+        for(Food food: foods){
+            if(food.getCategory().toLowerCase().equals(category.toLowerCase())){
+                itemByCategory.add(food);
+            }
+        }
+
+        return itemByCategory;
+
+    }
+
+    public void embedCategoricalItems(){
+        int column = 0;
+        int row = 1;
+        try {
+            for (int i = 0; i < categories.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("Item.fxml"));
+
+                AnchorPane anchorPane = fxmlLoader.load();
+                ItemController itemController = fxmlLoader.getController();
+                itemController.setData(foods.get(i), myItemListener);
+
+                if (column == 4) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorPane, column++, row);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+
+                GridPane.setMargin(anchorPane, new Insets(10));
+            }
+
+            scroll.setFitToWidth(true);
+            scroll.widthProperty().addListener((obs, oldVal, newVal) -> {
+                grid.setPrefWidth(newVal.doubleValue());
+            });
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -200,6 +282,17 @@ public class MainMenuController implements Initializable {
                 orderPanel.setVisible(true);
             }
         };
+
+        myCategoryListener = new MyCategoryListener() {
+            @Override
+            public void onclickListener(FoodCategory foodCategory) {
+                itemByCategory.addAll(getItemsByCategory(foodCategory.getName()));
+                embedCategoricalItems();
+            }
+        };
+
+        //TODO: Fix the chicken bug when trying to sort by category. Implement the search functionality from fauget
+
 
 
 
