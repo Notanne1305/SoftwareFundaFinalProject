@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
@@ -223,7 +224,9 @@ public class MainMenuController implements Initializable {
     public List<Food> getItemsByCategory(String category){
         List<Food> itemByCategory = new ArrayList<>();
         for(Food food: foods){
+
             if(food.getCategory().toLowerCase().equals(category.toLowerCase())){
+                System.out.println("This is for debugging: " + food.getCategory() + " " + category);
                 itemByCategory.add(food);
             }
         }
@@ -236,13 +239,13 @@ public class MainMenuController implements Initializable {
         int column = 0;
         int row = 1;
         try {
-            for (int i = 0; i < categories.size(); i++) {
+            for (int i = 0; i < itemByCategory.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("Item.fxml"));
 
                 AnchorPane anchorPane = fxmlLoader.load();
                 ItemController itemController = fxmlLoader.getController();
-                itemController.setData(foods.get(i), myItemListener);
+                itemController.setData(itemByCategory.get(i), myItemListener);
 
                 if (column == 4) {
                     column = 0;
@@ -283,14 +286,16 @@ public class MainMenuController implements Initializable {
             }
         };
 
-        myCategoryListener = new MyCategoryListener() {
-            @Override
-            public void onclickListener(FoodCategory foodCategory) {
-                itemByCategory.addAll(getItemsByCategory(foodCategory.getName()));
-                embedCategoricalItems();
-            }
-        };
-
+myCategoryListener = new MyCategoryListener() {
+    @Override
+    public void onclickListener(FoodCategory foodCategory) {
+        grid.setAlignment(Pos.TOP_CENTER);
+        grid.getChildren().clear();
+        itemByCategory.clear();
+        itemByCategory.addAll(getItemsByCategory(foodCategory.getName()));
+        embedCategoricalItems();
+    }
+};
         //TODO: Fix the chicken bug when trying to sort by category. Implement the search functionality from fauget
 
 
