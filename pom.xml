@@ -13,6 +13,13 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 <junit.version>5.10.2</junit.version>  </properties>
 
+<!--  <repositories>-->
+<!--      <repository>-->
+<!--        <id>jitpack.io</id>-->
+<!--        <url>https://jitpack.io</url>-->
+<!--      </repository>-->
+<!--  </repositories>-->
+
   <dependencies>
     <dependency>
       <groupId>org.openjfx</groupId>
@@ -31,18 +38,18 @@
       <artifactId>javafx-fxml</artifactId>
       <version>21</version>
     </dependency>
-<dependency>
-      <groupId>com.dlsc.formsfx</groupId>
-      <artifactId>formsfx-core</artifactId>
-      <version>11.6.0</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.openjfx</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-<dependency>
+    <dependency>
+          <groupId>com.dlsc.formsfx</groupId>
+          <artifactId>formsfx-core</artifactId>
+          <version>11.6.0</version>
+          <exclusions>
+            <exclusion>
+              <groupId>org.openjfx</groupId>
+              <artifactId>*</artifactId>
+            </exclusion>
+          </exclusions>
+        </dependency>
+    <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <version>${junit.version}</version>
@@ -53,7 +60,22 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
-    </dependency>  </dependencies>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.jfoenix/jfoenix -->
+    <dependency>
+      <groupId>com.jfoenix</groupId>
+      <artifactId>jfoenix</artifactId>
+      <version>9.0.1</version>
+    </dependency>
+
+
+    <!--    <dependency>-->
+<!--      <groupId>com.github.PlusHaze</groupId>-->
+<!--      <artifactId>TrayNotification</artifactId>-->
+<!--      <version>Tag</version>-->
+<!--    </dependency>-->
+
+  </dependencies>
 
   <build>
     <plugins>
