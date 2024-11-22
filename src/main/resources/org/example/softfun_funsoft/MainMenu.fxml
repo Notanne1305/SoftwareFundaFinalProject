@@ -20,11 +20,6 @@
    <children>
       <Rectangle fill="WHITE" height="784.0" stroke="#f2e8c6" strokeType="INSIDE" strokeWidth="0.0" width="1548.0" />
       <Rectangle fill="#982b1c" height="78.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1548.0" />
-      <Text layoutX="338.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Time Favourites" wrappingWidth="611.4736022949219">
-         <font>
-            <Font name="Gill Sans MT" size="67.0" />
-         </font>
-      </Text>
       <ScrollPane id="scroll-pane" fx:id="leftScroll" hbarPolicy="NEVER" layoutX="67.0" layoutY="95.0" prefHeight="596.0" prefWidth="204.0" stylesheets="@css/style.css" vbarPolicy="NEVER">
          <content>
             <GridPane fx:id="categoryGrid" prefHeight="0.0" prefWidth="40.0">
@@ -111,6 +106,11 @@
             <Font size="23.0" />
          </font>
       </TextField>
+      <Label fx:id="mainHeader" layoutX="340.0" layoutY="88.0" text="All Time Favourties">
+         <font>
+            <Font name="Gill Sans MT" size="67.0" />
+         </font>
+      </Label>
 <!--      <JFXButton buttonType="RAISED" layoutX="1375.0" layoutY="693.0" text="View Order List" underline="true">-->
 <!--         <font>-->
 <!--            <Font name="Gill Sans MT" size="15.0" />-->

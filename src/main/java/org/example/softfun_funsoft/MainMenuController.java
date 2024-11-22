@@ -46,6 +46,8 @@ public class MainMenuController implements Initializable {
     @FXML
     private TextField searchBar;
 
+    @FXML
+    private Label mainHeader;
 
 
 
@@ -77,6 +79,17 @@ public class MainMenuController implements Initializable {
                     matchingFoods.add(food);
                 }
             }
+
+            if(searchName.isEmpty()){
+                mainHeader.setText("All Time Favourites");
+            }else if(!matchingFoods.isEmpty()){
+
+                mainHeader.setText(matchingFoods.get(0).getCategory());
+            }else{
+                mainHeader.setText("No Matches Found");
+            }
+
+
             for (Food matchingFood : matchingFoods) {
 
                 FXMLLoader fxmlLoader = new FXMLLoader();
@@ -166,6 +179,13 @@ public class MainMenuController implements Initializable {
     private List<FoodCategory> getCategories(){
         List<FoodCategory> categories = new ArrayList<>();
         FoodCategory category;
+
+
+        category = new FoodCategory();
+        category.setName("All Time Favourites");
+        category.setImgSrc("/pic_resources/Chicken.jpg");
+        category.setColor("#f2f2f2");
+        categories.add(category);
 
         category = new FoodCategory();
         category.setName("Chicken");
@@ -278,7 +298,6 @@ public class MainMenuController implements Initializable {
                 }
 
 
-//                GridPane.setMargin(anchorPane, new Insets(10));
 
             }
         }catch(IOException e){
@@ -290,10 +309,14 @@ public class MainMenuController implements Initializable {
 
     public List<Food> getItemsByCategory(String category){
         List<Food> itemByCategory = new ArrayList<>();
+        if(category.equals("All Time Favourites")){
+            return foods;
+        }
         for(Food food: foods){
 
             if(food.getCategory().toLowerCase().equals(category.toLowerCase())){
-                System.out.println("This is for debugging: " + food.getCategory() + " " + category);
+//                System.out.println("This is for debugging: " + food.getCategory() + " " + category);
+
                 itemByCategory.add(food);
             }
         }
@@ -353,17 +376,17 @@ public class MainMenuController implements Initializable {
             }
         };
 
-myCategoryListener = new MyCategoryListener() {
-    @Override
-    public void onclickListener(FoodCategory foodCategory) {
-        grid.setAlignment(Pos.TOP_CENTER);
-        grid.getChildren().clear();
-        itemByCategory.clear();
-        itemByCategory.addAll(getItemsByCategory(foodCategory.getName()));
-        embedCategoricalItems();
-    }
-};
-        //TODO: Fix the chicken bug when trying to sort by category. Implement the search functionality from fauget
+    myCategoryListener = new MyCategoryListener() {
+        @Override
+        public void onclickListener(FoodCategory foodCategory) {
+            mainHeader.setText(foodCategory.getName());
+            grid.setAlignment(Pos.TOP_CENTER);
+            grid.getChildren().clear();
+            itemByCategory.clear();
+            itemByCategory.addAll(getItemsByCategory(foodCategory.getName()));
+            embedCategoricalItems();
+        }
+    };
 
 
 
