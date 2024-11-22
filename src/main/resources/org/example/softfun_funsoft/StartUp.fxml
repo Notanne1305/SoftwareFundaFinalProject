@@ -7,23 +7,27 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="788.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.Homepage">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2e8c6" height="788.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
-      <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="815.0" layoutY="686.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle fill="#ed1e24" height="788.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
+      <ImageView fitHeight="416.0" fitWidth="383.0" layoutX="577.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../pic_resources/TeamHiluxLogoBlack.png" />
+            <Image url="@../../../../../../../Softy/src/main/resources/pic_resources/McLUXlogo.png" />
          </image>
       </ImageView>
-      <Text layoutX="854.0" layoutY="716.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ILUX">
+      <Text fill="WHITE" layoutX="532.0" layoutY="508.0" strokeType="OUTSIDE" strokeWidth="0.0" text="McLuxibee">
          <font>
-            <Font size="35.0" />
+            <Font name="Eras Bold ITC" size="80.0" />
          </font>
       </Text>
-      <Text layoutX="497.0" layoutY="716.0" strokeType="OUTSIDE" strokeWidth="0.0" text="POWERED BY TEAM">
+      <Text fill="WHITE" layoutX="537.0" layoutY="544.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Where Every Bite Brings a Smile ">
          <font>
-            <Font size="35.0" />
+            <Font name="Rage Italic" size="34.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="55.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Powered by: Team  ">
+         <font>
+            <Font name="Eras Bold ITC" size="28.0" />
          </font>
       </Text>
    </children>
