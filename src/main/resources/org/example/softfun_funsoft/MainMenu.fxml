@@ -45,22 +45,13 @@
       </ScrollPane>
       <Rectangle fill="WHITE" height="102.0" layoutX="-1.0" layoutY="691.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
       <Rectangle fill="#f2e8c6" height="26.0" layoutX="-31.0" layoutY="692.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1573.0" />
-      <Circle layoutX="1074.0" layoutY="121.0" radius="26.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-      <Circle layoutX="1460.0" layoutY="121.0" radius="26.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Rectangle height="52.0" layoutX="1072.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="389.0" />
       <Circle fill="WHITE" layoutX="1074.0" layoutY="121.0" radius="24.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle fill="WHITE" layoutX="1460.0" layoutY="121.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Rectangle fill="WHITE" height="48.0" layoutX="1076.0" layoutY="97.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="385.0" />
       <ImageView fitHeight="34.0" fitWidth="38.0" layoutX="1428.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../pic_resources/search.png" />
          </image>
       </ImageView>
-      <Text layoutX="1096.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search">
-         <font>
-            <Font name="Gill Sans MT" size="30.0" />
-         </font>
-      </Text>
       <Rectangle arcHeight="20.0" arcWidth="20.0" fill="RED" height="52.0" layoutX="41.0" layoutY="730.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="389.0" />
       <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="48.0" layoutX="43.0" layoutY="732.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="385.0" />
       <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#399918" height="52.0" layoutX="1103.0" layoutY="730.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="389.0" />
@@ -115,6 +106,11 @@
             <Label fx:id="orderPanelItemPrice" layoutX="354.0" layoutY="99.0" text="PHP 100" />
          </children>
       </AnchorPane>
+      <TextField fx:id="searchBar" layoutX="1111.0" layoutY="103.0" onKeyReleased="#getSearch" prefHeight="48.0" prefWidth="399.0" promptText="Type to Search" style="-fx-background-radius: 100;">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </TextField>
 <!--      <JFXButton buttonType="RAISED" layoutX="1375.0" layoutY="693.0" text="View Order List" underline="true">-->
 <!--         <font>-->
 <!--            <Font name="Gill Sans MT" size="15.0" />-->

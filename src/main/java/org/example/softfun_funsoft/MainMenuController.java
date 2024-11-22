@@ -1,11 +1,14 @@
 package org.example.softfun_funsoft;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -14,9 +17,7 @@ import org.example.softfun_funsoft.model.FoodCategory;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class MainMenuController implements Initializable {
 
@@ -42,6 +43,8 @@ public class MainMenuController implements Initializable {
     @FXML
     private ScrollPane scroll;
 
+    @FXML
+    private TextField searchBar;
 
 
 
@@ -53,7 +56,72 @@ public class MainMenuController implements Initializable {
     private List<Food> itemByCategory = new ArrayList<>();
 
 
+    Timer timer = new Timer();
+    Runnable embedFoodTask = () -> {
+        String searchName = searchBar.getText().toLowerCase();
+        embedMatchingFood(searchName);
+    };
 
+    private void embedMatchingFood(String searchName){
+        ArrayList<Food> matchingFoods = new ArrayList<>();
+
+        int column = 0;
+        int row = 1;
+
+        grid.getChildren().clear();
+
+        try {
+
+            for (Food food : foods) {
+                if (food.getName().toLowerCase().contains(searchName.toLowerCase())) {
+                    matchingFoods.add(food);
+                }
+            }
+            for (Food matchingFood : matchingFoods) {
+
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("Item.fxml"));
+                AnchorPane pane = fxmlLoader.load();
+
+                ItemController itemController = fxmlLoader.getController();
+                itemController.setData(matchingFood, myItemListener);
+
+                if (column == 4) {
+                    column = 0;
+                    row++;
+                }
+                grid.add(pane, column++, row);
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(pane, new Insets(10));
+
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+    public void getSearch() {
+        searchBar.setOnKeyReleased(event -> {
+            timer.cancel();
+            timer.purge();
+            timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    Platform.runLater(embedFoodTask);
+                }
+            }, 500);
+        });
+    }
     private List<Food> getData(){
         List<Food> foods = new ArrayList<>();
         Food food;
@@ -223,7 +291,9 @@ public class MainMenuController implements Initializable {
     public List<Food> getItemsByCategory(String category){
         List<Food> itemByCategory = new ArrayList<>();
         for(Food food: foods){
+
             if(food.getCategory().toLowerCase().equals(category.toLowerCase())){
+                System.out.println("This is for debugging: " + food.getCategory() + " " + category);
                 itemByCategory.add(food);
             }
         }
@@ -236,13 +306,13 @@ public class MainMenuController implements Initializable {
         int column = 0;
         int row = 1;
         try {
-            for (int i = 0; i < categories.size(); i++) {
+            for (int i = 0; i < itemByCategory.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("Item.fxml"));
 
                 AnchorPane anchorPane = fxmlLoader.load();
                 ItemController itemController = fxmlLoader.getController();
-                itemController.setData(foods.get(i), myItemListener);
+                itemController.setData(itemByCategory.get(i), myItemListener);
 
                 if (column == 4) {
                     column = 0;
@@ -283,14 +353,16 @@ public class MainMenuController implements Initializable {
             }
         };
 
-        myCategoryListener = new MyCategoryListener() {
-            @Override
-            public void onclickListener(FoodCategory foodCategory) {
-                itemByCategory.addAll(getItemsByCategory(foodCategory.getName()));
-                embedCategoricalItems();
-            }
-        };
-
+myCategoryListener = new MyCategoryListener() {
+    @Override
+    public void onclickListener(FoodCategory foodCategory) {
+        grid.setAlignment(Pos.TOP_CENTER);
+        grid.getChildren().clear();
+        itemByCategory.clear();
+        itemByCategory.addAll(getItemsByCategory(foodCategory.getName()));
+        embedCategoricalItems();
+    }
+};
         //TODO: Fix the chicken bug when trying to sort by category. Implement the search functionality from fauget
 
 
