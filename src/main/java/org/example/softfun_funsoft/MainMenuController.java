@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -49,6 +50,14 @@ public class MainMenuController implements Initializable {
     @FXML
     private Label mainHeader;
 
+    @FXML
+    private TextField quantity;
+
+    @FXML
+    private Button addQuantity;
+    @FXML
+    private Button subtractQuantity;
+
 
 
     private MyItemListener myItemListener;
@@ -58,11 +67,29 @@ public class MainMenuController implements Initializable {
     private List<Food> itemByCategory = new ArrayList<>();
 
 
+    private int currentQuantity = 1;
     Timer timer = new Timer();
     Runnable embedFoodTask = () -> {
         String searchName = searchBar.getText().toLowerCase();
         embedMatchingFood(searchName);
     };
+
+
+    public void setAddQuantity(){
+        currentQuantity++;
+        quantity.setText(String.valueOf(currentQuantity));
+    }
+
+    public void setSubtractQuantity(){
+        if(currentQuantity > 1){
+            currentQuantity--;
+            quantity.setText(String.valueOf(currentQuantity));
+        }
+    }
+
+    public void setAddToCart(){
+        System.out.println(currentQuantity);
+    }
 
     private void embedMatchingFood(String searchName){
         ArrayList<Food> matchingFoods = new ArrayList<>();
