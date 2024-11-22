@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.softfun_funsoft.DineInOrTakeout"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="788.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.DineInOrTakeout">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MAROON" height="788.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="1542.0" />
+      <Label layoutX="530.0" layoutY="133.0" text="Where will you be eating today?" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eeeeee" height="350.0" layoutX="420.0" layoutY="209.0" stroke="BLACK" strokeType="INSIDE" width="300.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="350.0" layoutX="767.0" layoutY="208.0" stroke="BLACK" strokeType="INSIDE" width="300.0" />
+      <ImageView fitHeight="322.0" fitWidth="271.0" layoutX="781.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../Downloads/Untitled%20design%20(20).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="317.0" fitWidth="265.0" layoutX="437.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../Downloads/Untitled%20design%20(21).png" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>
