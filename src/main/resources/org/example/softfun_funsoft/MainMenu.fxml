@@ -16,15 +16,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="788.0" prefWidth="1542.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.MainMenuController">
+<AnchorPane fx:id="mainAnchorpane" prefHeight="788.0" prefWidth="1542.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.MainMenuController">
    <children>
       <Rectangle fill="WHITE" height="784.0" stroke="#f2e8c6" strokeType="INSIDE" strokeWidth="0.0" width="1548.0" />
       <Rectangle fill="#982b1c" height="78.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1548.0" />
-      <Text layoutX="338.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Time Favourites" wrappingWidth="611.4736022949219">
-         <font>
-            <Font name="Gill Sans MT" size="67.0" />
-         </font>
-      </Text>
       <ScrollPane id="scroll-pane" fx:id="leftScroll" hbarPolicy="NEVER" layoutX="67.0" layoutY="95.0" prefHeight="596.0" prefWidth="204.0" stylesheets="@css/style.css" vbarPolicy="NEVER">
          <content>
             <GridPane fx:id="categoryGrid" prefHeight="0.0" prefWidth="40.0">
@@ -47,11 +42,6 @@
       <Rectangle fill="#f2e8c6" height="26.0" layoutX="-31.0" layoutY="692.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1573.0" />
       <Circle fill="WHITE" layoutX="1074.0" layoutY="121.0" radius="24.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle fill="WHITE" layoutX="1460.0" layoutY="121.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <ImageView fitHeight="34.0" fitWidth="38.0" layoutX="1428.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../pic_resources/search.png" />
-         </image>
-      </ImageView>
       <Rectangle arcHeight="20.0" arcWidth="20.0" fill="RED" height="52.0" layoutX="41.0" layoutY="730.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="389.0" />
       <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="48.0" layoutX="43.0" layoutY="732.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="385.0" />
       <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#399918" height="52.0" layoutX="1103.0" layoutY="730.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="389.0" />
@@ -84,16 +74,16 @@
                   <Font size="19.0" />
                </font>
             </Button>
-            <ImageView fitHeight="185.0" fitWidth="265.0" layoutX="504.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="confirmPanelImg" fitHeight="185.0" fitWidth="265.0" layoutX="504.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../pic_resources/Reg%20Burger.jpg" />
                </image>
             </ImageView>
-            <TextField editable="false" layoutX="565.0" layoutY="237.0" prefHeight="25.0" prefWidth="46.0" />
-            <Label layoutX="565.0" layoutY="220.0" text="Quantity" />
-            <Button layoutX="544.0" layoutY="237.0" mnemonicParsing="false" text="-" />
-            <Button layoutX="611.0" layoutY="237.0" mnemonicParsing="false" text="+" />
-            <Button layoutX="918.0" layoutY="217.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="230.0" text="Add to Cart">
+            <TextField fx:id="quantity" alignment="CENTER" editable="false" layoutX="565.0" layoutY="237.0" prefHeight="25.0" prefWidth="46.0" text="1" />
+            <Label accessibleText="1" contentDisplay="CENTER" layoutX="565.0" layoutY="220.0" text="Quantity" />
+            <Button fx:id="subtractQuantity" layoutX="545.0" layoutY="236.0" mnemonicParsing="false" onAction="#setSubtractQuantity" text="-" />
+            <Button fx:id="addQuantity" layoutX="610.0" layoutY="236.0" mnemonicParsing="false" onAction="#setAddQuantity" text="+" />
+            <Button fx:id="addToCart" layoutX="918.0" layoutY="217.0" mnemonicParsing="false" onAction="#setAddToCart" prefHeight="36.0" prefWidth="230.0" text="Add to Cart">
                <font>
                   <Font size="19.0" />
                </font>
@@ -111,6 +101,11 @@
             <Font size="23.0" />
          </font>
       </TextField>
+      <Label fx:id="mainHeader" layoutX="340.0" layoutY="88.0" text="All Time Favourite">
+         <font>
+            <Font name="Gill Sans MT" size="67.0" />
+         </font>
+      </Label>
 <!--      <JFXButton buttonType="RAISED" layoutX="1375.0" layoutY="693.0" text="View Order List" underline="true">-->
 <!--         <font>-->
 <!--            <Font name="Gill Sans MT" size="15.0" />-->
