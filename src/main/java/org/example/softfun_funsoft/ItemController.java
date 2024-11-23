@@ -26,7 +26,7 @@ public class ItemController {
     public void setData(Food food, MyItemListener myItemListener){
         this.food = food;
         this.myItemListener = myItemListener;
-        System.out.println(food.getName() + " " + food.getPrice() + " " + food.getImgSrc());
+//        System.out.println(food.getName() + " " + food.getPrice() + " " + food.getImgSrc());
         nameLabel.setText(food.getName());
         priceLabel.setText("₱" + food.getPrice());
         Image image = new Image(getClass().getResourceAsStream(food.getImgSrc()));

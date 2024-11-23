@@ -1,20 +1,30 @@
 package org.example.softfun_funsoft;
 
+import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.util.Duration;
 import org.example.softfun_funsoft.model.Food;
 import org.example.softfun_funsoft.model.FoodCategory;
+
+import org.controlsfx.control.Notifications;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +32,8 @@ import java.util.*;
 
 public class MainMenuController implements Initializable {
 
+    @FXML
+    private AnchorPane mainAnchorpane;
 
     @FXML
     private GridPane categoryGrid;
@@ -55,8 +67,12 @@ public class MainMenuController implements Initializable {
 
     @FXML
     private Button addQuantity;
+
     @FXML
     private Button subtractQuantity;
+
+    @FXML
+    private ImageView confirmPanelImg;
 
 
 
@@ -66,6 +82,7 @@ public class MainMenuController implements Initializable {
     private List<FoodCategory> categories = new ArrayList<>();
     private List<Food> itemByCategory = new ArrayList<>();
 
+    private Food chosenFood;
 
     private int currentQuantity = 1;
     Timer timer = new Timer();
@@ -74,7 +91,51 @@ public class MainMenuController implements Initializable {
         embedMatchingFood(searchName);
     };
 
+//    private void showNotification(Food food) {
+//        Node imageView = new ImageView(new Image(getClass().getResource(food.getImgSrc()).toExternalForm()));
+//        Notifications notificationBuilder = Notifications.create()
+//                .title("Order Received")
+//                .text("You have added " + currentQuantity + " " + food.getName() + " to your cart")
+//                .graphic(imageView) // You can replace null with a Node for custom graphic
+//                .hideAfter(Duration.seconds(3))
+//                .position(Pos.BOTTOM_RIGHT) // Change to your desired position
+//                .onAction(e -> System.out.println("Notification clicked!"));
+//
+//        notificationBuilder.showInformation();
+//    }
 
+    public void showNotification(Food food) {
+        HBox notification = new HBox();
+        notification.setStyle("-fx-background-color: #333; -fx-padding: 10px; -fx-border-radius: 5px; -fx-background-radius: 5px;");
+        notification.setSpacing(10);
+
+        ImageView foodImage = new ImageView(new Image(getClass().getResource(food.getImgSrc()).toExternalForm()));
+        foodImage.setFitWidth(70);
+        foodImage.setFitHeight(70);
+
+
+
+
+        Label foodDetails = new Label("Added " + food.getName() + " to cart\nPrice: ₱" + food.getPrice());
+        foodDetails.setStyle("-fx-text-fill: white;");
+
+        notification.getChildren().addAll(foodImage, foodDetails);
+
+        notification.setLayoutX(mainAnchorpane.getWidth() - 250);
+        notification.setLayoutY(mainAnchorpane.getHeight() - 190);
+
+        mainAnchorpane.getChildren().add(notification);
+
+        PauseTransition pause = new PauseTransition(Duration.seconds(2));
+
+        FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), notification);
+        fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.0);
+        fadeOut.setOnFinished(event -> mainAnchorpane.getChildren().remove(notification));
+
+        pause.setOnFinished(event -> fadeOut.play());
+        pause.play();
+    }
     public void setAddQuantity(){
         currentQuantity++;
         quantity.setText(String.valueOf(currentQuantity));
@@ -88,6 +149,9 @@ public class MainMenuController implements Initializable {
     }
 
     public void setAddToCart(){
+        orderPanel.setVisible(false);
+        //TODO: Implement notifications
+        showNotification(chosenFood);
         System.out.println(currentQuantity);
     }
 
@@ -270,20 +334,12 @@ public class MainMenuController implements Initializable {
     }
 
     private void setChosenFood(Food food){
-
+        chosenFood = food;
+        confirmPanelItemname.setText(chosenFood.getName());
+        orderPanelItemPrice.setText("PHP " + chosenFood.getPrice());
+        confirmPanelImg.setImage(new Image(getClass().getResourceAsStream(chosenFood.getImgSrc())));
     }
 
-//    private void notification(){
-//        String title = "Congratulations sir";
-//        String message = "You've successfully created your first Tray Notification";
-//        Notification notification = Notifications.SUCCESS;
-//
-//        TrayNotification tray = new TrayNotification();
-//        tray.setTitle(title);
-//        tray.setMessage(message);
-//        tray.setNotification(notification);
-//        tray.showAndWait();
-//    }
 
     public void embedCategories(){
         int row = 1;
@@ -397,8 +453,7 @@ public class MainMenuController implements Initializable {
         myItemListener = new MyItemListener() {
             @Override
             public void onclickListener(Food food) {
-                System.out.println("I have been called");
-//                setChosenFood(food);
+                setChosenFood(food);
                 orderPanel.setVisible(true);
             }
         };
@@ -414,17 +469,7 @@ public class MainMenuController implements Initializable {
             embedCategoricalItems();
         }
     };
-
-
-
-
         embedItems();
         embedCategories();
-
-
-
-
-
-
     }
 }

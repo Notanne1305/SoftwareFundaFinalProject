@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="788.0" prefWidth="1542.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.MainMenuController">
+<AnchorPane fx:id="mainAnchorpane" prefHeight="788.0" prefWidth="1542.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.MainMenuController">
    <children>
       <Rectangle fill="WHITE" height="784.0" stroke="#f2e8c6" strokeType="INSIDE" strokeWidth="0.0" width="1548.0" />
       <Rectangle fill="#982b1c" height="78.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1548.0" />
@@ -74,7 +74,7 @@
                   <Font size="19.0" />
                </font>
             </Button>
-            <ImageView fitHeight="185.0" fitWidth="265.0" layoutX="504.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="confirmPanelImg" fitHeight="185.0" fitWidth="265.0" layoutX="504.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../pic_resources/Reg%20Burger.jpg" />
                </image>
@@ -101,7 +101,7 @@
             <Font size="23.0" />
          </font>
       </TextField>
-      <Label fx:id="mainHeader" layoutX="340.0" layoutY="88.0" text="All Time Favourties">
+      <Label fx:id="mainHeader" layoutX="340.0" layoutY="88.0" text="All Time Favourite">
          <font>
             <Font name="Gill Sans MT" size="67.0" />
          </font>
