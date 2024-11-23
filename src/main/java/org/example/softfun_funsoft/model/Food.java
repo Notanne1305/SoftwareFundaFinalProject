@@ -7,6 +7,8 @@ public class Food {
     private String color;
     private String category;
 
+    private int quantity;
+
     public String getName() {
         return name;
     }
@@ -45,5 +47,13 @@ public class Food {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
