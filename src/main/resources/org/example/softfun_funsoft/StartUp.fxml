@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.media.MediaView?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="788.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.Homepage">
+<AnchorPane prefHeight="800.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.StartUpCont">
    <children>
-      <Rectangle fill="#ed1e24" height="788.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
+      <Rectangle fill="#db1f2a" height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
+      <MediaView fx:id="mediaView" fitHeight="800.0" fitWidth="1200.0" layoutX="184.0" />
       <ImageView fitHeight="416.0" fitWidth="383.0" layoutX="577.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../Softy/src/main/resources/pic_resources/McLUXlogo.png" />
+            <Image url="@../../../pic_resources/McLUX_logo.png" />
          </image>
       </ImageView>
       <Text fill="WHITE" layoutX="532.0" layoutY="508.0" strokeType="OUTSIDE" strokeWidth="0.0" text="McLuxibee">
@@ -20,15 +23,30 @@
             <Font name="Eras Bold ITC" size="80.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="537.0" layoutY="544.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Where Every Bite Brings a Smile ">
+      <Text fill="WHITE" layoutX="535.0" layoutY="561.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Where Every Bite Brings a Smile">
          <font>
             <Font name="Rage Italic" size="34.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="55.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Powered by: Team  ">
+      <Text fill="WHITE" layoutX="599.0" layoutY="768.0" opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Powered by: Team Hilux">
          <font>
-            <Font name="Eras Bold ITC" size="28.0" />
+            <Font name="Eras Bold ITC" size="20.0" />
          </font>
       </Text>
+      <ImageView fitHeight="67.0" fitWidth="136.0" layoutX="811.0" layoutY="733.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../pic_resources/TeamHiluxLogoInverted69-01-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="TITLE" fill="WHITE" layoutX="576.0" layoutY="672.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRESS TO PROCEED">
+         <font>
+            <Font name="Eras Demi ITC" size="35.0" />
+         </font>
+      </Text>
+      <JFXButton fx:id="StartButton" alignment="CENTER" buttonType="RAISED" layoutX="534.0" layoutY="609.0" onAction="#handleStartButton" prefHeight="101.0" prefWidth="410.0" text="." textFill="#db1f2a">
+         <font>
+            <Font name="Eras Demi ITC" size="30.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
