@@ -453,6 +453,8 @@ public class MainMenuController implements Initializable {
         myItemListener = new MyItemListener() {
             @Override
             public void onclickListener(Food food) {
+                currentQuantity = 1;
+                quantity.setText(String.valueOf(currentQuantity));
                 setChosenFood(food);
                 orderPanel.setVisible(true);
             }
