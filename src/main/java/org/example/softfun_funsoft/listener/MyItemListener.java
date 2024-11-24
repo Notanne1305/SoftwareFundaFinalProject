@@ -1,4 +1,4 @@
-package org.example.softfun_funsoft;
+package org.example.softfun_funsoft.listener;
 
 import org.example.softfun_funsoft.model.Food;
 
