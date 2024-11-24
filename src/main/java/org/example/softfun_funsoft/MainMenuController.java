@@ -74,6 +74,9 @@ public class MainMenuController implements Initializable {
     @FXML
     private ImageView confirmPanelImg;
 
+    @FXML
+    private Label itemsLabel;
+
 
 
     private MyItemListener myItemListener;
@@ -81,6 +84,8 @@ public class MainMenuController implements Initializable {
     private List<Food> foods = new ArrayList<>();
     private List<FoodCategory> categories = new ArrayList<>();
     private List<Food> itemByCategory = new ArrayList<>();
+
+    private List<Food> cart = new ArrayList<>();
 
     private Food chosenFood;
 
@@ -91,6 +96,7 @@ public class MainMenuController implements Initializable {
         embedMatchingFood(searchName);
     };
 
+    //TODO: Implement Add to cart pane
 //    private void showNotification(Food food) {
 //        Node imageView = new ImageView(new Image(getClass().getResource(food.getImgSrc()).toExternalForm()));
 //        Notifications notificationBuilder = Notifications.create()
@@ -150,9 +156,12 @@ public class MainMenuController implements Initializable {
 
     public void setAddToCart(){
         orderPanel.setVisible(false);
-        //TODO: Implement notifications
+        chosenFood.setQuantity(currentQuantity);
         showNotification(chosenFood);
-        System.out.println(currentQuantity);
+        cart.add(chosenFood);
+        itemsLabel.setText(String.valueOf(cart.size()) + " item/s in the cart");
+        //TODO: Implement Add to cart pane and functionality.
+
     }
 
     private void embedMatchingFood(String searchName){

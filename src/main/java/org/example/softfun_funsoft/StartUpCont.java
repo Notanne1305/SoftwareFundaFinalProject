@@ -1,0 +1,134 @@
+package org.example.softfun_funsoft;
+
+import com.jfoenix.controls.JFXButton;
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Objects;
+import java.util.ResourceBundle;
+
+public class StartUpCont extends Application implements Initializable {
+
+ @FXML
+ private Text TITLE;
+
+ @FXML
+ private JFXButton StartButton;
+
+ @FXML
+ private MediaView mediaView;
+
+
+
+ @FXML
+ private void onProceedButtonClick() {
+  System.out.println("Proceed button clicked!");
+ }
+
+ @Override
+ public void start(Stage stage) throws Exception {
+  FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/softfun_funsoft/StartUp.fxml"));
+  Parent root = loader.load();
+
+  StartUpCont controller = loader.getController();
+  controller.initializeMedia();
+
+  Scene scene = new Scene(root);
+  stage.setTitle("Team Hilux Fastfood Kiosk Ordering System");
+  stage.setScene(scene);
+  stage.show();
+ }
+
+ public void initializeMedia() {
+  String filePath = "src/main/resources/pic_resources/1122(1).mp4";
+  File file = new File(filePath);
+
+  if (!file.exists()) {
+   showError("Media file not found at: " + filePath);
+   return;
+  }
+
+  Media media = new Media(file.toURI().toString());
+  MediaPlayer mediaPlayer = new MediaPlayer(media);
+  mediaView.setMediaPlayer(mediaPlayer);
+
+  mediaPlayer.setAutoPlay(true);
+ }
+
+ private void showError(String message) {
+  Alert alert = new Alert(Alert.AlertType.ERROR);
+  alert.setTitle("Error");
+  alert.setContentText(message);
+  alert.showAndWait();
+ }
+
+ public static void main(String[] args) {
+  launch(args);
+ }
+
+ @FXML
+ public void handleStartButton(ActionEvent event) throws IOException {
+  System.out.println("Start button pressed");
+
+  if (event.getSource() == StartButton) {
+   Stage currentStage = (Stage) StartButton.getScene().getWindow();
+   currentStage.close();
+
+   Stage newStage = new Stage();
+   Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/example/softfun_funsoft/MainMenu.fxml")));
+   newStage.setScene(new Scene(root));
+   newStage.setTitle("Home Page");
+   newStage.show();
+  }
+ }
+
+ public void initialize(URL url, ResourceBundle resourceBundle) {
+  System.out.println("Initializing StartUpController");
+
+  // TITLE animation
+  if (TITLE == null) {
+   System.out.println("TITLE is null. Check FXML configuration.");
+  } else {
+   // Set TITLE to fade in and out indefinitely
+   TITLE.setOpacity(0);
+   FadeTransition fade = new FadeTransition(Duration.millis(2000), TITLE);
+   fade.setCycleCount(FadeTransition.INDEFINITE);
+   fade.setInterpolator(Interpolator.LINEAR);
+   fade.setFromValue(0);
+   fade.setToValue(1);
+   fade.setAutoReverse(true);
+   fade.play();
+  }
+
+  if (StartButton == null) {
+   System.out.println("StartButton is null. Check FXML configuration.");
+  } else {
+   // Set StartButton to fade in and out indefinitely
+   StartButton.setOpacity(0);
+   FadeTransition fading = new FadeTransition(Duration.millis(2000), StartButton);
+   fading.setCycleCount(FadeTransition.INDEFINITE);
+   fading.setInterpolator(Interpolator.LINEAR);
+   fading.setFromValue(0);
+   fading.setToValue(1);
+   fading.setAutoReverse(true);
+   fading.play();
+  }
+ }
+}
