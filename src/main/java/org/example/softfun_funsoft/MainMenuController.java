@@ -159,6 +159,7 @@ public class MainMenuController implements Initializable {
         showNotification(chosenFood);
         cart.add(chosenFood);
         itemsLabel.setText(String.valueOf(cart.size()) + " item/s in the cart");
+        System.out.println(chosenFood.getQuantity());
         //TODO: Implement Add to cart pane and functionality.
 
     }

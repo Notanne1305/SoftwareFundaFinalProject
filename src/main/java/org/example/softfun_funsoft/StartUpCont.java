@@ -44,7 +44,7 @@ public class StartUpCont extends Application implements Initializable {
 
  @Override
  public void start(Stage stage) throws Exception {
-  FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/softfun_funsoft/StartUp.fxml"));
+  FXMLLoader loader = new FXMLLoader(getClass().getResource("StartUp.fxml"));
   Parent root = loader.load();
 
   StartUpCont controller = loader.getController();
@@ -89,7 +89,7 @@ public class StartUpCont extends Application implements Initializable {
 
   if (event.getSource() == StartButton) {
    Stage currentStage = (Stage) StartButton.getScene().getWindow();
-   Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/example/softfun_funsoft/MainMenu.fxml")));
+   Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
    Scene currentScene = currentStage.getScene();
 
    // Create a fade-out transition for the current scene
