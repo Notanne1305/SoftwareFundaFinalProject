@@ -240,35 +240,26 @@ public class MainMenuController implements Initializable {
         Food food;
 
         food = new Food();
+        food.setName("Bacon Chicken Mayo");
+        food.setCategory("Burger");
+        food.setPrice(100.0);
+        food.setImgSrc("pic_resources/final menu/Burgers/baconchickenmayo.jpg");
+        food.setColor("#f2f2f2");
+        foods.add(food);
+
+        food = new Food();
         food.setName("Big Burger");
         food.setCategory("Burger");
         food.setPrice(100.0);
-        food.setImgSrc("/pic_resources/Big Burger.jpg");
+        food.setImgSrc("pic_resources/final menu/Burgers/Bigburger.jpg");
         food.setColor("#f2f2f2");
         foods.add(food);
 
         food = new Food();
-        food.setName("Cheese Burger");
+        food.setName("Big Mc");
         food.setCategory("Burger");
         food.setPrice(100.0);
-        food.setImgSrc("/pic_resources/Cheese Burger.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Chicken");
-        food.setCategory("Chicken");
-        food.setPrice(100.0);
-        food.setImgSrc("/pic_resources/Chicken.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-
-        food = new Food();
-        food.setName("Spicy Chicken");
-        food.setCategory("Chicken");
-        food.setPrice(100.0);
-        food.setImgSrc("/pic_resources/Chicken Spicy.jpg");
+        food.setImgSrc("pic_resources/final menu/Burgers/BigMc.jpg");
         food.setColor("#f2f2f2");
         foods.add(food);
 
@@ -283,19 +274,43 @@ public class MainMenuController implements Initializable {
 
         category = new FoodCategory();
         category.setName("All Time Favourites");
-        category.setImgSrc("/pic_resources/Chicken.jpg");
+        category.setImgSrc("pic_resources/final menu/Chicken/2pcchicken.jpg");
         category.setColor("#f2f2f2");
         categories.add(category);
 
         category = new FoodCategory();
-        category.setName("Chicken");
-        category.setImgSrc("/pic_resources/Chicken.jpg");
+        category.setName("Beverages");
+        category.setImgSrc("pic_resources/final menu/beverages/coke1.jpg");
+        category.setColor("#f2f2f2");
+        categories.add(category);
+
+        category = new FoodCategory();
+        category.setName("Breakfast Menu");
+        category.setImgSrc("pic_resources/final menu/breakfast menu/eggcheesemuffin.jpg");
         category.setColor("#f2f2f2");
         categories.add(category);
 
         category = new FoodCategory();
         category.setName("Burger");
-        category.setImgSrc("/pic_resources/Big Burger.jpg");
+        category.setImgSrc("pic_resources/final menu/Burgers/quarterpounderwithcheese.jpg");
+        category.setColor("#f2f2f2");
+        categories.add(category);
+
+        category = new FoodCategory();
+        category.setName("Chicken");
+        category.setImgSrc("pic_resources/final menu/Chicken/2pcchicken.jpg");
+        category.setColor("#f2f2f2");
+        categories.add(category);
+
+        category = new FoodCategory();
+        category.setName("Dessert");
+        category.setImgSrc("pic_resources/final menu/desserts/applepie.jpg");
+        category.setColor("#f2f2f2");
+        categories.add(category);
+
+        category = new FoodCategory();
+        category.setName("Sides");
+        category.setImgSrc("pic_resources/final menu/Sides/Fries.jpg");
         category.setColor("#f2f2f2");
         categories.add(category);
 
