@@ -1,4 +1,4 @@
-package org.example.softfun_funsoft;
+package org.example.softfun_funsoft.controller;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -20,10 +19,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.util.Duration;
+import org.example.softfun_funsoft.listener.MyCategoryListener;
+import org.example.softfun_funsoft.listener.MyItemListener;
 import org.example.softfun_funsoft.model.Food;
 import org.example.softfun_funsoft.model.FoodCategory;
-
-import org.controlsfx.control.Notifications;
 
 
 import java.io.IOException;
@@ -325,7 +324,7 @@ public class MainMenuController implements Initializable {
         try {
             for (int i = 0; i < foods.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("Item.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/org/example/softfun_funsoft/Item.fxml"));
 
                 AnchorPane anchorPane = fxmlLoader.load();
                 ItemController itemController = fxmlLoader.getController();
@@ -373,7 +372,7 @@ public class MainMenuController implements Initializable {
             for (int i = 0; i < categories.size(); i++) {
                 System.out.println(categories.get(i).getName());
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("ItemCategory.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/org/example/softfun_funsoft/ItemCategory.fxml"));
 
                 AnchorPane anchorPane = fxmlLoader.load();
 

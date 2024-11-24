@@ -1,9 +1,9 @@
-package org.example.softfun_funsoft;
+package org.example.softfun_funsoft.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import org.example.softfun_funsoft.model.Food;
+import org.example.softfun_funsoft.listener.MyCategoryListener;
 import org.example.softfun_funsoft.model.FoodCategory;
 
 public class ItemCategoryController {
