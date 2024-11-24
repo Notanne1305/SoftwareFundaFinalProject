@@ -1,4 +1,4 @@
-package org.example.softfun_funsoft.controller;
+package org.example.softfun_funsoft;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -33,7 +33,5 @@ public class ItemController {
         Image image = new Image(getClass().getResourceAsStream(food.getImgSrc()));
         img.setImage(image);
     }
-
-
 
 }

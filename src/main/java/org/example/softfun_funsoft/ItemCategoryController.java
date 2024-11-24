@@ -1,4 +1,4 @@
-package org.example.softfun_funsoft.controller;
+package org.example.softfun_funsoft;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -25,7 +25,7 @@ public class ItemCategoryController {
     public void setData(FoodCategory foodCategory, MyCategoryListener myCategoryListener){
         this.foodCategory = foodCategory;
         this.myCategoryListener = myCategoryListener;
-        System.out.println(foodCategory.getName() + " " + foodCategory.getImgSrc());
+//        System.out.println(foodCategory.getName() + " " + foodCategory.getImgSrc());
         categoryLabel.setText(foodCategory.getName());
         img.setImage(new javafx.scene.image.Image(getClass().getResourceAsStream(foodCategory.getImgSrc())));
 

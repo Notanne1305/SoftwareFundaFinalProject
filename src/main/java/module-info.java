@@ -11,6 +11,4 @@ module org.example.softfun_funsoft {
     exports org.example.softfun_funsoft;
     exports org.example.softfun_funsoft.listener;
     opens org.example.softfun_funsoft.listener to javafx.fxml;
-    exports org.example.softfun_funsoft.controller;
-    opens org.example.softfun_funsoft.controller to javafx.fxml;
 }

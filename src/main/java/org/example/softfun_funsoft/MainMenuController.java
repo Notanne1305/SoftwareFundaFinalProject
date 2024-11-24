@@ -1,4 +1,4 @@
-package org.example.softfun_funsoft.controller;
+package org.example.softfun_funsoft;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
@@ -242,7 +242,7 @@ public class MainMenuController implements Initializable {
         food.setName("Bacon Chicken Mayo");
         food.setCategory("Burger");
         food.setPrice(100.0);
-        food.setImgSrc("pic_resources/final menu/Burgers/baconchickenmayo.jpg");
+        food.setImgSrc("/pic_resources/Burgers/baconchickenmayo.jpg");
         food.setColor("#f2f2f2");
         foods.add(food);
 
@@ -250,7 +250,7 @@ public class MainMenuController implements Initializable {
         food.setName("Big Burger");
         food.setCategory("Burger");
         food.setPrice(100.0);
-        food.setImgSrc("pic_resources/final menu/Burgers/Bigburger.jpg");
+        food.setImgSrc("/pic_resources/Burgers/Bigburger.jpg");
         food.setColor("#f2f2f2");
         foods.add(food);
 
@@ -258,7 +258,7 @@ public class MainMenuController implements Initializable {
         food.setName("Big Mc");
         food.setCategory("Burger");
         food.setPrice(100.0);
-        food.setImgSrc("pic_resources/final menu/Burgers/BigMc.jpg");
+        food.setImgSrc("/pic_resources/Burgers/BigMc.jpg");
         food.setColor("#f2f2f2");
         foods.add(food);
 
@@ -273,43 +273,43 @@ public class MainMenuController implements Initializable {
 
         category = new FoodCategory();
         category.setName("All Time Favourites");
-        category.setImgSrc("pic_resources/final menu/Chicken/2pcchicken.jpg");
+        category.setImgSrc("/pic_resources/Chicken/2pcchicken.jpg");
         category.setColor("#f2f2f2");
         categories.add(category);
 
         category = new FoodCategory();
         category.setName("Beverages");
-        category.setImgSrc("pic_resources/final menu/beverages/coke1.jpg");
+        category.setImgSrc("/pic_resources/beverages/coke1.jpg");
         category.setColor("#f2f2f2");
         categories.add(category);
 
         category = new FoodCategory();
         category.setName("Breakfast Menu");
-        category.setImgSrc("pic_resources/final menu/breakfast menu/eggcheesemuffin.jpg");
+        category.setImgSrc("/pic_resources/breakfast menu/eggcheesemuffin.jpg");
         category.setColor("#f2f2f2");
         categories.add(category);
 
         category = new FoodCategory();
         category.setName("Burger");
-        category.setImgSrc("pic_resources/final menu/Burgers/quarterpounderwithcheese.jpg");
+        category.setImgSrc("/pic_resources/Burgers/quarterpounderwithcheese.jpg");
         category.setColor("#f2f2f2");
         categories.add(category);
 
         category = new FoodCategory();
         category.setName("Chicken");
-        category.setImgSrc("pic_resources/final menu/Chicken/2pcchicken.jpg");
+        category.setImgSrc("/pic_resources/Chicken/2pcchicken.jpg");
         category.setColor("#f2f2f2");
         categories.add(category);
 
         category = new FoodCategory();
         category.setName("Dessert");
-        category.setImgSrc("pic_resources/final menu/desserts/applepie.jpg");
+        category.setImgSrc("/pic_resources/desserts/applepie.jpg");
         category.setColor("#f2f2f2");
         categories.add(category);
 
         category = new FoodCategory();
         category.setName("Sides");
-        category.setImgSrc("pic_resources/final menu/Sides/Fries.jpg");
+        category.setImgSrc("/pic_resources/Sides/Fries.jpg");
         category.setColor("#f2f2f2");
         categories.add(category);
 
@@ -324,7 +324,7 @@ public class MainMenuController implements Initializable {
         try {
             for (int i = 0; i < foods.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/org/example/softfun_funsoft/Item.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("Item.fxml"));
 
                 AnchorPane anchorPane = fxmlLoader.load();
                 ItemController itemController = fxmlLoader.getController();
@@ -372,7 +372,7 @@ public class MainMenuController implements Initializable {
             for (int i = 0; i < categories.size(); i++) {
                 System.out.println(categories.get(i).getName());
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/org/example/softfun_funsoft/ItemCategory.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("ItemCategory.fxml"));
 
                 AnchorPane anchorPane = fxmlLoader.load();
 
@@ -487,7 +487,6 @@ public class MainMenuController implements Initializable {
         @Override
         public void onclickListener(FoodCategory foodCategory) {
             mainHeader.setText(foodCategory.getName());
-            grid.setAlignment(Pos.TOP_CENTER);
             grid.getChildren().clear();
             itemByCategory.clear();
             itemByCategory.addAll(getItemsByCategory(foodCategory.getName()));
