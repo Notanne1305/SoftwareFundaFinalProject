@@ -2,6 +2,7 @@
 
 <!--<?import com.jfoenix.controls.JFXButton?>-->
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -16,11 +17,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainAnchorpane" prefHeight="788.0" prefWidth="1542.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.MainMenuController">
+<AnchorPane fx:id="mainAnchorpane" prefHeight="788.0" prefWidth="1542.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.MainMenuController">
    <children>
       <Rectangle fill="WHITE" height="784.0" stroke="#f2e8c6" strokeType="INSIDE" strokeWidth="0.0" width="1548.0" />
       <Rectangle fill="#982b1c" height="78.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1548.0" />
-      <ScrollPane id="scroll-pane" fx:id="leftScroll" hbarPolicy="NEVER" layoutX="67.0" layoutY="95.0" prefHeight="596.0" prefWidth="204.0" stylesheets="@css/style.css" vbarPolicy="NEVER">
+      <ScrollPane id="scroll-pane" fx:id="leftScroll" hbarPolicy="NEVER" layoutX="67.0" layoutY="111.0" prefHeight="580.0" prefWidth="204.0" stylesheets="@css/style.css" vbarPolicy="NEVER">
          <content>
             <GridPane fx:id="categoryGrid" prefHeight="0.0" prefWidth="40.0">
                <rowConstraints>
@@ -29,7 +30,7 @@
             </GridPane>
          </content>
       </ScrollPane>
-      <ScrollPane id="background1" fx:id="scroll" hbarPolicy="NEVER" layoutX="337.0" layoutY="158.0" prefHeight="534.0" prefWidth="1186.0" vbarPolicy="NEVER">
+      <ScrollPane id="background1" fx:id="scroll" hbarPolicy="NEVER" layoutX="337.0" layoutY="189.0" prefHeight="503.0" prefWidth="1186.0" vbarPolicy="NEVER">
          <content>
             <GridPane fx:id="grid" prefHeight="0.0" prefWidth="40.0">
                <rowConstraints>
@@ -46,7 +47,7 @@
       <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="48.0" layoutX="43.0" layoutY="732.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="385.0" />
       <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#399918" height="52.0" layoutX="1103.0" layoutY="730.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="389.0" />
       <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="48.0" layoutX="1105.0" layoutY="732.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="385.0" />
-      <Text fill="#399918" layoutX="1216.0" layoutY="766.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Save Changes">
+      <Text fill="#399918" layoutX="1166.0" layoutY="766.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Proceed to Checkout">
          <font>
 
             <Font name="Gill Sans MT" size="30.0" />
@@ -62,50 +63,59 @@
             <Font name="Gill Sans MT" size="15.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="orderPanel" layoutX="337.0" layoutY="402.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="1186.0" style="-fx-background-color: pink;" visible="false">
+      <AnchorPane fx:id="orderPanel" layoutX="324.0" layoutY="335.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="268.0" prefWidth="976.0" visible="false">
          <children>
-            <Label layoutX="70.0" layoutY="28.0" prefHeight="36.0" prefWidth="284.0" text="Make Your Choice">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Button layoutX="918.0" layoutY="26.0" mnemonicParsing="false" onMousePressed="#cancelButton" prefHeight="36.0" prefWidth="230.0" text="Cancel">
-               <font>
-                  <Font size="19.0" />
-               </font>
-            </Button>
-            <ImageView fx:id="confirmPanelImg" fitHeight="185.0" fitWidth="265.0" layoutX="504.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+            <Rectangle arcHeight="30.0" arcWidth="30.0" fill="WHITE" height="269.0" opacity="0.9" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="981.0" />
+            <ImageView fx:id="confirmPanelImg" fitHeight="217.0" fitWidth="230.0" layoutX="58.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../pic_resources/Sides/Nuggets.jpg" />
                </image>
             </ImageView>
-            <TextField fx:id="quantity" alignment="CENTER" editable="false" layoutX="565.0" layoutY="237.0" prefHeight="25.0" prefWidth="46.0" text="1" />
-            <Label accessibleText="1" contentDisplay="CENTER" layoutX="565.0" layoutY="220.0" text="Quantity" />
-            <Button fx:id="subtractQuantity" layoutX="545.0" layoutY="236.0" mnemonicParsing="false" onAction="#setSubtractQuantity" text="-" />
-            <Button fx:id="addQuantity" layoutX="610.0" layoutY="236.0" mnemonicParsing="false" onAction="#setAddQuantity" text="+" />
-            <Button fx:id="addToCart" layoutX="918.0" layoutY="217.0" mnemonicParsing="false" onAction="#setAddToCart" prefHeight="36.0" prefWidth="230.0" text="Add to Cart">
+            <TextField fx:id="quantity" alignment="CENTER" editable="false" layoutX="398.0" layoutY="207.0" prefHeight="35.0" prefWidth="102.0" text="1" />
+            <Label accessibleText="1" contentDisplay="CENTER" layoutX="329.0" layoutY="209.0" prefHeight="30.0" prefWidth="54.0" text="QTY.">
                <font>
-                  <Font size="19.0" />
-               </font>
-            </Button>
-            <Label fx:id="confirmPanelItemname" layoutX="301.0" layoutY="66.0" prefHeight="26.0" prefWidth="134.0" text="Cheese Borgier">
+                  <Font size="20.0" />
+               </font></Label>
+            <Button fx:id="subtractQuantity" layoutX="398.0" layoutY="207.0" mnemonicParsing="false" onAction="#setSubtractQuantity" prefHeight="35.0" prefWidth="26.0" text="-" />
+            <Button fx:id="addQuantity" layoutX="473.0" layoutY="207.0" mnemonicParsing="false" onAction="#setAddQuantity" prefHeight="35.0" prefWidth="26.0" text="+" />
+            <Label fx:id="confirmPanelItemname" layoutX="316.0" layoutY="11.0" prefHeight="80.0" prefWidth="604.0" text="Cheese Borgier">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="Gill Sans MT" size="65.0" />
                </font>
             </Label>
-            <Label fx:id="orderPanelItemPrice" layoutX="354.0" layoutY="99.0" text="PHP 100" />
+            <Label fx:id="orderPanelItemPrice" layoutX="322.0" layoutY="101.0" text="PHP 100" textFill="#188100">
+               <font>
+                  <Font size="50.0" />
+               </font></Label>
          </children>
       </AnchorPane>
-      <TextField fx:id="searchBar" layoutX="1111.0" layoutY="103.0" onKeyReleased="#getSearch" prefHeight="48.0" prefWidth="399.0" promptText="Type to Search" style="-fx-background-radius: 100;">
+      <TextField fx:id="searchBar" layoutX="1111.0" layoutY="122.0" onKeyReleased="#getSearch" prefHeight="48.0" prefWidth="399.0" promptText="Type to Search" style="-fx-background-radius: 100;">
          <font>
             <Font size="23.0" />
          </font>
       </TextField>
-      <Label fx:id="mainHeader" layoutX="340.0" layoutY="81.0" prefHeight="80.0" prefWidth="553.0" text="All Time Favourites">
+      <Label fx:id="mainHeader" layoutX="340.0" layoutY="103.0" prefHeight="80.0" prefWidth="553.0" text="All Time Favourites">
          <font>
             <Font name="Gill Sans MT" size="67.0" />
          </font>
       </Label>
+      <Label fx:id="itemsLabel1" layoutX="1374.0" layoutY="696.0" onMouseClicked="#showCart" style="-fx-underline: true;" text="View Order List">
+         <font>
+            <Font name="Gill Sans MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="108.0" fitWidth="1548.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../pic_resources/final%20menu/top%20banner.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="198.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Where Every Bite Brings Smile">
+         <font>
+            <Font name="Rage Italic" size="67.0" />
+         </font>
+      </Text>
+      <JFXButton fx:id="addToCart" layoutX="1105.0" layoutY="729.0" onAction="#setAddToCart" prefHeight="52.0" prefWidth="389.0" text="." textFill="WHITE" />
+      <JFXButton layoutX="41.0" layoutY="729.0" onMousePressed="#cancelButton" prefHeight="52.0" prefWidth="389.0" text="." textFill="WHITE" />
 <!--      <JFXButton buttonType="RAISED" layoutX="1375.0" layoutY="693.0" text="View Order List" underline="true">-->
 <!--         <font>-->
 <!--            <Font name="Gill Sans MT" size="15.0" />-->

@@ -9,18 +9,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onMousePressed="#onClicked" prefHeight="259.0" prefWidth="252.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.ItemController">
+<AnchorPane onMousePressed="#onClicked" prefHeight="259.0" prefWidth="252.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.ItemController">
    <children>
       <VBox alignment="CENTER" layoutX="26.0" layoutY="216.0" prefHeight="31.0" prefWidth="200.0">
          <children>
             <HBox prefHeight="25.0" prefWidth="262.0">
                <children>
-                  <Label fx:id="nameLabel" prefHeight="20.0" prefWidth="190.0" text="WanPiece Chicken">
+                  <Label fx:id="nameLabel" prefHeight="26.0" prefWidth="166.0" text="WanPiece Chicken">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="priceLabel" prefHeight="17.0" prefWidth="64.0" text="₱ 99.0" />
+                  <Label fx:id="priceLabel" prefHeight="46.0" prefWidth="40.0" text="₱ 99.0" />
                </children>
             </HBox>
          </children>
