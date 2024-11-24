@@ -46,7 +46,7 @@
       <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="48.0" layoutX="43.0" layoutY="732.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="385.0" />
       <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#399918" height="52.0" layoutX="1103.0" layoutY="730.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="389.0" />
       <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="48.0" layoutX="1105.0" layoutY="732.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="385.0" />
-      <Text fill="#399918" layoutX="1216.0" layoutY="766.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Save Changes">
+      <Text fill="#399918" layoutX="1166.0" layoutY="766.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Proceed to Checkout">
          <font>
 
             <Font name="Gill Sans MT" size="30.0" />
@@ -104,6 +104,11 @@
       <Label fx:id="mainHeader" layoutX="340.0" layoutY="81.0" prefHeight="80.0" prefWidth="553.0" text="All Time Favourites">
          <font>
             <Font name="Gill Sans MT" size="67.0" />
+         </font>
+      </Label>
+      <Label fx:id="itemsLabel1" layoutX="1374.0" layoutY="696.0" onMouseClicked="#showCart" style="-fx-underline: true;" text="View Order List">
+         <font>
+            <Font name="Gill Sans MT Bold" size="15.0" />
          </font>
       </Label>
 <!--      <JFXButton buttonType="RAISED" layoutX="1375.0" layoutY="693.0" text="View Order List" underline="true">-->

@@ -14,10 +14,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
+import javafx.scene.layout.*;
 import javafx.util.Duration;
 import org.example.softfun_funsoft.listener.MyCategoryListener;
 import org.example.softfun_funsoft.listener.MyItemListener;
@@ -162,6 +159,64 @@ public class MainMenuController implements Initializable {
         System.out.println(chosenFood.getQuantity());
         //TODO: Implement Add to cart pane and functionality.
 
+    }
+
+    public void showCart(){
+        //TODO: Implement a cart pane, that shows the items in the cart. e.g a tableview
+
+        //Example Output idea
+
+        AnchorPane cartPane = new AnchorPane();
+        cartPane.setStyle("-fx-background-color: white; -fx-padding: 20px;");
+        cartPane.setPrefSize(400, 600);
+
+        VBox cartItemsBox = new VBox(10);
+        cartItemsBox.setPadding(new Insets(10));
+        cartItemsBox.setAlignment(Pos.TOP_CENTER);
+
+        for (Food food : cart) {
+            HBox cartItem = new HBox(10);
+            cartItem.setAlignment(Pos.CENTER_LEFT);
+
+            // Item image
+            ImageView foodImage = new ImageView(new Image(getClass().getResourceAsStream(food.getImgSrc())));
+            foodImage.setFitWidth(50);
+            foodImage.setFitHeight(50);
+
+            // Item name
+            Label nameLabel = new Label(food.getName());
+            nameLabel.setPrefWidth(150);
+
+            // Item quantity
+            Label quantityLabel = new Label("Qty: " + food.getQuantity());
+            quantityLabel.setPrefWidth(50);
+
+            // Item price
+            Label priceLabel = new Label("₱" + food.getPrice() * food.getQuantity());
+            priceLabel.setPrefWidth(100);
+
+            // Remove button
+            Button removeButton = new Button("Remove");
+            removeButton.setOnAction(event -> {
+                cart.remove(food);
+                showCart(); // Refresh the cart pane
+            });
+
+            cartItem.getChildren().addAll(foodImage, nameLabel, quantityLabel, priceLabel, removeButton);
+            cartItemsBox.getChildren().add(cartItem);
+        }
+
+        // Add the VBox to the cart pane
+        cartPane.getChildren().add(cartItemsBox);
+
+        // Add the cart pane to the mainAnchorpane
+        mainAnchorpane.getChildren().add(cartPane);
+
+        // Position the cart pane in the center of the mainAnchorpane
+        AnchorPane.setTopAnchor(cartPane, 50.0);
+        AnchorPane.setBottomAnchor(cartPane, 50.0);
+        AnchorPane.setLeftAnchor(cartPane, 50.0);
+        AnchorPane.setRightAnchor(cartPane, 50.0);
     }
 
     private void embedMatchingFood(String searchName){
