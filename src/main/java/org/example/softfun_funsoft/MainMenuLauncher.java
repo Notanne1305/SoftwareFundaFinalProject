@@ -12,7 +12,7 @@ public class MainMenuLauncher extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainMenuLauncher.class.getResource("MainMenu.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        stage.setTitle("Team Hilux Fastfood Kiosk Ordering System");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

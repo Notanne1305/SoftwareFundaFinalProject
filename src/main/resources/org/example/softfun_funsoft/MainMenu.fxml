@@ -31,7 +31,7 @@
       </ScrollPane>
       <ScrollPane id="background1" fx:id="scroll" hbarPolicy="NEVER" layoutX="337.0" layoutY="158.0" prefHeight="534.0" prefWidth="1186.0" vbarPolicy="NEVER">
          <content>
-            <GridPane fx:id="grid" alignment="CENTER" prefHeight="0.0" prefWidth="40.0">
+            <GridPane fx:id="grid" prefHeight="0.0" prefWidth="40.0">
                <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" />
                </rowConstraints>
@@ -46,7 +46,7 @@
       <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="48.0" layoutX="43.0" layoutY="732.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="385.0" />
       <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#399918" height="52.0" layoutX="1103.0" layoutY="730.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="389.0" />
       <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="48.0" layoutX="1105.0" layoutY="732.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="385.0" />
-      <Text fill="#399918" layoutX="1216.0" layoutY="766.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Save Changes">
+      <Text fill="#399918" layoutX="1166.0" layoutY="766.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Proceed to Checkout">
          <font>
 
             <Font name="Gill Sans MT" size="30.0" />
@@ -76,7 +76,7 @@
             </Button>
             <ImageView fx:id="confirmPanelImg" fitHeight="185.0" fitWidth="265.0" layoutX="504.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../pic_resources/Reg%20Burger.jpg" />
+                  <Image url="@../../../pic_resources/Sides/Nuggets.jpg" />
                </image>
             </ImageView>
             <TextField fx:id="quantity" alignment="CENTER" editable="false" layoutX="565.0" layoutY="237.0" prefHeight="25.0" prefWidth="46.0" text="1" />
@@ -101,9 +101,14 @@
             <Font size="23.0" />
          </font>
       </TextField>
-      <Label fx:id="mainHeader" layoutX="340.0" layoutY="88.0" text="All Time Favourite">
+      <Label fx:id="mainHeader" layoutX="340.0" layoutY="81.0" prefHeight="80.0" prefWidth="553.0" text="All Time Favourites">
          <font>
             <Font name="Gill Sans MT" size="67.0" />
+         </font>
+      </Label>
+      <Label fx:id="itemsLabel1" layoutX="1374.0" layoutY="696.0" onMouseClicked="#showCart" style="-fx-underline: true;" text="View Order List">
+         <font>
+            <Font name="Gill Sans MT Bold" size="15.0" />
          </font>
       </Label>
 <!--      <JFXButton buttonType="RAISED" layoutX="1375.0" layoutY="693.0" text="View Order List" underline="true">-->

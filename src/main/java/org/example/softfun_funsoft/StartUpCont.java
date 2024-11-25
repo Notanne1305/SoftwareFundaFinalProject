@@ -44,7 +44,7 @@ public class StartUpCont extends Application implements Initializable {
 
  @Override
  public void start(Stage stage) throws Exception {
-  FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/softfun_funsoft/StartUp.fxml"));
+  FXMLLoader loader = new FXMLLoader(getClass().getResource("StartUp.fxml"));
   Parent root = loader.load();
 
   StartUpCont controller = loader.getController();
@@ -89,17 +89,30 @@ public class StartUpCont extends Application implements Initializable {
 
   if (event.getSource() == StartButton) {
    Stage currentStage = (Stage) StartButton.getScene().getWindow();
-   currentStage.close();
+   Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
+   Scene currentScene = currentStage.getScene();
 
-   Stage newStage = new Stage();
-   Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/example/softfun_funsoft/MainMenu.fxml")));
-   newStage.setScene(new Scene(root));
-   newStage.setTitle("Home Page");
-   newStage.show();
+   // Create a fade-out transition for the current scene
+   FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentScene.getRoot());
+   fadeOut.setFromValue(1.0);
+   fadeOut.setToValue(0.0);
+
+   // Set an event handler to change the scene after the fade-out
+   fadeOut.setOnFinished(e -> {
+    currentScene.setRoot(newRoot);
+
+    // Create a fade-in transition for the new scene
+    FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newRoot);
+    fadeIn.setFromValue(0.0);
+    fadeIn.setToValue(1.0);
+    fadeIn.play();
+   });
+
+   fadeOut.play();
   }
  }
-
  public void initialize(URL url, ResourceBundle resourceBundle) {
+
   System.out.println("Initializing StartUpController");
 
   // TITLE animation

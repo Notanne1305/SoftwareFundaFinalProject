@@ -8,22 +8,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
+import javafx.scene.layout.*;
 import javafx.util.Duration;
+import org.example.softfun_funsoft.listener.MyCategoryListener;
+import org.example.softfun_funsoft.listener.MyItemListener;
 import org.example.softfun_funsoft.model.Food;
 import org.example.softfun_funsoft.model.FoodCategory;
-
-import org.controlsfx.control.Notifications;
 
 
 import java.io.IOException;
@@ -160,8 +156,67 @@ public class MainMenuController implements Initializable {
         showNotification(chosenFood);
         cart.add(chosenFood);
         itemsLabel.setText(String.valueOf(cart.size()) + " item/s in the cart");
+        System.out.println(chosenFood.getQuantity());
         //TODO: Implement Add to cart pane and functionality.
 
+    }
+
+    public void showCart(){
+        //TODO: Implement a cart pane, that shows the items in the cart. e.g a tableview
+
+        //Example Output idea
+
+        AnchorPane cartPane = new AnchorPane();
+        cartPane.setStyle("-fx-background-color: white; -fx-padding: 20px;");
+        cartPane.setPrefSize(400, 600);
+
+        VBox cartItemsBox = new VBox(10);
+        cartItemsBox.setPadding(new Insets(10));
+        cartItemsBox.setAlignment(Pos.TOP_CENTER);
+
+        for (Food food : cart) {
+            HBox cartItem = new HBox(10);
+            cartItem.setAlignment(Pos.CENTER_LEFT);
+
+            // Item image
+            ImageView foodImage = new ImageView(new Image(getClass().getResourceAsStream(food.getImgSrc())));
+            foodImage.setFitWidth(50);
+            foodImage.setFitHeight(50);
+
+            // Item name
+            Label nameLabel = new Label(food.getName());
+            nameLabel.setPrefWidth(150);
+
+            // Item quantity
+            Label quantityLabel = new Label("Qty: " + food.getQuantity());
+            quantityLabel.setPrefWidth(50);
+
+            // Item price
+            Label priceLabel = new Label("₱" + food.getPrice() * food.getQuantity());
+            priceLabel.setPrefWidth(100);
+
+            // Remove button
+            Button removeButton = new Button("Remove");
+            removeButton.setOnAction(event -> {
+                cart.remove(food);
+                showCart(); // Refresh the cart pane
+            });
+
+            cartItem.getChildren().addAll(foodImage, nameLabel, quantityLabel, priceLabel, removeButton);
+            cartItemsBox.getChildren().add(cartItem);
+        }
+
+        // Add the VBox to the cart pane
+        cartPane.getChildren().add(cartItemsBox);
+
+        // Add the cart pane to the mainAnchorpane
+        mainAnchorpane.getChildren().add(cartPane);
+
+        // Position the cart pane in the center of the mainAnchorpane
+        AnchorPane.setTopAnchor(cartPane, 50.0);
+        AnchorPane.setBottomAnchor(cartPane, 50.0);
+        AnchorPane.setLeftAnchor(cartPane, 50.0);
+        AnchorPane.setRightAnchor(cartPane, 50.0);
     }
 
     private void embedMatchingFood(String searchName){
@@ -240,35 +295,26 @@ public class MainMenuController implements Initializable {
         Food food;
 
         food = new Food();
+        food.setName("Bacon Chicken Mayo");
+        food.setCategory("Burger");
+        food.setPrice(100.0);
+        food.setImgSrc("/pic_resources/Burgers/baconchickenmayo.jpg");
+        food.setColor("#f2f2f2");
+        foods.add(food);
+
+        food = new Food();
         food.setName("Big Burger");
         food.setCategory("Burger");
         food.setPrice(100.0);
-        food.setImgSrc("/pic_resources/Big_Burger.jpg");
+        food.setImgSrc("/pic_resources/Burgers/Bigburger.jpg");
         food.setColor("#f2f2f2");
         foods.add(food);
 
         food = new Food();
-        food.setName("Cheese Burger");
+        food.setName("Big Mc");
         food.setCategory("Burger");
         food.setPrice(100.0);
-        food.setImgSrc("/pic_resources/Cheese_Burger.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Chicken");
-        food.setCategory("Chicken");
-        food.setPrice(100.0);
-        food.setImgSrc("/pic_resources/Chicken.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-
-        food = new Food();
-        food.setName("Spicy Chicken");
-        food.setCategory("Chicken");
-        food.setPrice(100.0);
-        food.setImgSrc("/pic_resources/Chicken Spicy.jpg");
+        food.setImgSrc("/pic_resources/Burgers/BigMc.jpg");
         food.setColor("#f2f2f2");
         foods.add(food);
 
@@ -283,19 +329,43 @@ public class MainMenuController implements Initializable {
 
         category = new FoodCategory();
         category.setName("All Time Favourites");
-        category.setImgSrc("/pic_resources/Chicken.jpg");
+        category.setImgSrc("/pic_resources/Chicken/2pcchicken.jpg");
         category.setColor("#f2f2f2");
         categories.add(category);
 
         category = new FoodCategory();
-        category.setName("Chicken");
-        category.setImgSrc("/pic_resources/Chicken.jpg");
+        category.setName("Beverages");
+        category.setImgSrc("/pic_resources/beverages/coke1.jpg");
+        category.setColor("#f2f2f2");
+        categories.add(category);
+
+        category = new FoodCategory();
+        category.setName("Breakfast Menu");
+        category.setImgSrc("/pic_resources/breakfast menu/eggcheesemuffin.jpg");
         category.setColor("#f2f2f2");
         categories.add(category);
 
         category = new FoodCategory();
         category.setName("Burger");
-        category.setImgSrc("/pic_resources/Big_Burger.jpg");
+        category.setImgSrc("/pic_resources/Burgers/quarterpounderwithcheese.jpg");
+        category.setColor("#f2f2f2");
+        categories.add(category);
+
+        category = new FoodCategory();
+        category.setName("Chicken");
+        category.setImgSrc("/pic_resources/Chicken/2pcchicken.jpg");
+        category.setColor("#f2f2f2");
+        categories.add(category);
+
+        category = new FoodCategory();
+        category.setName("Dessert");
+        category.setImgSrc("/pic_resources/desserts/applepie.jpg");
+        category.setColor("#f2f2f2");
+        categories.add(category);
+
+        category = new FoodCategory();
+        category.setName("Sides");
+        category.setImgSrc("/pic_resources/Sides/Fries.jpg");
         category.setColor("#f2f2f2");
         categories.add(category);
 
@@ -473,7 +543,6 @@ public class MainMenuController implements Initializable {
         @Override
         public void onclickListener(FoodCategory foodCategory) {
             mainHeader.setText(foodCategory.getName());
-            grid.setAlignment(Pos.TOP_CENTER);
             grid.getChildren().clear();
             itemByCategory.clear();
             itemByCategory.addAll(getItemsByCategory(foodCategory.getName()));
