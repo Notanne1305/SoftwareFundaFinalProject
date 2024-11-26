@@ -53,3 +53,8 @@
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 30;
 }
+
+.jfx-button {
+    -jfx-rippler-fill: transparent; /* Make the ripple transparent */
+    -fx-background-color: #F2F2F2; /* Your desired button background */
+}
