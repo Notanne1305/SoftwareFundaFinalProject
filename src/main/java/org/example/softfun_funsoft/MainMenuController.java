@@ -47,6 +47,9 @@ public class MainMenuController implements Initializable {
     private AnchorPane orderPanel;
 
     @FXML
+    private AnchorPane addAnchorPane;
+
+    @FXML
     private Label orderPanelItemPrice;
 
     @FXML
@@ -152,6 +155,7 @@ public class MainMenuController implements Initializable {
 
     public void setAddToCart(){
         orderPanel.setVisible(false);
+        addAnchorPane.setVisible(false);
         chosenFood.setQuantity(currentQuantity);
         showNotification(chosenFood);
         cart.add(chosenFood);
@@ -950,6 +954,7 @@ public class MainMenuController implements Initializable {
                 quantity.setText(String.valueOf(currentQuantity));
                 setChosenFood(food);
                 orderPanel.setVisible(true);
+                addAnchorPane.setVisible(true);
             }
         };
 
