@@ -17,9 +17,9 @@
    <children>
       <ScrollPane hbarPolicy="NEVER" layoutX="-8.0" layoutY="2.0" pannable="true" prefHeight="784.0" prefWidth="1556.0" style="-fx-background-color: #f7cc2a;" vbarPolicy="NEVER">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1203.0" prefWidth="1559.0" style="-fx-background-color: #f7cc2a;">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1207.0" prefWidth="1559.0" style="-fx-background-color: #f7cc2a;">
                <children>
-                  <Rectangle fx:id="orders" arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="490.0" layoutX="128.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1320.0" />
+                  <Rectangle fx:id="orders" arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="490.0" layoutX="116.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1347.0" />
                   <Label fx:id="mainHeader" layoutX="583.0" layoutY="15.0" prefHeight="80.0" prefWidth="553.0" text="Group Order">
                      <font>
                         <Font name="Gill Sans MT" size="67.0" />
@@ -161,7 +161,7 @@
                         <Font name="Gill Sans MT" size="24.0" />
                      </font>
                   </JFXButton>
-                  <Rectangle fx:id="orders1" arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="490.0" layoutX="129.0" layoutY="649.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1320.0" />
+                  <Rectangle fx:id="orders1" arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="490.0" layoutX="120.0" layoutY="649.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1347.0" />
                   <Label layoutX="172.0" layoutY="669.0" prefHeight="45.0" prefWidth="301.0" text="Jonathan's Order">
                      <font>
                         <Font size="30.0" />
