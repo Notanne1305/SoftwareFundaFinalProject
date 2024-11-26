@@ -18,5 +18,7 @@
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="350.0" layoutX="767.0" layoutY="208.0" stroke="BLACK" strokeType="INSIDE" width="300.0" />
       <ImageView fitHeight="310.0" fitWidth="263.0" layoutX="439.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="309.0" fitWidth="258.0" layoutX="787.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="303.0" fitWidth="253.0" layoutX="446.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="303.0" fitWidth="253.0" layoutX="793.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" />
     </children>
 </AnchorPane>
