@@ -16,18 +16,8 @@
                 <Font name="Eras Bold ITC" size="44.0" />
             </font>
         </Text>
-        <Text fill="WHITE" layoutX="624.0" layoutY="768.0" opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Powered by: Team Hilux">
-            <font>
-                <Font name="Eras Bold ITC" size="20.0" />
-            </font>
-        </Text>
-        <ImageView fitHeight="67.0" fitWidth="136.0" layoutX="836.0" layoutY="733.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../../pic_resources/TeamHiluxLogoInverted69-01-removebg-preview.png" />
-            </image>
-        </ImageView>
-      <Rectangle fill="WHITE" height="438.0" layoutX="381.0" layoutY="126.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="345.0" />
-      <Rectangle fill="WHITE" height="438.0" layoutX="804.0" layoutY="126.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="345.0" />
+      <Rectangle arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="438.0" layoutX="381.0" layoutY="126.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="345.0" />
+      <Rectangle arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="438.0" layoutX="804.0" layoutY="126.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="345.0" />
       <Text fill="WHITE" layoutX="478.0" layoutY="611.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SOLO">
          <font>
             <Font name="Eras Bold ITC" size="44.0" />
@@ -63,27 +53,32 @@
             <Image url="@../../../pic_resources/single-icon.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="487.0" layoutY="688.0" opacity="0.8" prefHeight="52.0" prefWidth="166.0" text="Bisaya" textFill="#fcfcfc">
+      <JFXButton layoutX="531.0" layoutY="699.0" opacity="0.8" prefHeight="52.0" prefWidth="166.0" text="Cebuano" textFill="#fcfcfc">
          <font>
-            <Font size="22.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
-      <Text fill="WHITE" layoutX="629.0" layoutY="667.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Language">
+      <Text fill="#f7cc2a" layoutX="689.0" layoutY="688.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Language">
          <font>
-            <Font size="32.0" />
+            <Font name="Eras Medium ITC" size="19.0" />
          </font>
       </Text>
-      <JFXButton layoutX="686.0" layoutY="688.0" opacity="0.8" prefHeight="52.0" prefWidth="166.0" text="Tagalog" textFill="#fcfcfc">
+      <JFXButton layoutX="695.0" layoutY="698.0" opacity="0.8" prefHeight="52.0" prefWidth="166.0" text="Tagalog" textFill="#fcfcfc">
          <font>
-            <Font size="22.0" />
+            <Font name="Eras Demi ITC" size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="885.0" layoutY="688.0" opacity="0.8" prefHeight="52.0" prefWidth="166.0" text="English" textFill="#fcfcfc">
+      <JFXButton layoutX="850.0" layoutY="699.0" opacity="0.8" prefHeight="52.0" prefWidth="166.0" text="English" textFill="#fcfcfc">
          <font>
-            <Font size="22.0" />
+            <Font name="Eras Demi ITC" size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="383.0" layoutY="123.0" prefHeight="441.0" prefWidth="344.0" text="." />
-      <JFXButton layoutX="806.0" layoutY="126.0" prefHeight="441.0" prefWidth="344.0" text="." />
+      <JFXButton layoutX="383.0" layoutY="126.0" prefHeight="438.0" prefWidth="344.0" text="." />
+      <JFXButton layoutX="805.0" layoutY="126.0" prefHeight="441.0" prefWidth="345.0" text="." />
+      <ImageView fitHeight="620.0" fitWidth="608.0" layoutX="-239.0" layoutY="78.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../pic_resources/McLUX_logo.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

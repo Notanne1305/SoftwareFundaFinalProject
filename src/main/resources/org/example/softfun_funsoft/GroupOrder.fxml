@@ -1,16 +1,308 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="784.0" prefWidth="1548.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.GroupOrder">
+<AnchorPane prefHeight="784.0" prefWidth="1548.0" style="-fx-background-color: #f7cc2a;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.GroupOrder">
    <children>
-      <Label fx:id="mainHeader" layoutX="555.0" layoutY="47.0" prefHeight="80.0" prefWidth="553.0" text="Group Order">
-         <font>
-            <Font name="Gill Sans MT" size="67.0" />
-         </font>
-      </Label>
+      <ScrollPane hbarPolicy="NEVER" layoutX="-8.0" layoutY="2.0" pannable="true" prefHeight="784.0" prefWidth="1556.0" style="-fx-background-color: #f7cc2a;" vbarPolicy="NEVER">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1203.0" prefWidth="1559.0" style="-fx-background-color: #f7cc2a;">
+               <children>
+                  <Rectangle fx:id="orders" arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="490.0" layoutX="128.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1320.0" />
+                  <Label fx:id="mainHeader" layoutX="583.0" layoutY="15.0" prefHeight="80.0" prefWidth="553.0" text="Group Order">
+                     <font>
+                        <Font name="Gill Sans MT" size="67.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="171.0" layoutY="128.0" prefHeight="45.0" prefWidth="301.0" text="Jonathan's Order">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <VBox alignment="CENTER" layoutX="202.0" layoutY="410.0" prefHeight="31.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="25.0" prefWidth="262.0" />
+                     </children>
+                  </VBox>
+                  <AnchorPane layoutX="461.0" layoutY="206.0" onMousePressed="#onClicked" prefHeight="259.0" prefWidth="252.0" stylesheets="@css/style.css">
+                     <children>
+                        <VBox alignment="CENTER" layoutX="26.0" layoutY="216.0" prefHeight="31.0" prefWidth="200.0">
+                           <children>
+                              <HBox prefHeight="25.0" prefWidth="262.0">
+                                 <children>
+                                    <Label fx:id="nameLabel1" prefHeight="26.0" prefWidth="166.0" text="WanPiece Chicken">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="priceLabel1" prefHeight="46.0" prefWidth="40.0" text="₱ 99.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <ImageView fx:id="img1" fitHeight="185.0" fitWidth="183.0" layoutX="36.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pic_resources/beverages/frozenfanta.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <styleClass>
+                        <String fx:value="fruit-item" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </AnchorPane>
+                  <AnchorPane layoutX="755.0" layoutY="203.0" onMousePressed="#onClicked" prefHeight="259.0" prefWidth="252.0" stylesheets="@css/style.css">
+                     <children>
+                        <VBox alignment="CENTER" layoutX="26.0" layoutY="216.0" prefHeight="31.0" prefWidth="200.0">
+                           <children>
+                              <HBox prefHeight="25.0" prefWidth="262.0">
+                                 <children>
+                                    <Label fx:id="nameLabel11" prefHeight="26.0" prefWidth="166.0" text="WanPiece Chicken">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="priceLabel11" prefHeight="46.0" prefWidth="40.0" text="₱ 99.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <ImageView fx:id="img11" fitHeight="185.0" fitWidth="183.0" layoutX="36.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pic_resources/beverages/frozenfanta.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <styleClass>
+                        <String fx:value="fruit-item" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </AnchorPane>
+                  <AnchorPane layoutX="171.0" layoutY="205.0" onMousePressed="#onClicked" prefHeight="259.0" prefWidth="252.0" stylesheets="@css/style.css">
+                     <children>
+                        <VBox alignment="CENTER" layoutX="26.0" layoutY="216.0" prefHeight="31.0" prefWidth="200.0">
+                           <children>
+                              <HBox prefHeight="25.0" prefWidth="262.0">
+                                 <children>
+                                    <Label fx:id="nameLabel12" prefHeight="26.0" prefWidth="166.0" text="WanPiece Chicken">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="priceLabel12" prefHeight="46.0" prefWidth="40.0" text="₱ 99.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <ImageView fx:id="img12" fitHeight="185.0" fitWidth="183.0" layoutX="36.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pic_resources/beverages/frozenfanta.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <styleClass>
+                        <String fx:value="fruit-item" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </AnchorPane>
+                  <Line endX="1125.0" layoutX="272.0" layoutY="178.0" startX="-100.0" />
+                  <AnchorPane layoutX="1047.0" layoutY="206.0" onMousePressed="#onClicked" prefHeight="259.0" prefWidth="252.0" stylesheets="@css/style.css">
+                     <children>
+                        <VBox alignment="CENTER" layoutX="26.0" layoutY="216.0" prefHeight="31.0" prefWidth="200.0">
+                           <children>
+                              <HBox prefHeight="25.0" prefWidth="262.0">
+                                 <children>
+                                    <Label fx:id="nameLabel111" prefHeight="26.0" prefWidth="166.0" text="WanPiece Chicken">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="priceLabel111" prefHeight="46.0" prefWidth="40.0" text="₱ 99.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <ImageView fx:id="img111" fitHeight="185.0" fitWidth="183.0" layoutX="36.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pic_resources/beverages/frozenfanta.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <styleClass>
+                        <String fx:value="fruit-item" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </AnchorPane>
+                  <Label layoutX="1247.0" layoutY="127.0" prefHeight="45.0" prefWidth="160.0" text="Total: 1000">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="45.0" layoutX="1211.0" layoutY="536.0" stroke="GREEN" strokeType="INSIDE" strokeWidth="2.0" width="206.0" />
+                  <JFXButton layoutX="1212.0" layoutY="536.0" prefHeight="45.0" prefWidth="204.0" text="Duplicate" textFill="GREEN">
+                     <font>
+                        <Font name="Gill Sans MT" size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="45.0" layoutX="172.0" layoutY="537.0" stroke="RED" strokeType="INSIDE" strokeWidth="2.0" width="206.0" />
+                  <JFXButton layoutX="173.0" layoutY="537.0" prefHeight="45.0" prefWidth="204.0" text="Remove" textFill="RED">
+                     <font>
+                        <Font name="Gill Sans MT" size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <Rectangle fx:id="orders1" arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="490.0" layoutX="129.0" layoutY="649.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1320.0" />
+                  <Label layoutX="172.0" layoutY="669.0" prefHeight="45.0" prefWidth="301.0" text="Jonathan's Order">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <VBox alignment="CENTER" layoutX="203.0" layoutY="951.0" prefHeight="31.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="25.0" prefWidth="262.0" />
+                     </children>
+                  </VBox>
+                  <HBox layoutX="1.0" layoutY="541.0" prefHeight="25.0" prefWidth="262.0" />
+                  <AnchorPane layoutX="462.0" layoutY="747.0" onMousePressed="#onClicked" prefHeight="259.0" prefWidth="252.0" stylesheets="@css/style.css">
+                     <children>
+                        <VBox alignment="CENTER" layoutX="26.0" layoutY="216.0" prefHeight="31.0" prefWidth="200.0">
+                           <children>
+                              <HBox prefHeight="25.0" prefWidth="262.0">
+                                 <children>
+                                    <Label fx:id="nameLabel13" prefHeight="26.0" prefWidth="166.0" text="WanPiece Chicken">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="priceLabel13" prefHeight="46.0" prefWidth="40.0" text="₱ 99.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <ImageView fx:id="img13" fitHeight="185.0" fitWidth="183.0" layoutX="36.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pic_resources/beverages/frozenfanta.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <styleClass>
+                        <String fx:value="fruit-item" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </AnchorPane>
+                  <AnchorPane layoutX="756.0" layoutY="744.0" onMousePressed="#onClicked" prefHeight="259.0" prefWidth="252.0" stylesheets="@css/style.css">
+                     <children>
+                        <VBox alignment="CENTER" layoutX="26.0" layoutY="216.0" prefHeight="31.0" prefWidth="200.0">
+                           <children>
+                              <HBox prefHeight="25.0" prefWidth="262.0">
+                                 <children>
+                                    <Label fx:id="nameLabel112" prefHeight="26.0" prefWidth="166.0" text="WanPiece Chicken">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="priceLabel112" prefHeight="46.0" prefWidth="40.0" text="₱ 99.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <ImageView fx:id="img112" fitHeight="185.0" fitWidth="183.0" layoutX="36.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pic_resources/beverages/frozenfanta.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <styleClass>
+                        <String fx:value="fruit-item" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </AnchorPane>
+                  <HBox layoutX="1.0" layoutY="541.0" prefHeight="25.0" prefWidth="262.0" />
+                  <AnchorPane layoutX="172.0" layoutY="746.0" onMousePressed="#onClicked" prefHeight="259.0" prefWidth="252.0" stylesheets="@css/style.css">
+                     <children>
+                        <VBox alignment="CENTER" layoutX="26.0" layoutY="216.0" prefHeight="31.0" prefWidth="200.0">
+                           <children>
+                              <HBox prefHeight="25.0" prefWidth="262.0">
+                                 <children>
+                                    <Label fx:id="nameLabel121" prefHeight="26.0" prefWidth="166.0" text="WanPiece Chicken">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="priceLabel121" prefHeight="46.0" prefWidth="40.0" text="₱ 99.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <ImageView fx:id="img121" fitHeight="185.0" fitWidth="183.0" layoutX="36.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pic_resources/beverages/frozenfanta.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <styleClass>
+                        <String fx:value="fruit-item" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </AnchorPane>
+                  <Line endX="1125.0" layoutX="273.0" layoutY="719.0" startX="-100.0" />
+                  <AnchorPane layoutX="1048.0" layoutY="747.0" onMousePressed="#onClicked" prefHeight="259.0" prefWidth="252.0" stylesheets="@css/style.css">
+                     <children>
+                        <VBox alignment="CENTER" layoutX="26.0" layoutY="216.0" prefHeight="31.0" prefWidth="200.0">
+                           <children>
+                              <HBox prefHeight="25.0" prefWidth="262.0">
+                                 <children>
+                                    <Label fx:id="nameLabel1111" prefHeight="26.0" prefWidth="166.0" text="WanPiece Chicken">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="priceLabel1111" prefHeight="46.0" prefWidth="40.0" text="₱ 99.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <ImageView fx:id="img1111" fitHeight="185.0" fitWidth="183.0" layoutX="36.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../pic_resources/beverages/frozenfanta.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <styleClass>
+                        <String fx:value="fruit-item" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </AnchorPane>
+                  <Label layoutX="1248.0" layoutY="668.0" prefHeight="45.0" prefWidth="160.0" text="Total: 1000">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="45.0" layoutX="1212.0" layoutY="1077.0" stroke="GREEN" strokeType="INSIDE" strokeWidth="2.0" width="206.0" />
+                  <JFXButton layoutX="1213.0" layoutY="1077.0" prefHeight="45.0" prefWidth="204.0" text="Duplicate" textFill="GREEN">
+                     <font>
+                        <Font name="Gill Sans MT" size="24.0" />
+                     </font>
+                  </JFXButton>
+                  <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="45.0" layoutX="173.0" layoutY="1078.0" stroke="RED" strokeType="INSIDE" strokeWidth="2.0" width="206.0" />
+                  <JFXButton layoutX="174.0" layoutY="1078.0" prefHeight="45.0" prefWidth="204.0" text="Remove" textFill="RED">
+                     <font>
+                        <Font name="Gill Sans MT" size="24.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
    </children>
 </AnchorPane>
