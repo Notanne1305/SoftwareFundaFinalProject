@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainAnchorpane" prefHeight="788.0" prefWidth="1542.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.MainMenuController">
+<AnchorPane fx:id="mainAnchorpane" prefHeight="788.0" prefWidth="1542.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.MainMenuController">
    <children>
       <Rectangle fill="WHITE" height="784.0" stroke="#f2e8c6" strokeType="INSIDE" strokeWidth="0.0" width="1548.0" />
       <ScrollPane id="scroll-pane" fx:id="leftScroll" hbarPolicy="NEVER" layoutX="77.0" layoutY="215.0" prefHeight="476.0" prefWidth="225.0" stylesheets="@css/style.css" vbarPolicy="NEVER">
@@ -108,18 +108,39 @@
             <Font name="Rage Italic" size="67.0" />
          </font>
       </Text>
-      <JFXButton layoutX="40.0" layoutY="745.0" onMousePressed="#cancelButton" prefHeight="52.0" prefWidth="390.0" text="." textFill="WHITE" />
-      <AnchorPane fx:id="addAnchorPane" layoutX="1101.0" layoutY="728.0" prefHeight="55.0" prefWidth="394.0" visible="false">
+      <JFXButton layoutX="40.0" layoutY="728.0" onMousePressed="#cancelButton" prefHeight="52.0" prefWidth="390.0" text="." textFill="WHITE" />
+      <AnchorPane fx:id="addAnchorPane" layoutX="1111.0" layoutY="732.0" prefHeight="55.0" prefWidth="394.0" visible="false">
          <children>
             <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#399918" height="52.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="389.0" />
             <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="48.0" layoutX="2.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="385.0" />
             <Text fill="#399918" layoutX="167.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add">
                <font>
-      
-                        <Font name="Gill Sans MT" size="30.0" />
+
+                  <Font name="Gill Sans MT" size="30.0" />
                </font>
             </Text>
-            <JFXButton fx:id="addToCart" onAction="#setAddToCart" prefHeight="52.0" prefWidth="389.0" text="." />
+            <JFXButton fx:id="addToCart" onAction="#setAddToCart" prefHeight="52.0" prefWidth="389.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="proceedToCheckoutPanel" layoutX="1111.0" layoutY="732.0" prefHeight="55.0" prefWidth="394.0" visible="false">
+         <children>
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#399918" height="52.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="389.0" />
+            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="48.0" layoutX="2.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="385.0" />
+            <Text fill="#399918" layoutX="67.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Proceed to checkout" wrappingWidth="261.0">
+               <font>
+                  <Font name="Gill Sans MT" size="30.0" />
+               </font>
+            </Text>
+            <JFXButton fx:id="proceedToCheckout" layoutX="3.0" layoutY="2.0" onAction="#setAddToCart" prefHeight="52.0" prefWidth="389.0" text="." />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="cartPane" layoutX="872.0" layoutY="216.0" prefHeight="476.0" prefWidth="653.0" visible="false">
+         <children>
+            <Label layoutX="262.0" layoutY="14.0" text="Order List">
+               <font>
+                  <Font name="Gill Sans MT" size="30.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <!--      <JFXButton buttonType="RAISED" layoutX="1375.0" layoutY="693.0" text="View Order List" underline="true">-->
