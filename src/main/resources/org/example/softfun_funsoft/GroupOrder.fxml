@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="784.0" prefWidth="1548.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.GroupOrder">
+   <children>
+      <Label fx:id="mainHeader" layoutX="555.0" layoutY="47.0" prefHeight="80.0" prefWidth="553.0" text="Group Order">
+         <font>
+            <Font name="Gill Sans MT" size="67.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

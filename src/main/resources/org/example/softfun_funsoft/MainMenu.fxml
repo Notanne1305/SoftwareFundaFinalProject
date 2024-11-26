@@ -15,20 +15,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainAnchorpane" prefHeight="788.0" prefWidth="1542.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.MainMenuController">
+<AnchorPane fx:id="mainAnchorpane" prefHeight="788.0" prefWidth="1542.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.MainMenuController">
    <children>
       <Rectangle fill="WHITE" height="784.0" stroke="#f2e8c6" strokeType="INSIDE" strokeWidth="0.0" width="1548.0" />
-      <Rectangle fill="#982b1c" height="78.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1548.0" />
-      <ScrollPane id="scroll-pane" fx:id="leftScroll" hbarPolicy="NEVER" layoutX="67.0" layoutY="111.0" prefHeight="580.0" prefWidth="204.0" stylesheets="@css/style.css" vbarPolicy="NEVER">
+      <ScrollPane id="scroll-pane" fx:id="leftScroll" hbarPolicy="NEVER" layoutX="77.0" layoutY="215.0" prefHeight="476.0" prefWidth="225.0" stylesheets="@css/style.css" vbarPolicy="NEVER">
          <content>
-            <GridPane fx:id="categoryGrid" prefHeight="0.0" prefWidth="40.0">
+            <GridPane fx:id="categoryGrid" alignment="CENTER" prefHeight="0.0" prefWidth="40.0">
                <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" />
                </rowConstraints>
             </GridPane>
          </content>
       </ScrollPane>
-      <ScrollPane id="background1" fx:id="scroll" hbarPolicy="NEVER" layoutX="337.0" layoutY="189.0" prefHeight="503.0" prefWidth="1186.0" vbarPolicy="NEVER">
+      <ScrollPane id="background1" fx:id="scroll" hbarPolicy="NEVER" layoutX="344.0" layoutY="216.0" prefHeight="476.0" prefWidth="1178.0" vbarPolicy="NEVER">
          <content>
             <GridPane fx:id="grid" prefHeight="0.0" prefWidth="40.0">
                <rowConstraints>
@@ -37,6 +36,11 @@
             </GridPane>
          </content>
       </ScrollPane>
+      <ImageView fitHeight="118.0" fitWidth="113.0" layoutX="137.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../pic_resources/McLUX_logo.png" />
+         </image>
+      </ImageView>
       <Rectangle fill="WHITE" height="102.0" layoutX="-1.0" layoutY="691.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
       <Rectangle fill="#f7cc2a" height="26.0" layoutX="-24.0" layoutY="691.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1573.0" />
       <Circle fill="WHITE" layoutX="1074.0" layoutY="121.0" radius="24.0" stroke="TRANSPARENT" strokeType="INSIDE" />
@@ -70,21 +74,21 @@
             <Button fx:id="addQuantity" layoutX="473.0" layoutY="207.0" mnemonicParsing="false" onAction="#setAddQuantity" prefHeight="35.0" prefWidth="26.0" text="+" />
             <Label fx:id="confirmPanelItemname" layoutX="316.0" layoutY="11.0" prefHeight="80.0" prefWidth="604.0" text="Cheese Borgier">
                <font>
-                  <Font name="Gill Sans MT" size="65.0" />
+                  <Font name="Gill Sans MT" size="45.0" />
                </font>
             </Label>
-            <Label fx:id="orderPanelItemPrice" layoutX="322.0" layoutY="101.0" text="PHP 100" textFill="#188100">
+            <Label fx:id="orderPanelItemPrice" layoutX="330.0" layoutY="120.0" text="PHP 100" textFill="#188100">
                <font>
-                  <Font size="50.0" />
+                  <Font name="Gill Sans MT" size="40.0" />
                </font></Label>
          </children>
       </AnchorPane>
-      <TextField fx:id="searchBar" layoutX="1111.0" layoutY="122.0" onKeyReleased="#getSearch" prefHeight="48.0" prefWidth="399.0" promptText="Type to Search" style="-fx-background-radius: 100;">
+      <TextField fx:id="searchBar" layoutX="1111.0" layoutY="135.0" onKeyReleased="#getSearch" prefHeight="48.0" prefWidth="399.0" promptText="Type to Search" style="-fx-background-radius: 100;">
          <font>
             <Font size="23.0" />
          </font>
       </TextField>
-      <Label fx:id="mainHeader" layoutX="340.0" layoutY="103.0" prefHeight="80.0" prefWidth="553.0" text="All Time Favourites">
+      <Label fx:id="mainHeader" layoutX="340.0" layoutY="116.0" prefHeight="80.0" prefWidth="553.0" text="All Time Favourites">
          <font>
             <Font name="Gill Sans MT" size="67.0" />
          </font>
