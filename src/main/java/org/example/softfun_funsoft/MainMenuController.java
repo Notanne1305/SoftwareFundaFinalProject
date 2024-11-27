@@ -17,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
+import org.example.softfun_funsoft.listener.MyCartItemListener;
 import org.example.softfun_funsoft.listener.MyCategoryListener;
 import org.example.softfun_funsoft.listener.MyItemListener;
 import org.example.softfun_funsoft.model.Food;
@@ -86,10 +87,17 @@ public class MainMenuController implements Initializable {
     @FXML
     private AnchorPane proceedToCheckoutPanel;
 
+    @FXML
+    private GridPane cartGrid;
+
+    @FXML
+    private ScrollPane cartScrollPane;
+
 
 
     private MyItemListener myItemListener;
     private MyCategoryListener myCategoryListener;
+    private MyCartItemListener myCartItemListener;
     private List<Food> foods = new ArrayList<>();
     private List<FoodCategory> categories = new ArrayList<>();
     private List<Food> itemByCategory = new ArrayList<>();
@@ -177,6 +185,39 @@ public class MainMenuController implements Initializable {
 
     public void showCart(){
         //TODO: Implement a cart pane, that shows the items in the cart. e.g a tableview
+
+        int column = 0;
+        int row = 1;
+        try {
+            for (int i = 0; i < cart.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("CartItem.fxml"));
+
+                AnchorPane anchorPane = fxmlLoader.load();
+                CartItemController itemController = fxmlLoader.getController();
+                itemController.setData(cart.get(i), myCartItemListener);
+
+                if (column == 1) {
+                    column = 0;
+                    row++;
+                }
+
+                cartGrid.add(anchorPane, column++, row);
+                cartGrid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                cartGrid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+
+//                GridPane.setMargin(anchorPane, new Insets(25));
+            }
+
+            cartScrollPane.setFitToWidth(true);
+            cartScrollPane.widthProperty().addListener((obs, oldVal, newVal) -> {
+                cartGrid.setPrefWidth(newVal.doubleValue());
+            });
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         addAnchorPane.setVisible(false);
         cartPane.setVisible(true);
@@ -985,6 +1026,14 @@ public class MainMenuController implements Initializable {
             itemByCategory.clear();
             itemByCategory.addAll(getItemsByCategory(foodCategory.getName()));
             embedCategoricalItems();
+        }
+    };
+
+    myCartItemListener = new MyCartItemListener() {
+        @Override
+        public void onRemoveItem(Food food) {
+            System.out.println("Jonathan Bayot Not Removed");
+
         }
     };
         embedItems();
