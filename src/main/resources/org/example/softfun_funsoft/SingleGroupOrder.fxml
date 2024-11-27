@@ -83,7 +83,7 @@
             <Image url="@../../../pic_resources/McLUX_logo.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="377.0" layoutY="119.0" prefHeight="501.0" prefWidth="921.0" style="-fx-background-color: white; -fx-background-radius: 25px;" visible="false">
+      <AnchorPane layoutX="377.0" layoutY="119.0" prefHeight="501.0" prefWidth="921.0" style="-fx-background-color: white; -fx-background-radius: 25px;">
          <children>
             <Label layoutX="119.0" layoutY="27.0" prefHeight="331.0" prefWidth="704.0" text="How many are  &#10;you in a Group?">
                <font>
