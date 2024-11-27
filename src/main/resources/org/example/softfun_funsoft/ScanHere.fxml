@@ -32,20 +32,5 @@
             <Font name="Gill Sans MT" size="34.0" />
          </font>
       </JFXButton>
-      <Text fill="WHITE" layoutX="499.0" layoutY="566.0" rotate="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scan here to Pay!" wrappingWidth="419.116455078125">
-         <font>
-            <Font name="Gill Sans MT Bold" size="40.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="751.0" layoutY="423.0" rotate="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scan here to Pay!" wrappingWidth="419.116455078125">
-         <font>
-            <Font name="Gill Sans MT Bold" size="40.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="365.0" layoutY="327.0" rotate="-90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scan here to Pay!" wrappingWidth="419.116455078125">
-         <font>
-            <Font name="Gill Sans MT Bold" size="40.0" />
-         </font>
-      </Text>
     </children>
 </AnchorPane>

@@ -25,7 +25,7 @@
                         <Font name="Gill Sans MT" size="67.0" />
                      </font>
                   </Label>
-                  <Label layoutX="171.0" layoutY="128.0" prefHeight="45.0" prefWidth="301.0" text="Jonathan's Order">
+                  <Label layoutX="171.0" layoutY="128.0" prefHeight="45.0" prefWidth="301.0" text="Person 1 Order">
                      <font>
                         <Font size="30.0" />
                      </font>

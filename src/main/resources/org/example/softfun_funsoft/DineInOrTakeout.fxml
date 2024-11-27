@@ -11,73 +11,38 @@
 <AnchorPane prefHeight="800.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.StartUpCont">
    <children>
       <Rectangle fill="#db1f2a" height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
-      <Text fill="WHITE" layoutX="591.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TYPE OF ORDER">
+      <Text fill="WHITE" layoutX="591.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dine in Or Take out">
          <font>
             <Font name="Eras Bold ITC" size="44.0" />
          </font>
       </Text>
       <Rectangle arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="438.0" layoutX="381.0" layoutY="126.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="345.0" />
       <Rectangle arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="438.0" layoutX="804.0" layoutY="126.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="345.0" />
-      <Text fill="WHITE" layoutX="478.0" layoutY="611.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SOLO">
+      <Text fill="WHITE" layoutX="478.0" layoutY="611.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dine In">
          <font>
             <Font name="Eras Bold ITC" size="44.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="885.0" layoutY="612.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GROUP">
+      <Text fill="WHITE" layoutX="885.0" layoutY="612.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Take Out">
          <font>
             <Font name="Eras Bold ITC" size="44.0" />
          </font>
       </Text>
-      <ImageView fitHeight="341.0" fitWidth="259.0" layoutX="427.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../pic_resources/person1-icon.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="199.0" fitWidth="203.0" layoutX="872.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../pic_resources/girl.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="229.0" fitWidth="193.0" layoutX="804.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../pic_resources/girl%20(1).png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="212.0" fitWidth="193.0" layoutX="951.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../pic_resources/boy(1).png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="193.0" fitWidth="259.0" layoutX="880.0" layoutY="331.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../pic_resources/single-icon.png" />
-         </image>
-      </ImageView>
-      <JFXButton layoutX="496.0" layoutY="718.0" opacity="0.8" prefHeight="52.0" prefWidth="166.0" text="Bisaya" textFill="#fcfcfc">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </JFXButton>
-      <Text fill="WHITE" layoutX="638.0" layoutY="697.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Language">
-         <font>
-            <Font size="32.0" />
-         </font>
-      </Text>
-      <JFXButton layoutX="695.0" layoutY="718.0" opacity="0.8" prefHeight="52.0" prefWidth="166.0" text="Tagalog" textFill="#fcfcfc">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="894.0" layoutY="718.0" opacity="0.8" prefHeight="52.0" prefWidth="166.0" text="English" textFill="#fcfcfc">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </JFXButton>
       <JFXButton layoutX="383.0" layoutY="126.0" prefHeight="438.0" prefWidth="344.0" text="." />
       <JFXButton layoutX="805.0" layoutY="126.0" prefHeight="441.0" prefWidth="345.0" text="." />
       <ImageView fitHeight="620.0" fitWidth="608.0" layoutX="-239.0" layoutY="78.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../pic_resources/McLUX_logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="243.0" fitWidth="251.0" layoutX="435.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../pic_resources/dinner.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="236.0" fitWidth="283.0" layoutX="857.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../pic_resources/food-package.png" />
          </image>
       </ImageView>
    </children>
