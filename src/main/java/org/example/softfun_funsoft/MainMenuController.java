@@ -185,7 +185,7 @@ public class MainMenuController implements Initializable {
 
     public void showCart(){
         //TODO: Implement a cart pane, that shows the items in the cart. e.g a tableview
-
+        cartGrid.getChildren().clear();
         int column = 0;
         int row = 1;
         try {
@@ -985,7 +985,7 @@ public class MainMenuController implements Initializable {
                 grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
                 grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
 
-                GridPane.setMargin(anchorPane, new Insets(10));
+                GridPane.setMargin(anchorPane, new Insets(25));
             }
 
             scroll.setFitToWidth(true);
@@ -1032,7 +1032,9 @@ public class MainMenuController implements Initializable {
     myCartItemListener = new MyCartItemListener() {
         @Override
         public void onRemoveItem(Food food) {
-            System.out.println("Jonathan Bayot Not Removed");
+            cart.remove(food);
+            itemsLabel.setText(String.valueOf(cart.size()) + " item/s in the cart");
+            showCart();
 
         }
     };

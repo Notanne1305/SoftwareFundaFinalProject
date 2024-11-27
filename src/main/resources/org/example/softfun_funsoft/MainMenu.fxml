@@ -131,7 +131,7 @@
                   <Font name="Gill Sans MT" size="30.0" />
                </font>
             </Text>
-            <JFXButton fx:id="proceedToCheckout" layoutX="3.0" layoutY="2.0" onAction="#setAddToCart" prefHeight="52.0" prefWidth="389.0" text="." />
+            <JFXButton fx:id="proceedToCheckout" layoutX="3.0" layoutY="2.0" prefHeight="52.0" prefWidth="389.0" text="." />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="cartPane" layoutY="103.0" prefHeight="589.0" prefWidth="1549.0" style="-fx-background-color: pink;" visible="false">

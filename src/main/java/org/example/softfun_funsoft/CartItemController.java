@@ -21,6 +21,9 @@ public class CartItemController {
     private Label itemQuantity;
 
     @FXML
+    private Label totalPrice;
+
+    @FXML
     private Button removeBTN;
 
     private Food food;
@@ -32,6 +35,7 @@ public class CartItemController {
         itemName.setText(food.getName());
         itemQuantity.setText(String.valueOf(food.getQuantity()));
         itemPrice.setText("PHP " + food.getPrice());
+        totalPrice.setText("PHP " + (food.getPrice() * food.getQuantity()));
         img.setImage(new javafx.scene.image.Image(getClass().getResourceAsStream(food.getImgSrc())));
 
 
