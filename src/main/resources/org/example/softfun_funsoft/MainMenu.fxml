@@ -45,13 +45,7 @@
       <Rectangle fill="#f7cc2a" height="26.0" layoutX="-24.0" layoutY="691.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1573.0" />
       <Circle fill="WHITE" layoutX="1074.0" layoutY="121.0" radius="24.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle fill="WHITE" layoutX="1460.0" layoutY="121.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="RED" height="52.0" layoutX="41.0" layoutY="730.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="389.0" />
-      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="48.0" layoutX="43.0" layoutY="732.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="385.0" />
-      <Text fill="RED" layoutX="151.0" layoutY="767.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cancel Order">
-         <font>
-            <Font name="Gill Sans MT" size="30.0" />
-         </font>
-      </Text>
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="48.0" layoutX="43.0" layoutY="732.0" stroke="RED" strokeType="INSIDE" strokeWidth="2.0" width="385.0" />
       <Label fx:id="itemsLabel" layoutX="54.0" layoutY="696.0" text="No items in the cart">
          <font>
             <Font name="Gill Sans MT" size="15.0" />
@@ -108,30 +102,26 @@
             <Font name="Rage Italic" size="67.0" />
          </font>
       </Text>
-      <JFXButton layoutX="40.0" layoutY="728.0" onMousePressed="#cancelButton" prefHeight="52.0" prefWidth="390.0" text="." textFill="WHITE" />
+      <JFXButton layoutX="40.0" layoutY="728.0" onMousePressed="#cancelButton" prefHeight="52.0" prefWidth="390.0" text="Cancel Order" textFill="RED">
+         <font>
+            <Font name="Gill Sans MT" size="30.0" />
+         </font></JFXButton>
       <AnchorPane fx:id="addAnchorPane" layoutX="1111.0" layoutY="732.0" prefHeight="55.0" prefWidth="394.0" visible="false">
          <children>
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#399918" height="52.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="389.0" />
-            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="48.0" layoutX="2.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="385.0" />
-            <Text fill="#399918" layoutX="167.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add">
+            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="48.0" layoutX="2.0" layoutY="1.0" stroke="GREEN" strokeType="INSIDE" strokeWidth="2.0" width="385.0" />
+            <JFXButton fx:id="addToCart" layoutX="-2.0" layoutY="-3.0" onAction="#setAddToCart" prefHeight="35.0" prefWidth="390.0" text="Add" textFill="GREEN">
                <font>
-
                   <Font name="Gill Sans MT" size="30.0" />
-               </font>
-            </Text>
-            <JFXButton fx:id="addToCart" onAction="#setAddToCart" prefHeight="52.0" prefWidth="389.0" />
+               </font></JFXButton>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="proceedToCheckoutPanel" layoutX="1111.0" layoutY="732.0" prefHeight="55.0" prefWidth="394.0" visible="false">
          <children>
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#399918" height="52.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="389.0" />
-            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="48.0" layoutX="2.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="385.0" />
-            <Text fill="#399918" layoutX="67.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Proceed to checkout" wrappingWidth="261.0">
+            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="48.0" layoutX="2.0" layoutY="1.0" stroke="GREEN" strokeType="INSIDE" strokeWidth="2.0" width="385.0" />
+            <JFXButton fx:id="proceedToCheckout" layoutX="3.0" layoutY="-5.0" prefHeight="52.0" prefWidth="389.0" text="Proceed to Checkout" textFill="GREEN">
                <font>
                   <Font name="Gill Sans MT" size="30.0" />
-               </font>
-            </Text>
-            <JFXButton fx:id="proceedToCheckout" layoutX="3.0" layoutY="2.0" prefHeight="52.0" prefWidth="389.0" text="." />
+               </font></JFXButton>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="cartPane" layoutY="103.0" prefHeight="589.0" prefWidth="1549.0" style="-fx-background-color: white;" visible="false">
