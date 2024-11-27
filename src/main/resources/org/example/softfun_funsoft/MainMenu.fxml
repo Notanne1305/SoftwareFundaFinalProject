@@ -141,7 +141,7 @@
                   <Font name="Gill Sans MT" size="30.0" />
                </font>
             </Label>
-            <ScrollPane fx:id="cartScrollPane" hbarPolicy="NEVER" layoutX="49.0" layoutY="68.0" prefHeight="472.0" prefWidth="747.0" vbarPolicy="NEVER">
+            <ScrollPane fx:id="cartScrollPane" hbarPolicy="NEVER" layoutX="49.0" layoutY="68.0" prefHeight="472.0" prefWidth="872.0" vbarPolicy="NEVER">
                <content>
                   <GridPane fx:id="cartGrid" prefHeight="3.0" prefWidth="48.0">
                      <rowConstraints>
