@@ -11,23 +11,23 @@
 <AnchorPane prefHeight="800.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.StartUpCont">
     <children>
         <Rectangle fill="#db1f2a" height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
-        <Text fill="WHITE" layoutX="596.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scan here to Pay!" wrappingWidth="419.116455078125">
+        <Text fill="WHITE" layoutX="598.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scan here to Pay!" wrappingWidth="419.116455078125">
             <font>
                 <Font name="Gill Sans MT Bold" size="40.0" />
             </font>
         </Text>
-        <ImageView fitHeight="620.0" fitWidth="608.0" layoutX="-239.0" layoutY="78.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="620.0" fitWidth="608.0" layoutX="-172.0" layoutY="78.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../../pic_resources/McLUX_logo.png" />
             </image>
         </ImageView>
-      <ImageView fitHeight="294.0" fitWidth="288.0" layoutX="621.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="294.0" fitWidth="288.0" layoutX="618.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../pic_resources/qr_img.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="66.0" layoutX="632.0" layoutY="701.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="294.0" />
-      <JFXButton layoutX="634.0" layoutY="703.0" prefHeight="63.0" prefWidth="294.0" text="Back">
+      <Rectangle arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="66.0" layoutX="614.0" layoutY="528.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="294.0" />
+      <JFXButton layoutX="617.0" layoutY="529.0" prefHeight="63.0" prefWidth="294.0" text="Back">
          <font>
             <Font name="Gill Sans MT" size="34.0" />
          </font>
