@@ -402,6 +402,7 @@ public class MainMenuController implements Initializable {
         food.setColor("#f2f2f2");
         foods.add(food);
 
+
         food = new Food();
         food.setName("Big Burger");
         food.setCategory("Burger");
