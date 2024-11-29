@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="189.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.CartItemController">
+<AnchorPane prefHeight="189.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.CartItemController">
    <children>
       <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" layoutX="184.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -43,7 +43,7 @@
          </font>
       </JFXButton>
       <Circle fill="WHITE" layoutX="120.0" layoutY="94.0" radius="28.0" stroke="GREEN" strokeType="INSIDE" strokeWidth="2.0" />
-      <Label layoutX="115.0" layoutY="82.0" text="1" textFill="GREEN">
+      <Label fx:id="itemNumber" layoutX="115.0" layoutY="82.0" text="1" textFill="GREEN">
          <font>
             <Font name="Gill Sans MT" size="20.0" />
          </font>

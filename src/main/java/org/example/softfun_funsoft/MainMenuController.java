@@ -22,6 +22,9 @@ import org.example.softfun_funsoft.listener.MyCategoryListener;
 import org.example.softfun_funsoft.listener.MyItemListener;
 import org.example.softfun_funsoft.model.Food;
 import org.example.softfun_funsoft.model.FoodCategory;
+import org.example.softfun_funsoft.singleton.Cart;
+import org.example.softfun_funsoft.singleton.Categories;
+import org.example.softfun_funsoft.singleton.MenuItem;
 
 
 import java.io.IOException;
@@ -102,7 +105,7 @@ public class MainMenuController implements Initializable {
     private List<FoodCategory> categories = new ArrayList<>();
     private List<Food> itemByCategory = new ArrayList<>();
 
-    private List<Food> cart = new ArrayList<>();
+    private Cart cart;
 
     private Food chosenFood;
 
@@ -113,19 +116,6 @@ public class MainMenuController implements Initializable {
         embedMatchingFood(searchName);
     };
 
-    //TODO: Implement Add to cart pane
-//    private void showNotification(Food food) {
-//        Node imageView = new ImageView(new Image(getClass().getResource(food.getImgSrc()).toExternalForm()));
-//        Notifications notificationBuilder = Notifications.create()
-//                .title("Order Received")
-//                .text("You have added " + currentQuantity + " " + food.getName() + " to your cart")
-//                .graphic(imageView) // You can replace null with a Node for custom graphic
-//                .hideAfter(Duration.seconds(3))
-//                .position(Pos.BOTTOM_RIGHT) // Change to your desired position
-//                .onAction(e -> System.out.println("Notification clicked!"));
-//
-//        notificationBuilder.showInformation();
-//    }
 
     public void showNotification(Food food) {
         HBox notification = new HBox();
@@ -174,28 +164,26 @@ public class MainMenuController implements Initializable {
     public void setAddToCart(){
         orderPanel.setVisible(false);
         addAnchorPane.setVisible(false);
-        chosenFood.setQuantity(currentQuantity);
+        chosenFood.setQuantity(Integer.parseInt(quantity.getText()));
         showNotification(chosenFood);
-        cart.add(chosenFood);
-        itemsLabel.setText(String.valueOf(cart.size()) + " item/s in the cart");
-        System.out.println(chosenFood.getQuantity());
-        //TODO: Implement Add to cart pane and functionality.
+        cart.addItem(chosenFood);
+        itemsLabel.setText(String.valueOf(cart.getCartItems().size()) + " item/s in the cart");
+        //TODO: There's a bug when adding two of the same item more than twice. The quantity is not updating
 
     }
 
     public void showCart(){
-        //TODO: Implement a cart pane, that shows the items in the cart. e.g a tableview
         cartGrid.getChildren().clear();
         int column = 0;
         int row = 1;
         try {
-            for (int i = 0; i < cart.size(); i++) {
+            for (Food food : cart.getCartItems()) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("CartItem.fxml"));
 
                 AnchorPane anchorPane = fxmlLoader.load();
                 CartItemController itemController = fxmlLoader.getController();
-                itemController.setData(cart.get(i), myCartItemListener);
+                itemController.setData(food, myCartItemListener);
 
                 if (column == 1) {
                     column = 0;
@@ -205,8 +193,6 @@ public class MainMenuController implements Initializable {
                 cartGrid.add(anchorPane, column++, row);
                 cartGrid.setPrefWidth(Region.USE_COMPUTED_SIZE);
                 cartGrid.setPrefHeight(Region.USE_COMPUTED_SIZE);
-
-//                GridPane.setMargin(anchorPane, new Insets(25));
             }
 
             cartScrollPane.setFitToWidth(true);
@@ -224,59 +210,6 @@ public class MainMenuController implements Initializable {
         proceedToCheckoutPanel.setVisible(true);
 
 
-        //Example Output idea
-
-//        AnchorPane cartPane = new AnchorPane();
-//        cartPane.setStyle("-fx-background-color: white; -fx-padding: 20px;");
-//        cartPane.setPrefSize(400, 600);
-//
-//        VBox cartItemsBox = new VBox(10);
-//        cartItemsBox.setPadding(new Insets(10));
-//        cartItemsBox.setAlignment(Pos.TOP_CENTER);
-//
-//        for (Food food : cart) {
-//            HBox cartItem = new HBox(10);
-//            cartItem.setAlignment(Pos.CENTER_LEFT);
-//
-//            // Item image
-//            ImageView foodImage = new ImageView(new Image(getClass().getResourceAsStream(food.getImgSrc())));
-//            foodImage.setFitWidth(50);
-//            foodImage.setFitHeight(50);
-//
-//            // Item name
-//            Label nameLabel = new Label(food.getName());
-//            nameLabel.setPrefWidth(150);
-//
-//            // Item quantity
-//            Label quantityLabel = new Label("Qty: " + food.getQuantity());
-//            quantityLabel.setPrefWidth(50);
-//
-//            // Item price
-//            Label priceLabel = new Label("₱" + food.getPrice() * food.getQuantity());
-//            priceLabel.setPrefWidth(100);
-//
-//            // Remove button
-//            Button removeButton = new Button("Remove");
-//            removeButton.setOnAction(event -> {
-//                cart.remove(food);
-//                showCart(); // Refresh the cart pane
-//            });
-//
-//            cartItem.getChildren().addAll(foodImage, nameLabel, quantityLabel, priceLabel, removeButton);
-//            cartItemsBox.getChildren().add(cartItem);
-//        }
-//
-//        // Add the VBox to the cart pane
-//        cartPane.getChildren().add(cartItemsBox);
-//
-//        // Add the cart pane to the mainAnchorpane
-//        mainAnchorpane.getChildren().add(cartPane);
-//
-//        // Position the cart pane in the center of the mainAnchorpane
-//        AnchorPane.setTopAnchor(cartPane, 50.0);
-//        AnchorPane.setBottomAnchor(cartPane, 50.0);
-//        AnchorPane.setLeftAnchor(cartPane, 50.0);
-//        AnchorPane.setRightAnchor(cartPane, 50.0);
     }
 
     private void embedMatchingFood(String searchName){
@@ -350,505 +283,7 @@ public class MainMenuController implements Initializable {
             }, 500);
         });
     }
-    private List<Food> getData(){
-        List<Food> foods = new ArrayList<>();
-        Food food;
 
-        food = new Food();
-        food.setName("1pc Chicken");
-        food.setCategory("Chicken");
-        food.setPrice(82.0);
-        food.setImgSrc("/pic_resources/Chicken/1pcchicken.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("1pc Spicy Chicken");
-        food.setCategory("Chicken");
-        food.setPrice(99.0);
-        food.setImgSrc("/pic_resources/Chicken/1pcspicychicken.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("2pc Chicken");
-        food.setCategory("Chicken");
-        food.setPrice(163.0);
-        food.setImgSrc("/pic_resources/Chicken/2pcchicken.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Chicken Fillet");
-        food.setCategory("Chicken");
-        food.setPrice(148.0);
-        food.setImgSrc("/pic_resources/Chicken/ChickenFilet.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Chicken with Spaghetti");
-        food.setCategory("Chicken");
-        food.setPrice(139.0);
-        food.setImgSrc("/pic_resources/Chicken/ChickenSpagh.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Bacon Chicken Mayo Burger");
-        food.setCategory("Burger");
-        food.setPrice(149.0);
-        food.setImgSrc("/pic_resources/Burgers/baconchickenmayo.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-
-
-        food = new Food();
-        food.setName("Big Burger");
-        food.setCategory("Burger");
-        food.setPrice(150.0);
-        food.setImgSrc("/pic_resources/Burgers/Bigburger.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Big Mc Burger");
-        food.setCategory("Burger");
-        food.setPrice(179.0);
-        food.setImgSrc("/pic_resources/Burgers/BigMc.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Big Tasty w/ Bacon Burger");
-        food.setCategory("Burger");
-        food.setPrice(179.0);
-        food.setImgSrc("/pic_resources/Burgers/Bigtastywithbacon.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Chicken Sandwich Burger");
-        food.setCategory("Burger");
-        food.setPrice(220.0);
-        food.setImgSrc("/pic_resources/Burgers/chickensandwich.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Crispy Chicken Sandwich Burger");
-        food.setCategory("Burger");
-        food.setPrice(171.0);
-        food.setImgSrc("/pic_resources/Burgers/crispychickensandwich.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Deluxe Crispy Chicken Burger");
-        food.setCategory("Burger");
-        food.setPrice(229.0);
-        food.setImgSrc("/pic_resources/Burgers/deluxecrispychicken.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Double Cheese Burger");
-        food.setCategory("Burger");
-        food.setPrice(160.0);
-        food.setImgSrc("/pic_resources/Burgers/doublecheeseburger.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Filet-o-Fish Burger");
-        food.setCategory("Burger");
-        food.setPrice(99.0);
-        food.setImgSrc("/pic_resources/Burgers/filet-o-fish.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Quarter Pounder w/ Cheese Burger");
-        food.setCategory("Burger");
-        food.setPrice(271.0);
-        food.setImgSrc("/pic_resources/Burgers/quarterpounderwithcheese.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Regular Burger");
-        food.setCategory("Burger");
-        food.setPrice(79.0);
-        food.setImgSrc("/pic_resources/Burgers/regburger.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Triple Cheese Burger");
-        food.setCategory("Burger");
-        food.setPrice(169.0);
-        food.setImgSrc("/pic_resources/Burgers/triplecheeseburger.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Vegetable Deluxe Burger");
-        food.setCategory("Burger");
-        food.setPrice(145.0);
-        food.setImgSrc("/pic_resources/Burgers/vegetabledeluxe.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Banana Strawberry Smoothie");
-        food.setCategory("Beverages");
-        food.setPrice(89.0);
-        food.setImgSrc("/pic_resources/beverages/bananastrawberrysmoothie.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Coke");
-        food.setCategory("Beverages");
-        food.setPrice(22.0);
-        food.setImgSrc("/pic_resources/beverages/coke1.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Coke Diet");
-        food.setCategory("Beverages");
-        food.setPrice(32.0);
-        food.setImgSrc("/pic_resources/beverages/Cokediet.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Coke Zero");
-        food.setCategory("Beverages");
-        food.setPrice(38.0);
-        food.setImgSrc("/pic_resources/beverages/cokezero.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Dasani");
-        food.setCategory("Beverages");
-        food.setPrice(18.0);
-        food.setImgSrc("/pic_resources/beverages/dasani.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Dr.Pepper");
-        food.setCategory("Beverages");
-        food.setPrice(38.0);
-        food.setImgSrc("/pic_resources/beverages/DrPepper.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Fanta");
-        food.setCategory("Beverages");
-        food.setPrice(22.0);
-        food.setImgSrc("/pic_resources/beverages/fanta.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Frozen Coke");
-        food.setCategory("Beverages");
-        food.setPrice(40.0);
-        food.setImgSrc("/pic_resources/beverages/frozencoke.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Frozen Fanta");
-        food.setCategory("Beverages");
-        food.setPrice(40.0);
-        food.setImgSrc("/pic_resources/beverages/frozenfanta.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Lemonade");
-        food.setCategory("Beverages");
-        food.setPrice(39.0);
-        food.setImgSrc("/pic_resources/beverages/lemonade.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Mango Pineapple Smoothie");
-        food.setCategory("Beverages");
-        food.setPrice(49.0);
-        food.setImgSrc("/pic_resources/beverages/mangopineapplesmoothie.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("McFloat");
-        food.setCategory("Beverages");
-        food.setPrice(49.0);
-        food.setImgSrc("/pic_resources/beverages/mcfloat.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Sprite");
-        food.setCategory("Beverages");
-        food.setPrice(32.0);
-        food.setImgSrc("/pic_resources/beverages/sprite.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Sweet Tea");
-        food.setCategory("Beverages");
-        food.setPrice(37.0);
-        food.setImgSrc("/pic_resources/beverages/sweettea.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Fries");
-        food.setCategory("Sides");
-        food.setPrice(79.0);
-        food.setImgSrc("/pic_resources/Sides/Fries.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Fries and Nuggets");
-        food.setCategory("Sides");
-        food.setPrice(120.0);
-        food.setImgSrc("/pic_resources/Sides/Friesandnuggets.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Nuggets");
-        food.setCategory("Sides");
-        food.setPrice(59.0);
-        food.setImgSrc("/pic_resources/Sides/Nuggets.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Bacon Egg Muffin");
-        food.setCategory("Breakfast Menu");
-        food.setPrice(120.0);
-        food.setImgSrc("/pic_resources/breakfast menu/baconeggmuffin .jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Baconroll with Brown Sauce");
-        food.setCategory("Breakfast Menu");
-        food.setPrice(99.0);
-        food.setImgSrc("/pic_resources/breakfast menu/baconrollwithbrownsauce.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Baconroll with Tomato Sauce");
-        food.setCategory("Breakfast Menu");
-        food.setPrice(99.0);
-        food.setImgSrc("/pic_resources/breakfast menu/baconrollwithtomatosauce.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Double Bacon Egg");
-        food.setCategory("Breakfast Menu");
-        food.setPrice(130.0);
-        food.setImgSrc("/pic_resources/breakfast menu/doublebaconegg.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Double Sausage Muffin");
-        food.setCategory("Breakfast Menu");
-        food.setPrice(130.0);
-        food.setImgSrc("/pic_resources/breakfast menu/doublesausagemuffin.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Egg Cheese Muffin");
-        food.setCategory("Breakfast Menu");
-        food.setPrice(89.0);
-        food.setImgSrc("/pic_resources/breakfast menu/eggcheesemuffin.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Muffin with Brown Sauce");
-        food.setCategory("Breakfast Menu");
-        food.setPrice(49.0);
-        food.setImgSrc("/pic_resources/breakfast menu/muffinbrownsauce.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Muffin with Tomato Sauce");
-        food.setCategory("Breakfast Menu");
-        food.setPrice(49.0);
-        food.setImgSrc("/pic_resources/breakfast menu/muffintomatosauce.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Pancake with Sausage with Syrup");
-        food.setCategory("Breakfast Menu");
-        food.setPrice(59.0);
-        food.setImgSrc("/pic_resources/breakfast menu/pancakeandsausagewithsyrup.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Roll with Ketchup");
-        food.setCategory("Breakfast Menu");
-        food.setPrice(49.0);
-        food.setImgSrc("/pic_resources/breakfast menu/roll with ketchup.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Roll with Brown Sauce");
-        food.setCategory("Breakfast Menu");
-        food.setPrice(49.0);
-        food.setImgSrc("/pic_resources/breakfast menu/rollwithbrownsauce.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Sausage and Egg Muffin");
-        food.setCategory("Breakfast Menu");
-        food.setPrice(79.0);
-        food.setImgSrc("/pic_resources/breakfast menu/sausageandeggmuffin.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Wrap with Brown Sauce");
-        food.setCategory("Breakfast Menu");
-        food.setPrice(100.0);
-        food.setImgSrc("/pic_resources/breakfast menu/wrapwithbrownsauce.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Wrap with Ketchup");
-        food.setCategory("Breakfast Menu");
-        food.setPrice(100.0);
-        food.setImgSrc("/pic_resources/breakfast menu/wrapwithketchup.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Apple Pie");
-        food.setCategory("Dessert");
-        food.setPrice(60.0);
-        food.setImgSrc("/pic_resources/desserts/applepie.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Chocolate Brownie");
-        food.setCategory("Dessert");
-        food.setPrice(30.0);
-        food.setImgSrc("/pic_resources/desserts/Chocbrownie.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Mixed Berry Muffin");
-        food.setCategory("Dessert");
-        food.setPrice(60.0);
-        food.setImgSrc("/pic_resources/desserts/mixedberrymuffin.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Sugary Donut");
-        food.setCategory("Dessert");
-        food.setPrice(40.0);
-        food.setImgSrc("/pic_resources/desserts/sugardonut.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        food = new Food();
-        food.setName("Triple Chocolate Cookie");
-        food.setCategory("Dessert");
-        food.setPrice(60.0);
-        food.setImgSrc("/pic_resources/desserts/Triplechoccookie.jpg");
-        food.setColor("#f2f2f2");
-        foods.add(food);
-
-        return foods;
-
-
-
-    }
-
-    private List<FoodCategory> getCategories(){
-        List<FoodCategory> categories = new ArrayList<>();
-        FoodCategory category;
-
-
-        category = new FoodCategory();
-        category.setName("All Time Favourites");
-        category.setImgSrc("/pic_resources/final menu/alltimefave.jpg");
-        category.setColor("#f2f2f2");
-        categories.add(category);
-
-        category = new FoodCategory();
-        category.setName("Chicken");
-        category.setImgSrc("/pic_resources/Chicken/2pcchicken.jpg");
-        category.setColor("#f2f2f2");
-        categories.add(category);
-
-        category = new FoodCategory();
-        category.setName("Burger");
-        category.setImgSrc("/pic_resources/Burgers/quarterpounderwithcheese.jpg");
-        category.setColor("#f2f2f2");
-        categories.add(category);
-
-        category = new FoodCategory();
-        category.setName("Beverages");
-        category.setImgSrc("/pic_resources/beverages/coke1.jpg");
-        category.setColor("#f2f2f2");
-        categories.add(category);
-
-        category = new FoodCategory();
-        category.setName("Breakfast Menu");
-        category.setImgSrc("/pic_resources/breakfast menu/eggcheesemuffin.jpg");
-        category.setColor("#f2f2f2");
-        categories.add(category);
-
-        category = new FoodCategory();
-        category.setName("Dessert");
-        category.setImgSrc("/pic_resources/desserts/applepie.jpg");
-        category.setColor("#f2f2f2");
-        categories.add(category);
-
-        category = new FoodCategory();
-        category.setName("Sides");
-        category.setImgSrc("/pic_resources/Sides/Fries.jpg");
-        category.setColor("#f2f2f2");
-        categories.add(category);
-
-
-
-
-
-
-        return categories;
-
-    }
 
     public void embedItems() {
         int column = 0;
@@ -1004,8 +439,9 @@ public class MainMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        foods.addAll(getData());
-        categories.addAll(getCategories());
+        foods = MenuItem.getInstance().getFoods();
+        categories = Categories.getInstance().getCategories();
+        cart = Cart.getInstance();
 
 
         myItemListener = new MyItemListener() {
@@ -1034,8 +470,8 @@ public class MainMenuController implements Initializable {
     myCartItemListener = new MyCartItemListener() {
         @Override
         public void onRemoveItem(Food food) {
-            cart.remove(food);
-            itemsLabel.setText(String.valueOf(cart.size()) + " item/s in the cart");
+            cart.removeItem(food);
+            itemsLabel.setText(String.valueOf(cart.getCartItems().size()) + " item/s in the cart");
             showCart();
 
         }

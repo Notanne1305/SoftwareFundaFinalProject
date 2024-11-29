@@ -1,5 +1,7 @@
 package org.example.softfun_funsoft.model;
 
+import java.util.Objects;
+
 public class Food {
     private String name;
     private String imgSrc;
@@ -56,4 +58,17 @@ public class Food {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Food food = (Food) o;
+//        return Objects.equals(name, food.name);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(name);
+//    }
 }
