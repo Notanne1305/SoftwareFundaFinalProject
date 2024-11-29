@@ -96,6 +96,8 @@ public class MainMenuController implements Initializable {
     @FXML
     private ScrollPane cartScrollPane;
 
+    @FXML
+    private Label grandTotal;
 
 
     private MyItemListener myItemListener;
@@ -173,11 +175,14 @@ public class MainMenuController implements Initializable {
     }
 
     public void showCart(){
+        double totalPrice = 0;
         cartGrid.getChildren().clear();
         int column = 0;
         int row = 1;
         try {
             for (Food food : cart.getCartItems()) {
+                totalPrice += (food.getPrice() * food.getQuantity());
+
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("CartItem.fxml"));
 
@@ -204,6 +209,7 @@ public class MainMenuController implements Initializable {
             e.printStackTrace();
         }
 
+        grandTotal.setText("PHP " + totalPrice);
 
         addAnchorPane.setVisible(false);
         cartPane.setVisible(true);
