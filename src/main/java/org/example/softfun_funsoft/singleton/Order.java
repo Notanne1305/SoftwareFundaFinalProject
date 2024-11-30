@@ -9,6 +9,7 @@ public class Order {
     //TODO: Implement Singleton Pattern
     private static Order instance;
     private boolean isDineIn;
+    private String paymentType;
     private final List<Food> orderItems;
 
     private Order(){
@@ -29,6 +30,7 @@ public class Order {
     public boolean isDineIn() {
         return isDineIn;
     }
+
     public void setDineIn(boolean isDineIn) {
         this.isDineIn = isDineIn;
     }
@@ -39,6 +41,14 @@ public class Order {
 
     public void clearOrder(){
         orderItems.clear();
+    }
+
+    public void setPaymentType(String paymentType){
+        this.paymentType = paymentType;
+    }
+
+    public String getPaymentType(){
+        return paymentType;
     }
 
     public String generateReceipt() {
@@ -60,6 +70,10 @@ public class Order {
         receipt.append(String.format("Total: PHP %.2f\n", total));
 
         return receipt.toString();
+    }
+
+    public double getGrandTotal(){
+        return orderItems.stream().mapToDouble(food -> food.getPrice() * food.getQuantity()).sum();
     }
 
 

@@ -183,7 +183,33 @@ public class MainMenuController implements Initializable {
         order.clearOrder();
         order.addItems(cart.getCartItems());
 
-        System.out.println(order.generateReceipt());
+        try {
+            Stage currentStage = (Stage) mainAnchorpane.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PaymentTypes.fxml"));
+            Parent newRoot = fxmlLoader.load();
+            Scene currentScene = currentStage.getScene();
+
+            // Create a fade-out transition for the current scene
+            FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentScene.getRoot());
+            fadeOut.setFromValue(1.0);
+            fadeOut.setToValue(0.0);
+
+            // Set an event handler to change the scene after the fade-out
+            fadeOut.setOnFinished(e -> {
+                currentScene.setRoot(newRoot);
+
+                // Create a fade-in transition for the new scene
+                FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newRoot);
+                fadeIn.setFromValue(0.0);
+                fadeIn.setToValue(1.0);
+                fadeIn.play();
+            });
+
+            fadeOut.play();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
 
 
