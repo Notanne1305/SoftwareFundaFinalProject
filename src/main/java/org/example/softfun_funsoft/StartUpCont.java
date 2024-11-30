@@ -17,6 +17,7 @@ import javafx.scene.media.MediaView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.example.softfun_funsoft.lang.LangCheck;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,7 +36,7 @@ public class StartUpCont extends Application implements Initializable {
  @FXML
  private MediaView mediaView;
 
-
+ private MediaPlayer soundPlayer;
 
  @FXML
  private void onProceedButtonClick() {
@@ -54,6 +55,10 @@ public class StartUpCont extends Application implements Initializable {
   stage.setTitle("Team Hilux Fastfood Kiosk Ordering System");
   stage.setScene(scene);
   stage.show();
+
+  javafx.animation.PauseTransition delay = new javafx.animation.PauseTransition(Duration.seconds(2)); // 2-second delay
+  delay.setOnFinished(e -> controller.playStartSound()); // Play the sound after delay
+  delay.play();
  }
 
  public void initializeMedia() {
@@ -77,6 +82,25 @@ public class StartUpCont extends Application implements Initializable {
   alert.setTitle("Error");
   alert.setContentText(message);
   alert.showAndWait();
+ }
+
+ private void playStartSound(){
+  String soundPath = "src/main/resources/sounds/start_Eng.mp3";
+  File soundFile = new File(soundPath);
+
+  if (!soundFile.exists()){
+   showError("Sound file not found at: " + soundPath);
+   return;
+  }
+
+  Media sound = new Media(soundFile.toURI().toString());
+  soundPlayer = new MediaPlayer(sound);
+
+  if(LangCheck.isEnglish()){
+   soundPlayer.play();
+  }else{
+   System.out.println("Sound not played for current language: " + LangCheck.getLanguage());
+  }
  }
 
  public static void main(String[] args) {
