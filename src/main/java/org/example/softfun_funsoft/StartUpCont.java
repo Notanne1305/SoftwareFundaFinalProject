@@ -123,7 +123,7 @@ private void showError(String message) {
 
   if (event.getSource() == StartButton) {
    Stage currentStage = (Stage) StartButton.getScene().getWindow();
-   Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
+   Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("DineInOrTakeout.fxml")));
    Scene currentScene = currentStage.getScene();
 
    // Create a fade-out transition for the current scene

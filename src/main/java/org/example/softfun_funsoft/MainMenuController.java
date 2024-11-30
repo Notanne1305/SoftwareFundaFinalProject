@@ -28,6 +28,7 @@ import org.example.softfun_funsoft.model.FoodCategory;
 import org.example.softfun_funsoft.singleton.Cart;
 import org.example.softfun_funsoft.singleton.Categories;
 import org.example.softfun_funsoft.singleton.MenuItem;
+import org.example.softfun_funsoft.singleton.Order;
 
 
 import java.io.IOException;
@@ -174,6 +175,18 @@ public class MainMenuController implements Initializable {
         cart.addItem(chosenFood);
         itemsLabel.setText(String.valueOf(cart.getCartItems().size()) + " item/s in the cart");
         //TODO: There's a bug when adding two of the same item more than twice. The quantity is not updating
+
+    }
+
+    public void proceedToCheckoutAction(){
+        Order order = Order.getInstance();
+        order.clearOrder();
+        order.addItems(cart.getCartItems());
+
+        System.out.println(order.generateReceipt());
+
+
+
 
     }
 

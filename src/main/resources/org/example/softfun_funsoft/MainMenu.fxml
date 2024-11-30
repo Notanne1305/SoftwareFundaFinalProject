@@ -118,7 +118,7 @@
       <AnchorPane fx:id="proceedToCheckoutPanel" layoutX="1111.0" layoutY="732.0" prefHeight="55.0" prefWidth="394.0" visible="false">
          <children>
             <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="48.0" layoutX="2.0" layoutY="1.0" stroke="GREEN" strokeType="INSIDE" strokeWidth="2.0" width="385.0" />
-            <JFXButton fx:id="proceedToCheckout" layoutX="3.0" layoutY="-5.0" prefHeight="52.0" prefWidth="389.0" text="Proceed to Checkout" textFill="GREEN">
+            <JFXButton fx:id="proceedToCheckout" layoutX="3.0" layoutY="-5.0" onAction="#proceedToCheckoutAction" prefHeight="52.0" prefWidth="389.0" text="Proceed to Checkout" textFill="GREEN">
                <font>
                   <Font name="Gill Sans MT" size="30.0" />
                </font></JFXButton>
