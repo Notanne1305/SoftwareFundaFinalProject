@@ -61,23 +61,33 @@ public class StartUpCont extends Application implements Initializable {
   delay.play();
  }
 
- public void initializeMedia() {
-  String filePath = "src/main/resources/pic_resources/1122(1).mp4";
-  File file = new File(filePath);
+public void initializeMedia() {
 
-  if (!file.exists()) {
-   showError("Media file not found at: " + filePath);
-   return;
-  }
+    String filePath = "src/main/resources/pic_resources/1122(1).mp4";
+    File file = new File(filePath);
 
-  Media media = new Media(file.toURI().toString());
-  MediaPlayer mediaPlayer = new MediaPlayer(media);
-  mediaView.setMediaPlayer(mediaPlayer);
+    if (!file.exists()) {
+        showError("Media file not found at: " + filePath);
+        return;
+    }
 
-  mediaPlayer.setAutoPlay(true);
- }
+    Media media = new Media(file.toURI().toString());
+    MediaPlayer mediaPlayer = new MediaPlayer(media);
+    mediaView.setMediaPlayer(mediaPlayer);
 
- private void showError(String message) {
+    mediaPlayer.setAutoPlay(true);
+    mediaPlayer.setOnError(() -> showError("Error occurred while playing media: " + mediaPlayer.getError().getMessage()));
+    mediaPlayer.setOnReady(() -> {
+        System.out.println("Media is ready to play.");
+        mediaPlayer.play();
+    });
+
+    mediaPlayer.setOnEndOfMedia(() -> {
+        mediaPlayer.seek(Duration.ZERO);
+        mediaPlayer.play();
+    });
+}
+private void showError(String message) {
   Alert alert = new Alert(Alert.AlertType.ERROR);
   alert.setTitle("Error");
   alert.setContentText(message);
