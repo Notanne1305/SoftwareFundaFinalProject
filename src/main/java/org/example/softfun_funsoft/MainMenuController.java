@@ -11,15 +11,15 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.example.softfun_funsoft.lang.LangCheck;
 import org.example.softfun_funsoft.listener.MyCartItemListener;
 import org.example.softfun_funsoft.listener.MyCategoryListener;
 import org.example.softfun_funsoft.listener.MyItemListener;
@@ -174,6 +174,7 @@ public class MainMenuController implements Initializable {
         showNotification(chosenFood);
         cart.addItem(chosenFood);
         itemsLabel.setText(String.valueOf(cart.getCartItems().size()) + " item/s in the cart");
+        playClick();
         //TODO: There's a bug when adding two of the same item more than twice. The quantity is not updating
 
     }
@@ -567,4 +568,19 @@ private void setChosenFood(Food food){
         embedItems();
         embedCategories();
     }
+
+    private void playClick() {
+        try {
+            // Adjusting to classpath-relative path
+            String soundPath = getClass().getResource("/sounds/click.mp3").toExternalForm();
+            Media sound = new Media(soundPath);
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play(); // Play the sound
+        } catch (Exception e) {
+            System.out.println("Error playing sound: " + e.getMessage());
+        }
+    }
+
+
+
 }
