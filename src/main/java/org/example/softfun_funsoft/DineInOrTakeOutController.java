@@ -30,19 +30,21 @@ public class DineInOrTakeOutController {
     private MediaPlayer soundPlayer;
 
     public void initialize(){
-        playSound();
+        playSound();//Select a place to Eat
     }
 
 
     public void dineIn() {
         Order order = Order.getInstance();
         order.setDineIn(true);
+        playProceedMenu();//Proceed to Menu
         proceedToMainMenu();
     }
 
     public void takeOut() {
         Order order = Order.getInstance();
         order.setDineIn(false);
+        playProceedMenu();//Proceed to Menu
         proceedToMainMenu();
     }
 
@@ -91,6 +93,24 @@ public class DineInOrTakeOutController {
             showError("Sound file not found at: " + soundPath);
         }
     }
+
+    private void playProceedMenu() {
+        String soundPath = "/sounds/menu_Eng.mp3"; // Adjusted to classpath-relative path
+        try {
+            Media sound = new Media(Objects.requireNonNull(getClass().getResource(soundPath)).toString());
+            soundPlayer = new MediaPlayer(sound);
+
+            if (LangCheck.isEnglish()) {
+                soundPlayer.play();
+            } else {
+                System.out.println("Sound not played for current language: " + LangCheck.getLanguage());
+            }
+        } catch (NullPointerException e) {
+            showError("Sound file not found at: " + soundPath);
+        }
+    }
+
+
 
     private void showError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
