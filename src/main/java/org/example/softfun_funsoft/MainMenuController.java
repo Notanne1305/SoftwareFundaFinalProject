@@ -533,6 +533,8 @@ private void setChosenFood(Food food){
         categories = Categories.getInstance().getCategories();
         cart = Cart.getInstance();
 
+        itemsLabel.setText(String.valueOf(cart.getCartItems().size()) + " item/s in the cart");
+
 
         myItemListener = new MyItemListener() {
             @Override

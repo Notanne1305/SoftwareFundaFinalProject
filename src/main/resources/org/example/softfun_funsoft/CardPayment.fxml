@@ -28,6 +28,7 @@
                   <Font name="Gill Sans MT" size="20.0" />
                </font>
             </Label>
+            <Button fx:id="cancelBTN" layoutX="24.0" layoutY="750.0" mnemonicParsing="false" onAction="#setCancelBTN" prefHeight="25.0" prefWidth="216.0" text="Cancel" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="770.0" layoutY="-1.0" prefHeight="792.0" prefWidth="771.0" style="-fx-background-color: #FFFFFF;">
@@ -78,6 +79,16 @@
             </TextField>
             <TextField fx:id="cardCVCField" layoutX="391.0" layoutY="298.0" prefHeight="44.0" prefWidth="302.5" promptText="CVC" />
             <ProgressIndicator fx:id="progressIndicator" layoutX="-26.0" layoutY="329.0" visible="false" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="progressPane" layoutX="669.0" layoutY="292.0" prefHeight="187.0" prefWidth="200.0" style="-fx-background-color: #ECEBDE; -fx-background-radius: 20px;" visible="false">
+         <children>
+            <ProgressIndicator fx:id="progressIndicator1" layoutX="74.0" layoutY="21.0" prefHeight="59.0" prefWidth="65.0" />
+            <Label layoutX="24.0" layoutY="120.0" text="Processing your payment...">
+               <font>
+                  <Font name="Gill Sans MT" size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
