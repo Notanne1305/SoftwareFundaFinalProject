@@ -6,13 +6,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.example.softfun_funsoft.lang.LangCheck;
 import org.example.softfun_funsoft.singleton.Order;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.io.File;
 
 public class DineInOrTakeOutController {
 
@@ -21,6 +26,12 @@ public class DineInOrTakeOutController {
 
     @FXML
     private Button takeOut;
+
+    private MediaPlayer soundPlayer;
+
+    public void initialize(){
+        playSound();
+    }
 
 
     public void dineIn() {
@@ -55,6 +66,8 @@ public class DineInOrTakeOutController {
                 fadeIn.setFromValue(0.0);
                 fadeIn.setToValue(1.0);
                 fadeIn.play();
+
+
             });
 
             fadeOut.play();
@@ -62,4 +75,29 @@ public class DineInOrTakeOutController {
             e.printStackTrace();
         }
     }
-}
+
+    private void playSound() {
+        String soundPath = "/sounds/place_Eng.mp3"; // Adjusted to classpath-relative path
+        try {
+            Media sound = new Media(Objects.requireNonNull(getClass().getResource(soundPath)).toString());
+            soundPlayer = new MediaPlayer(sound);
+
+            if (LangCheck.isEnglish()) {
+                soundPlayer.play();
+            } else {
+                System.out.println("Sound not played for current language: " + LangCheck.getLanguage());
+            }
+        } catch (NullPointerException e) {
+            showError("Sound file not found at: " + soundPath);
+        }
+    }
+
+    private void showError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+
+    }
