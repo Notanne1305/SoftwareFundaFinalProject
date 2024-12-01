@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainAnchorpane" prefHeight="788.0" prefWidth="1542.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.MainMenuController">
+<AnchorPane fx:id="mainAnchorpane" prefHeight="788.0" prefWidth="1542.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.MainMenuController">
    <children>
       <Rectangle fill="WHITE" height="784.0" stroke="#f2e8c6" strokeType="INSIDE" strokeWidth="0.0" width="1548.0" />
       <ScrollPane id="scroll-pane" fx:id="leftScroll" hbarPolicy="NEVER" layoutX="77.0" layoutY="215.0" prefHeight="476.0" prefWidth="225.0" stylesheets="@css/style.css" vbarPolicy="NEVER">
@@ -160,14 +160,14 @@
                   <Font name="Gill Sans MT" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="1244.0" layoutY="550.0" text="Grand Total:">
+            <Label layoutX="1174.0" layoutY="550.0" text="Grand Total:">
                <font>
                   <Font name="Gill Sans MT" size="29.0" />
                </font>
             </Label>
-            <Label fx:id="grandTotal" layoutX="1414.0" layoutY="553.0">
+            <Label fx:id="grandTotal" layoutX="1333.0" layoutY="550.0" prefHeight="34.0" prefWidth="195.0">
                <font>
-                  <Font name="Gill Sans MT" size="29.0" />
+                  <Font name="Gill Sans MT Bold" size="29.0" />
                </font>
             </Label>
          </children>

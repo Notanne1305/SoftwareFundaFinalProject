@@ -252,7 +252,8 @@ public class MainMenuController implements Initializable {
             e.printStackTrace();
         }
 
-        grandTotal.setText("PHP " + totalPrice);
+        grandTotal.setStyle("-fx-text-fill: green;");
+        grandTotal.setText("PHP " + totalPrice );
 
         addAnchorPane.setVisible(false);
         cartPane.setVisible(true);

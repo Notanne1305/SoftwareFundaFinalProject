@@ -5,9 +5,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.example.softfun_funsoft.lang.LangCheck;
 import org.example.softfun_funsoft.singleton.Order;
 
 import java.io.IOException;
@@ -17,6 +21,12 @@ public class PaymentController {
 
     @FXML
     private Button cashBTN;
+
+    private MediaPlayer soundPlayer;
+
+    public void initialize(){
+        playPaymentType();
+    }
 
     public void cardPayment() {
         Order order = Order.getInstance();
@@ -70,6 +80,30 @@ public class PaymentController {
         }
 
     }
+
+    private void playPaymentType() {
+        String soundPath = "/sounds/pay_Eng.mp3"; // Adjusted to classpath-relative path
+        try {
+            Media sound = new Media(Objects.requireNonNull(getClass().getResource(soundPath)).toString());
+            soundPlayer = new MediaPlayer(sound);
+
+            if (LangCheck.isEnglish()) {
+                soundPlayer.play();
+            } else {
+                System.out.println("Sound not played for current language: " + LangCheck.getLanguage());
+            }
+        } catch (NullPointerException e) {
+            showError("Sound file not found at: " + soundPath);
+        }
+    }
+
+    private void showError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
 
 
 }
