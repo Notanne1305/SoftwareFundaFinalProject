@@ -8,6 +8,7 @@ module org.example.softfun_funsoft {
     requires javafx.media;
     requires dotenv.java;
     requires stripe.java;
+    requires org.json;
 
     opens org.example.softfun_funsoft to javafx.fxml;
     exports org.example.softfun_funsoft;
