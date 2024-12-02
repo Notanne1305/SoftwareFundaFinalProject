@@ -124,6 +124,8 @@ public class CardPaymentController implements Initializable {
                     cardReceiptData.setPaymentDateTime(formattedDateTime);
                     cardReceiptData.setCardType(cardType);
 
+                    order.setOrderID(jsonObject.getString("id"));
+
                     Platform.runLater(() -> {
                         successPane.setVisible(true);
                         cancelBTN.setDisable(true);
@@ -238,6 +240,6 @@ public class CardPaymentController implements Initializable {
 
         orderItemsArea.setText(generateReceiptLayout(order));
         grandTotal.setStyle("-fx-text-fill: green;");
-        grandTotal.setText("Total: " + order.getGrandTotal() + "Php");
+        grandTotal.setText("Total: PHP " + order.getGrandTotal());
     }
 }

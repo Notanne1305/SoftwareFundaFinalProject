@@ -160,7 +160,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <Label fx:id="timer" layoutX="53.0" layoutY="707.0" prefHeight="57.0" prefWidth="26.0" textFill="#f8f8f8">
+      <Label fx:id="timer" layoutX="53.0" layoutY="707.0" prefHeight="57.0" prefWidth="113.0" textFill="#f8f8f8">
          <font>
             <Font name="Gill Sans MT Bold" size="33.0" />
          </font>

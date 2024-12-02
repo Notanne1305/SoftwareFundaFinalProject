@@ -12,6 +12,8 @@ public class Order {
     private String paymentType;
     private final List<Food> orderItems;
 
+    private String orderID;
+
     private Order(){
         orderItems = new ArrayList<>();
     }
@@ -51,6 +53,14 @@ public class Order {
         return paymentType;
     }
 
+    public String getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
+    }
+
     public String generateReceipt() {
         StringBuilder receipt = new StringBuilder();
         double total = 0;
@@ -75,6 +85,7 @@ public class Order {
     public double getGrandTotal(){
         return orderItems.stream().mapToDouble(food -> food.getPrice() * food.getQuantity()).sum();
     }
+
 
 
 

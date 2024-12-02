@@ -21,6 +21,10 @@ import javafx.print.PrinterJob;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class ReceiptController implements Initializable {
@@ -64,14 +68,31 @@ public class ReceiptController implements Initializable {
         Order order = Order.getInstance();
         CardReceiptData receiptData = CardReceiptData.getInstance();
 
-        orderID.setText("Order ID: " + receiptData.getReceiptId());
-        paymentDate.setText("Payment Date: " + receiptData.getPaymentDateTime());
-        cardHolderName.setText("Card Holder Name: " + receiptData.getCardHolderName());
-        cardType.setText("Card Type: " + receiptData.getCardType());
-        paymentType.setText("Payment Type: Card");
-        grandTotal.setText("PHP " + (order.getGrandTotal() + 36));
-        subTotal.setText("PHP " + order.getGrandTotal());
-        orderType.setText("Order Type: " + (order.isDineIn() ? "Dine In" : "Take out"));
+        if(order.getPaymentType().equals("Cash")) {
+            paymentType.setText("Payment Type: Cash");
+            cardType.setVisible(false);
+            cardHolderName.setVisible(false);
+            orderID.setText("Order ID: " + order.getOrderID());
+
+            LocalDateTime currentDateTime = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = currentDateTime.format(formatter);
+            paymentDate.setText("Payment Date: " + formattedDateTime);
+
+            grandTotal.setText("PHP " + (order.getGrandTotal() + 36));
+            subTotal.setText("PHP " + order.getGrandTotal());
+            orderType.setText("Order Type: " + (order.isDineIn() ? "Dine In" : "Take out"));
+        }else{
+            orderID.setText("Order ID: " + receiptData.getReceiptId());
+            paymentDate.setText("Payment Date: " + receiptData.getPaymentDateTime());
+            cardHolderName.setText("Card Holder Name: " + receiptData.getCardHolderName());
+            cardType.setText("Card Type: " + receiptData.getCardType());
+            paymentType.setText("Payment Type: Card");
+            grandTotal.setText("PHP " + (order.getGrandTotal() + 36));
+            subTotal.setText("PHP " + order.getGrandTotal());
+            orderType.setText("Order Type: " + (order.isDineIn() ? "Dine In" : "Take out"));
+
+        }
 
         for (Food food : order.getOrderItems()) {
             Label itemLabel = new Label(String.format("%s x%d - PHP %.2f", food.getName(), food.getQuantity(), food.getPrice() * food.getQuantity()));
