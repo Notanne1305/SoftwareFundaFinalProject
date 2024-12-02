@@ -1,24 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainAnchorpane" prefHeight="800.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.ByeController">
+<AnchorPane fx:id="mainAnchorpane" prefHeight="800.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.ByeController">
     <children>
-        <Rectangle fill="#db1f2a" height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
-        <ImageView fitHeight="512.0" fitWidth="492.0" layoutX="525.0" layoutY="58.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../../pic_resources/McLUX_logo.png" />
-            </image>
-        </ImageView>
-      <Label layoutX="500.0" layoutY="509.0" prefHeight="143.0" prefWidth="787.0" text="Thank you for ordering." textAlignment="CENTER" textFill="#fcfcfc">
+      <ImageView fitHeight="802.0" fitWidth="1555.0" layoutX="-11.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../pic_resources/thankyou.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="394.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Where there is">
          <font>
             <Font name="Eras Bold ITC" size="43.0" />
          </font>
-      </Label>
+      </Text>
+      <Text fill="#ffd400" layoutX="394.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="McLUXIBEE's">
+         <font>
+            <Font name="Eras Bold ITC" size="92.0" />
+         </font>
+      </Text>
+      <Text fill="#ffd400" layoutX="1006.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="there is">
+         <font>
+            <Font name="Eras Bold ITC" size="43.0" />
+         </font>
+      </Text>
+      <Text fill="#ffd400" layoutX="968.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="fun!">
+         <font>
+            <Font name="Eras Bold ITC" size="96.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="263.0" layoutY="771.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thank you, and enjoy your meal!" wrappingWidth="1039.9354248046875">
+         <font>
+            <Font name="Eras Bold ITC" size="59.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>
