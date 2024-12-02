@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.web.WebEngine;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.json.JSONObject;
@@ -20,6 +21,8 @@ import org.example.softfun_funsoft.payment.Card;
 import org.example.softfun_funsoft.singleton.Order;
 
 import java.io.IOException;
+import javafx.scene.web.WebView;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -61,6 +64,24 @@ public class CardPaymentController implements Initializable {
     @FXML
     private Button cancelBTN;
 
+    @FXML
+    private Button continueBTN;
+
+    @FXML
+    private Button paymentBTN;
+
+
+    @FXML
+    private Hyperlink bankReceiptLink;
+
+    @FXML
+    private AnchorPane successPane;
+
+    @FXML
+    private WebView webViewLink;
+
+    private String receiptLink;
+
     //TODO: implement another scene for the receipt
 
     public void submit() {
@@ -77,6 +98,35 @@ public class CardPaymentController implements Initializable {
 //                    System.out.println(chargeJson);
                     JSONObject jsonObject = new JSONObject(chargeJson);
                     System.out.println(jsonObject.get("receipt_url"));
+                    receiptLink = jsonObject.get("receipt_url").toString();
+                    Platform.runLater(() -> {
+                        successPane.setVisible(true);
+                        cancelBTN.setDisable(true);
+                        paymentBTN.setDisable(true);
+
+                        bankReceiptLink.setOnAction(event -> {
+                            try {
+                                WebEngine engine = webViewLink.getEngine();
+
+                                if(webViewLink.isVisible()){
+                                    webViewLink.setVisible(false);
+                                }else{
+                                    webViewLink.setVisible(true);
+                                    engine.load(receiptLink);
+                                }
+
+
+
+//                                java.awt.Desktop.getDesktop().browse(new java.net.URI(receiptLink));
+//                            } catch (IOException e) {
+//                                showError("Error opening receipt link");
+//                            } catch (URISyntaxException e) {
+//                                throw new RuntimeException(e);
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                        });
+                    });
                 } catch (IllegalArgumentException e) {
                     Platform.runLater(() -> showError(e.getMessage()));
                 } catch (StripeException e) {
@@ -87,6 +137,7 @@ public class CardPaymentController implements Initializable {
             }).start();
         }
     }
+
 
     public void setCancelBTN() throws IOException {
         Stage currentStage = (Stage) cancelBTN.getScene().getWindow();
@@ -107,6 +158,7 @@ public class CardPaymentController implements Initializable {
             fadeIn.setFromValue(0.0);
             fadeIn.setToValue(1.0);
             fadeIn.play();
+
         });
 
         fadeOut.play();

@@ -9,6 +9,8 @@ module org.example.softfun_funsoft {
     requires dotenv.java;
     requires stripe.java;
     requires org.json;
+    requires java.desktop;
+    requires javafx.web;
 
     opens org.example.softfun_funsoft to javafx.fxml;
     exports org.example.softfun_funsoft;
