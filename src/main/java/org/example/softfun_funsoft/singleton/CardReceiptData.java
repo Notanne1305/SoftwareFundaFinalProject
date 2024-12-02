@@ -6,7 +6,7 @@ public class CardReceiptData {
     private String receiptUrl;
     private String paymentDateTime;
     private String cardHolderName;
-
+    private String cardType;
     private CardReceiptData() {}
 
     public static synchronized CardReceiptData getInstance() {
@@ -46,5 +46,13 @@ public class CardReceiptData {
 
     public void setCardHolderName(String cardHolderName) {
         this.cardHolderName = cardHolderName;
+    }
+
+    public String getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
     }
 }
