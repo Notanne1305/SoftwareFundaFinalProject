@@ -1,5 +1,10 @@
 package org.example.softfun_funsoft;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.example.softfun_funsoft.singleton.CardReceiptData;
 import org.json.JSONObject;
 import com.jfoenix.controls.JFXComboBox;
 import com.stripe.exception.StripeException;
@@ -91,14 +97,29 @@ public class CardPaymentController implements Initializable {
             Platform.runLater(() -> progressPane.setVisible(true));
             Card cardPayment = new Card();
             Order order = Order.getInstance();
+            CardReceiptData cardReceiptData = CardReceiptData.getInstance();
             new Thread(() -> {
                 try {
-                    Charge charge = cardPayment.createCharge("tok_visa", (int) order.getGrandTotal(), emailField.getText(), cardHolderNameField.getText(), cardNumberField.getText(), cardCVCField.getText(), cardMMYYField.getText(), regionComboBox.getValue(), zipField.getText());
+                    System.out.println(cardNumberField.getText().replaceAll("\\s+", ""));
+                    Charge charge = cardPayment.createCharge("tok_visa", (int) order.getGrandTotal(), emailField.getText(), cardHolderNameField.getText(), cardNumberField.getText().replaceAll("\\s+", ""), cardCVCField.getText(), cardMMYYField.getText(), regionComboBox.getValue(), zipField.getText());
                     String chargeJson = charge.toJson();
-//                    System.out.println(chargeJson);
+
                     JSONObject jsonObject = new JSONObject(chargeJson);
-                    System.out.println(jsonObject.get("receipt_url"));
-                    receiptLink = jsonObject.get("receipt_url").toString();
+                    JSONObject metadata = jsonObject.getJSONObject("metadata");
+
+                    long createdTimestamp = jsonObject.getLong("created");
+                    LocalDateTime dateTime = LocalDateTime.ofInstant(Instant.ofEpochSecond(createdTimestamp), ZoneId.systemDefault());
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    String formattedDateTime = dateTime.format(formatter);
+                    System.out.println("Payment Date and Time: " + formattedDateTime);
+                    receiptLink = jsonObject.getString("receipt_url");
+                    System.out.println(metadata.getString("cardholder_name"));
+
+                    cardReceiptData.setReceiptId(jsonObject.getString("id"));
+                    cardReceiptData.setReceiptUrl(receiptLink);
+                    cardReceiptData.setCardHolderName(metadata.getString("cardholder_name"));
+                    cardReceiptData.setPaymentDateTime(formattedDateTime);
+
                     Platform.runLater(() -> {
                         successPane.setVisible(true);
                         cancelBTN.setDisable(true);
@@ -133,6 +154,31 @@ public class CardPaymentController implements Initializable {
     }
 
 
+    public void setContinueBTN() throws IOException {
+        Stage currentStage = (Stage) cancelBTN.getScene().getWindow();
+        Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Receipt.fxml")));
+        Scene currentScene = currentStage.getScene();
+
+        // Create a fade-out transition for the current scene
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentScene.getRoot());
+        fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.0);
+
+        // Set an event handler to change the scene after the fade-out
+        fadeOut.setOnFinished(e -> {
+            currentScene.setRoot(newRoot);
+
+            // Create a fade-in transition for the new scene
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newRoot);
+            fadeIn.setFromValue(0.0);
+            fadeIn.setToValue(1.0);
+            fadeIn.play();
+
+        });
+
+        fadeOut.play();
+
+    }
     public void setCancelBTN() throws IOException {
         Stage currentStage = (Stage) cancelBTN.getScene().getWindow();
         Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
@@ -178,6 +224,7 @@ public class CardPaymentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Order order = Order.getInstance();
+        regionComboBox.setValue("Philippines");
 
         regionComboBox.getItems().addAll(
                 Arrays.stream(Locale.getISOCountries())

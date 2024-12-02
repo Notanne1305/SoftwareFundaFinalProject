@@ -11,6 +11,7 @@ module org.example.softfun_funsoft {
     requires org.json;
     requires java.desktop;
     requires javafx.web;
+    requires pdfbox;
 
     opens org.example.softfun_funsoft to javafx.fxml;
     exports org.example.softfun_funsoft;

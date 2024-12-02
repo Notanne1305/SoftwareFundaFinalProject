@@ -40,7 +40,7 @@
                </image>
             </ImageView>
             <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="46.0" layoutX="104.0" layoutY="681.0" stroke="RED" strokeType="INSIDE" strokeWidth="2.0" width="286.0" />
-            <JFXButton fx:id="cancelBTN" layoutX="104.0" layoutY="681.0" prefHeight="48.0" prefWidth="286.0" text="Not Sure?" textFill="RED">
+            <JFXButton fx:id="cancelBTN" layoutX="104.0" layoutY="681.0" onAction="#setCancelBTN" prefHeight="48.0" prefWidth="286.0" text="Not Sure?" textFill="RED">
                <font>
                   <Font name="Gill Sans MT Bold" size="26.0" />
                </font>
