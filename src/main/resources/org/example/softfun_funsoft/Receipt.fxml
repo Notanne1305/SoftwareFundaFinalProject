@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
@@ -12,9 +13,9 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.ReceiptController">
    <children>
-      <Rectangle fill="RED" height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
+      <Rectangle fill="RED" height="800.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
       <Rectangle fill="#f7cc2a" height="108.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
-      <ScrollPane hbarPolicy="NEVER" layoutX="522.0" layoutY="118.0" pannable="true" prefHeight="667.0" prefWidth="462.0" vbarPolicy="NEVER">
+      <ScrollPane hbarPolicy="NEVER" layoutX="983.0" layoutY="117.0" pannable="true" prefHeight="667.0" prefWidth="462.0" vbarPolicy="NEVER">
          <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="667.0" prefWidth="462.0">
                <children>
@@ -115,7 +116,7 @@
                         <Font name="Gill Sans MT" size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="61.0" layoutY="442.0" prefHeight="34.0" prefWidth="194.0" text="SUBTOTAL">
+                  <Label layoutX="61.0" layoutY="433.0" prefHeight="34.0" prefWidth="194.0" text="SUBTOTAL">
                      <font>
                         <Font name="Gill Sans MT" size="20.0" />
                      </font>
@@ -159,5 +160,44 @@
             </AnchorPane>
          </content>
       </ScrollPane>
+      <ImageView fitHeight="656.0" fitWidth="684.0" layoutX="184.0" layoutY="120.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../pic_resources/McLUX_logo.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="116.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="McLUXIBEE is for green growth!" wrappingWidth="797.3367614746094">
+         <font>
+            <Font name="Gill Sans MT Bold" size="49.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="265.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Help us save trees?" wrappingWidth="467.7367858886719">
+         <font>
+            <Font name="Gill Sans MT Bold" size="49.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="20.0" arcWidth="20.0" height="89.0" layoutX="123.0" layoutY="547.0" opacity="0.5" stroke="#f5c92c" strokeType="INSIDE" strokeWidth="0.0" width="331.0" />
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#f7cc2a" height="89.0" layoutX="119.0" layoutY="542.0" stroke="#f5c92c" strokeType="INSIDE" strokeWidth="5.0" width="331.0" />
+      <JFXButton layoutX="117.0" layoutY="529.0" prefHeight="97.0" prefWidth="334.0" text="Print my receipt, " textFill="WHITE">
+         <font>
+            <Font name="Gill Sans MT Bold" size="25.0" />
+         </font>
+      </JFXButton>
+      <Text fill="WHITE" layoutX="248.0" layoutY="610.0" strokeType="OUTSIDE" strokeWidth="0.0" text="please!">
+         <font>
+            <Font name="Gill Sans MT Bold" size="25.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="20.0" arcWidth="20.0" height="89.0" layoutX="548.0" layoutY="546.0" opacity="0.5" stroke="#f5c92c" strokeType="INSIDE" strokeWidth="0.0" width="331.0" />
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#f7cc2a" height="89.0" layoutX="544.0" layoutY="542.0" stroke="#f5c92c" strokeType="INSIDE" strokeWidth="5.0" width="331.0" />
+      <JFXButton layoutX="542.0" layoutY="529.0" prefHeight="97.0" prefWidth="334.0" text="I'll just take a picture" textFill="WHITE">
+         <font>
+            <Font name="Gill Sans MT Bold" size="25.0" />
+         </font>
+      </JFXButton>
+      <Text fill="WHITE" layoutX="617.0" layoutY="610.0" strokeType="OUTSIDE" strokeWidth="0.0" text="of my e-receipt">
+         <font>
+            <Font name="Gill Sans MT Bold" size="25.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
