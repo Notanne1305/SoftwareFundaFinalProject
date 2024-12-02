@@ -59,7 +59,7 @@
                   <Image url="@../../../pic_resources/Fries%20Border.png" />
                </image>
             </ImageView>
-            <WebView fx:id="webViewLink" layoutY="-2.0" prefHeight="791.0" prefWidth="771.0" visible="false" />
+            <WebView fx:id="webViewLink" layoutY="-2.0" prefHeight="800.0" prefWidth="771.0" visible="false" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="802.0" layoutY="37.0" prefHeight="702.0" prefWidth="706.0" style="-fx-background-color: transparent;">
