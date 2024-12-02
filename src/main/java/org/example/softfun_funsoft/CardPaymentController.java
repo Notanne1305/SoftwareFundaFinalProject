@@ -59,7 +59,7 @@ public class CardPaymentController implements Initializable {
     private AnchorPane progressPane;
 
     @FXML
-    private JFXComboBox<String> regionComboBox;
+    private ComboBox<String> regionComboBox;
 
     @FXML
     private TextField zipField;
@@ -115,10 +115,13 @@ public class CardPaymentController implements Initializable {
                     receiptLink = jsonObject.getString("receipt_url");
                     System.out.println(metadata.getString("cardholder_name"));
 
+                    String cardType = charge.getPaymentMethodDetails().getCard().getBrand();
+
                     cardReceiptData.setReceiptId(jsonObject.getString("id"));
                     cardReceiptData.setReceiptUrl(receiptLink);
                     cardReceiptData.setCardHolderName(metadata.getString("cardholder_name"));
                     cardReceiptData.setPaymentDateTime(formattedDateTime);
+                    cardReceiptData.setCardType(cardType);
 
                     Platform.runLater(() -> {
                         successPane.setVisible(true);

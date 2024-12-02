@@ -58,3 +58,7 @@
     -jfx-rippler-fill: transparent; /* Make the ripple transparent */
     -fx-background-color: #F2F2F2; /* Your desired button background */
 }
+#itemScrollpane:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
