@@ -11,90 +11,122 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.CardPaymentController">
+<AnchorPane prefHeight="788.0" prefWidth="1541.0" style="-fx-background-color: f8cd2b;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.CardPaymentController">
    <children>
-      <AnchorPane prefHeight="800.0" prefWidth="771.0" style="-fx-background-color: f8cd2b;">
+      <AnchorPane prefHeight="791.0" prefWidth="771.0" style="-fx-background-color: f8cd2b;">
          <children>
-            <TextArea fx:id="orderItemsArea" editable="false" layoutX="103.0" layoutY="105.0" prefHeight="544.0" prefWidth="572.0">
+            <TextArea fx:id="orderItemsArea" editable="false" layoutX="103.0" layoutY="152.0" prefHeight="544.0" prefWidth="572.0">
                <font>
                   <Font name="Gill Sans MT" size="24.0" />
                </font>
             </TextArea>
-            <Label layoutX="104.0" layoutY="21.0" text="McLux" textFill="WHITE">
+            <Label layoutX="214.0" layoutY="29.0" prefHeight="71.0" prefWidth="504.0" text="McLUX's Card Payment System">
                <font>
-                  <Font name="Gill Sans MT" size="60.0" />
+                  <Font name="Gill Sans MT Bold" size="31.0" />
                </font>
             </Label>
-            <Label fx:id="grandTotal" layoutX="478.0" layoutY="686.0" prefHeight="40.0" prefWidth="197.0" text="Total:">
+            <Label fx:id="grandTotal" layoutX="418.0" layoutY="718.0" prefHeight="40.0" prefWidth="253.0" text="Total:">
                <font>
-                  <Font name="Gill Sans MT" size="20.0" />
+                  <Font name="Gill Sans MT Bold" size="26.0" />
                </font>
             </Label>
-            <ImageView fitHeight="91.0" fitWidth="74.0" layoutX="284.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../pic_resources/McLUX_logo.png" />
-               </image>
-            </ImageView>
-            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="46.0" layoutX="104.0" layoutY="681.0" stroke="RED" strokeType="INSIDE" strokeWidth="2.0" width="286.0" />
-            <JFXButton fx:id="cancelBTN" layoutX="104.0" layoutY="681.0" onAction="#setCancelBTN" prefHeight="48.0" prefWidth="286.0" text="Not Sure?" textFill="RED">
+            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="46.0" layoutX="102.0" layoutY="716.0" stroke="RED" strokeType="INSIDE" strokeWidth="2.0" width="286.0" />
+            <JFXButton fx:id="cancelBTN" layoutX="102.0" layoutY="716.0" onAction="#setCancelBTN" prefHeight="48.0" prefWidth="286.0" text="Not Sure?" textFill="RED">
                <font>
                   <Font name="Gill Sans MT Bold" size="26.0" />
                </font>
             </JFXButton>
             <WebView fx:id="webViewLink" layoutY="-2.0" prefHeight="792.0" prefWidth="771.0" visible="false" />
+            <ImageView fitHeight="217.0" fitWidth="385.0" layoutX="-59.0" layoutY="101.0" rotate="180.0">
+               <image>
+                  <Image url="@../../../pic_resources/Fries%20Border.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="115.0" fitWidth="215.0" layoutX="42.0" layoutY="7.0">
+               <image>
+                  <Image url="@../../../pic_resources/red%20logo.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="217.0" fitWidth="385.0" layoutX="451.0" layoutY="528.0">
+               <image>
+                  <Image url="@../../../pic_resources/Fries%20Border.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="770.0" layoutY="-1.0" prefHeight="800.0" prefWidth="771.0" style="-fx-background-color: #FFFFFF;">
+      <AnchorPane layoutX="802.0" layoutY="37.0" prefHeight="702.0" prefWidth="706.0" style="-fx-background-color: transparent;">
          <children>
-            <Label layoutX="86.0" layoutY="121.0" text="Email">
+            <Rectangle arcHeight="25.0" arcWidth="25.0" height="744.0" layoutX="2.0" layoutY="-9.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="703.0">
+               <fill>
+                  <LinearGradient endX="0.678030303030303" endY="1.0" startY="0.5833333188837225">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.5357999801635742" green="0.6330200433731079" blue="0.9399999976158142" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Label layoutX="86.0" layoutY="127.0" text="Email">
                <font>
                   <Font name="Gill Sans MT" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="89.0" layoutY="226.0" text="Card Information">
+            <Label layoutX="89.0" layoutY="217.0" text="Card Information">
                <font>
                   <Font name="Gill Sans MT" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="91.0" layoutY="380.0" text="Card Holder Name">
+            <Label layoutX="91.0" layoutY="359.0" text="Card Holder Name">
                <font>
                   <Font name="Gill Sans MT" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="97.0" layoutY="487.0" text="Country ">
+            <Label layoutX="92.0" layoutY="445.0" text="Country ">
                <font>
                   <Font name="Gill Sans MT" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="81.0" layoutY="36.0" text="Pay with card">
+            <Label layoutX="81.0" layoutY="66.0" text="Pay with card">
                <font>
                   <Font name="Gill Sans MT" size="30.0" />
                </font>
             </Label>
-            <TextField fx:id="emailField" layoutX="88.0" layoutY="149.0" prefHeight="44.0" prefWidth="605.0" />
-            <TextField fx:id="cardNumberField" layoutX="88.0" layoutY="251.0" prefHeight="44.0" prefWidth="605.0" promptText="1234 1234 1234 1234">
+            <TextField fx:id="emailField" layoutX="88.0" layoutY="155.0" prefHeight="44.0" prefWidth="542.0" />
+            <TextField fx:id="cardNumberField" layoutX="89.0" layoutY="245.0" prefHeight="44.0" prefWidth="542.0" promptText="1234 1234 1234 1234">
                <font>
                   <Font name="Gill Sans MT" size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="cardHolderNameField" layoutX="92.0" layoutY="408.0" prefHeight="44.0" prefWidth="605.0" />
-            <JFXComboBox fx:id="regionComboBox" layoutX="95.0" layoutY="513.0" prefHeight="44.0" prefWidth="605.0" promptText="Philippines" viewOrder="1.0" />
-            <TextField fx:id="zipField" layoutX="93.0" layoutY="564.0" prefHeight="44.0" prefWidth="605.0" promptText="ZIP" />
-            <Button fx:id="paymentBTN" layoutX="92.0" layoutY="684.0" mnemonicParsing="false" onAction="#submit" prefHeight="45.0" prefWidth="605.0" style="-fx-background-color: #192552;" text="Pay" textFill="WHITE">
+            <TextField fx:id="cardHolderNameField" layoutX="92.0" layoutY="387.0" prefHeight="44.0" prefWidth="542.0" />
+            <JFXComboBox fx:id="regionComboBox" focusColor="BLACK" layoutX="95.0" layoutY="488.0" prefHeight="44.0" prefWidth="542.0" promptText="Philippines" viewOrder="1.0" />
+            <TextField fx:id="zipField" layoutX="93.0" layoutY="555.0" prefHeight="44.0" prefWidth="542.0" promptText="ZIP" />
+            <Button fx:id="paymentBTN" layoutX="96.0" layoutY="640.0" mnemonicParsing="false" onAction="#submit" prefHeight="46.0" prefWidth="542.0" style="-fx-background-color: #192552;" text="Pay" textFill="WHITE">
                <font>
                   <Font name="Gill Sans MT" size="24.0" />
                </font>
             </Button>
-            <TextField fx:id="cardMMYYField" layoutX="87.0" layoutY="298.0" prefHeight="44.0" prefWidth="302.5" promptText="MM/YY">
+            <TextField fx:id="cardMMYYField" layoutX="89.0" layoutY="296.0" prefHeight="44.0" prefWidth="268.0" promptText="MM/YY">
                <font>
                   <Font name="Gill Sans MT" size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="cardCVCField" layoutX="391.0" layoutY="298.0" prefHeight="44.0" prefWidth="302.5" promptText="CVC" />
+            <TextField fx:id="cardCVCField" layoutX="363.0" layoutY="296.0" prefHeight="44.0" prefWidth="268.0" promptText="CVC" />
             <AnchorPane fx:id="successPane" layoutX="110.0" layoutY="265.0" prefHeight="272.0" prefWidth="572.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 20px;" visible="false">
                <children>
                   <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="269.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
@@ -116,6 +148,26 @@
                   <Hyperlink fx:id="bankReceiptLink" layoutX="103.0" layoutY="207.0" prefHeight="23.0" prefWidth="124.0" text="View Bank Receipt" />
                </children>
             </AnchorPane>
+            <ImageView fitHeight="40.0" fitWidth="124.0" layoutX="370.0" layoutY="643.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../pic_resources/stripe%20edited.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="82.0" fitWidth="157.0" layoutX="372.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../pic_resources/Stripe%20Logo.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="66.0" fitWidth="71.0" layoutX="264.0" layoutY="2.0">
+               <image>
+                  <Image url="@../../../pic_resources/McLUX_logo.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="345.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X">
+               <font>
+                  <Font name="Gill Sans MT" size="40.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="progressPane" layoutX="669.0" layoutY="292.0" prefHeight="187.0" prefWidth="200.0" style="-fx-background-color: #ECEBDE; -fx-background-radius: 20px;" visible="false">

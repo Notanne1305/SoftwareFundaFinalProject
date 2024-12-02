@@ -9,9 +9,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.PaymentController">
+<AnchorPane prefHeight="788.0" prefWidth="1542.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.PaymentController">
     <children>
-        <Rectangle fill="RED" height="800.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
+        <Rectangle fill="RED" height="788.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1545.0" />
         <Label layoutX="489.0" layoutY="131.0" text="How would you like to pay?" textFill="WHITE">
             <font>
                 <Font name="Eras Bold ITC" size="40.0" />
