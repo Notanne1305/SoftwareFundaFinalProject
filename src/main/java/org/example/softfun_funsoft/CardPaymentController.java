@@ -108,21 +108,15 @@ public class CardPaymentController implements Initializable {
                             try {
                                 WebEngine engine = webViewLink.getEngine();
 
-                                if(webViewLink.isVisible()){
+                                if (webViewLink.isVisible()) {
                                     webViewLink.setVisible(false);
-                                }else{
+                                    bankReceiptLink.setText("Show Bank Receipt");
+                                } else {
                                     webViewLink.setVisible(true);
+                                    bankReceiptLink.setText("Hide Bank Receipt");
                                     engine.load(receiptLink);
                                 }
-
-
-
-//                                java.awt.Desktop.getDesktop().browse(new java.net.URI(receiptLink));
-//                            } catch (IOException e) {
-//                                showError("Error opening receipt link");
-//                            } catch (URISyntaxException e) {
-//                                throw new RuntimeException(e);
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         });
