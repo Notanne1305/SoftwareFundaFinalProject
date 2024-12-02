@@ -169,6 +169,8 @@ public class MainMenuController implements Initializable {
         }
     }
 
+
+
     public void setAddToCart(){
         orderPanel.setVisible(false);
         addAnchorPane.setVisible(false);
@@ -220,6 +222,7 @@ public class MainMenuController implements Initializable {
     }
 
     public void showCart(){
+        proceedToCheckoutPanel.setDisable(cart.getCartItems().isEmpty());
         double totalPrice = 0;
         cartGrid.getChildren().clear();
         int column = 0;
