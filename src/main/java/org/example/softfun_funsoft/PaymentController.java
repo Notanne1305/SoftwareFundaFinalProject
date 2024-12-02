@@ -82,7 +82,7 @@ public class PaymentController {
     }
 
     private void playPaymentType() {
-        String soundPath = "/sounds/pay_Eng.mp3"; // Adjusted to classpath-relative path
+        String soundPath = "/sounds/payEng.mp3"; // Adjusted to classpath-relative path
         try {
             Media sound = new Media(Objects.requireNonNull(getClass().getResource(soundPath)).toString());
             soundPlayer = new MediaPlayer(sound);

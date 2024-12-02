@@ -564,6 +564,7 @@ private void setChosenFood(Food food){
         public void onRemoveItem(Food food) {
             cart.removeItem(food);
             itemsLabel.setText(String.valueOf(cart.getCartItems().size()) + " item/s in the cart");
+            playRemove();
             showCart();
 
         }
@@ -583,6 +584,19 @@ private void setChosenFood(Food food){
             System.out.println("Error playing sound: " + e.getMessage());
         }
     }
+
+    private void playRemove() {
+        try {
+            String soundPath = getClass().getResource("/sounds/remove.mp3").toExternalForm();
+            Media sound = new Media(soundPath);
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
+        } catch (Exception e) {
+            System.out.println("Error playing sound: " + e.getMessage());
+        }
+    }
+
+
 
 
 
