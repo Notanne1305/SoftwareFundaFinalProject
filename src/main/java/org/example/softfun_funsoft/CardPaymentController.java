@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -71,7 +72,7 @@ public class CardPaymentController implements Initializable {
     private Button cancelBTN;
 
     @FXML
-    private Button continueBTN;
+    private JFXButton continueBTN;
 
     @FXML
     private Button paymentBTN;

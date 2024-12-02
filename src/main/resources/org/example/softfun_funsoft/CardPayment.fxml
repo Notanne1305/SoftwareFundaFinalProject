@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="788.0" prefWidth="1541.0" style="-fx-background-color: f8cd2b;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.CardPaymentController">
+<AnchorPane prefHeight="788.0" prefWidth="1541.0" style="-fx-background-color: f8cd2b;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.CardPaymentController">
    <children>
       <AnchorPane prefHeight="791.0" prefWidth="771.0" style="-fx-background-color: f8cd2b;">
          <children>
@@ -147,7 +147,7 @@
                </font>
             </Text>
             <ComboBox fx:id="regionComboBox" layoutX="91.0" layoutY="488.0" prefHeight="44.0" prefWidth="542.0" promptText="Philippines" />
-            <AnchorPane fx:id="successPane" layoutX="110.0" layoutY="265.0" prefHeight="272.0" prefWidth="572.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 20px;" visible="false">
+            <AnchorPane fx:id="successPane" layoutX="69.0" layoutY="240.0" prefHeight="272.0" prefWidth="572.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 20px;" visible="false">
                <children>
                   <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="269.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -164,8 +164,8 @@
                         <Font name="Gill Sans MT" size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="continueBTN" layoutX="404.0" layoutY="206.0" mnemonicParsing="false" onAction="#setContinueBTN" text="Continue " />
                   <Hyperlink fx:id="bankReceiptLink" layoutX="103.0" layoutY="207.0" prefHeight="23.0" prefWidth="124.0" text="View Bank Receipt" />
+                  <JFXButton fx:id="continueBTN" layoutX="404.0" layoutY="207.0" text="Continue" textFill="GREEN" underline="true" />
                </children>
             </AnchorPane>
          </children>
