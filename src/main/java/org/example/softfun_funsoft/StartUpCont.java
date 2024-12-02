@@ -56,7 +56,7 @@ public class StartUpCont extends Application implements Initializable {
   stage.setScene(scene);
   stage.show();
 
-  javafx.animation.PauseTransition delay = new javafx.animation.PauseTransition(Duration.seconds(2)); // 2-second delay
+  javafx.animation.PauseTransition delay = new javafx.animation.PauseTransition(Duration.seconds(1)); // 2-second delay
   delay.setOnFinished(e -> controller.playStartSound()); // Play the sound after delay
   delay.play();
  }

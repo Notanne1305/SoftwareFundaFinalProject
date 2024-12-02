@@ -158,12 +158,14 @@ public class MainMenuController implements Initializable {
     public void setAddQuantity(){
         currentQuantity++;
         quantity.setText(String.valueOf(currentQuantity));
+        playAddSub();;
     }
 
     public void setSubtractQuantity(){
         if(currentQuantity > 1){
             currentQuantity--;
             quantity.setText(String.valueOf(currentQuantity));
+            playAddSub();;
         }
     }
 
@@ -404,6 +406,7 @@ public class MainMenuController implements Initializable {
                     }
                 });
 
+                playRemove();
                 fadeOut.play();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -595,6 +598,18 @@ private void setChosenFood(Food food){
             System.out.println("Error playing sound: " + e.getMessage());
         }
     }
+
+    private void playAddSub() {
+        try {
+            String soundPath = getClass().getResource("/sounds/click_.mp3").toExternalForm();
+            Media sound = new Media(soundPath);
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
+        } catch (Exception e) {
+            System.out.println("Error playing sound: " + e.getMessage());
+        }
+    }
+
 
 
 
