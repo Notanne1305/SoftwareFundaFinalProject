@@ -15,9 +15,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="788.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.CardPaymentController">
+<AnchorPane prefHeight="800.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.CardPaymentController">
    <children>
-      <AnchorPane prefHeight="791.0" prefWidth="771.0" style="-fx-background-color: f8cd2b;">
+      <AnchorPane prefHeight="800.0" prefWidth="771.0" style="-fx-background-color: f8cd2b;">
          <children>
             <TextArea fx:id="orderItemsArea" editable="false" layoutX="103.0" layoutY="105.0" prefHeight="544.0" prefWidth="572.0">
                <font>
@@ -48,7 +48,7 @@
             <WebView fx:id="webViewLink" layoutY="-2.0" prefHeight="792.0" prefWidth="771.0" visible="false" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="770.0" layoutY="-1.0" prefHeight="792.0" prefWidth="771.0" style="-fx-background-color: #FFFFFF;">
+      <AnchorPane layoutX="770.0" layoutY="-1.0" prefHeight="800.0" prefWidth="771.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <Label layoutX="86.0" layoutY="121.0" text="Email">
                <font>
