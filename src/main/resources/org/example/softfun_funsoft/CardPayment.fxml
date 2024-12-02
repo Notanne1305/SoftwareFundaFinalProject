@@ -33,7 +33,7 @@
                   <Font name="Gill Sans MT Bold" size="31.0" />
                </font>
             </Label>
-            <Label fx:id="grandTotal" layoutX="418.0" layoutY="718.0" prefHeight="40.0" prefWidth="253.0" text="Total:">
+            <Label fx:id="grandTotal" layoutX="483.0" layoutY="718.0" prefHeight="40.0" prefWidth="286.0" text="Total:">
                <font>
                   <Font name="Gill Sans MT Bold" size="26.0" />
                </font>
@@ -44,7 +44,7 @@
                   <Font name="Gill Sans MT Bold" size="26.0" />
                </font>
             </JFXButton>
-            <WebView fx:id="webViewLink" layoutY="-2.0" prefHeight="792.0" prefWidth="771.0" visible="false" />
+            <WebView fx:id="webViewLink" layoutY="-2.0" prefHeight="792.0" prefWidth="805.0" visible="false" />
             <ImageView fitHeight="217.0" fitWidth="385.0" layoutX="-59.0" layoutY="101.0" rotate="180.0">
                <image>
                   <Image url="@../../../pic_resources/Fries%20Border.png" />
@@ -163,19 +163,19 @@
                   <Image url="@../../../pic_resources/McLUX_logo.png" />
                </image>
             </ImageView>
-            <Text layoutX="345.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X">
+            <Text fill="#192552" layoutX="345.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X">
                <font>
                   <Font name="Gill Sans MT" size="40.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="progressPane" layoutX="669.0" layoutY="292.0" prefHeight="187.0" prefWidth="200.0" style="-fx-background-color: #ECEBDE; -fx-background-radius: 20px;" visible="false">
+      <AnchorPane fx:id="progressPane" layoutX="606.0" layoutY="292.0" prefHeight="187.0" prefWidth="353.0" style="-fx-background-color: #ECEBDE; -fx-background-radius: 20px;" visible="false">
          <children>
-            <ProgressIndicator fx:id="progressIndicator" layoutX="74.0" layoutY="21.0" prefHeight="59.0" prefWidth="65.0" />
-            <Label layoutX="24.0" layoutY="120.0" text="Processing your payment...">
+            <ProgressIndicator fx:id="progressIndicator" layoutX="152.0" layoutY="44.0" prefHeight="71.0" prefWidth="93.0" />
+            <Label layoutX="54.0" layoutY="137.0" text="Processing your payment...">
                <font>
-                  <Font name="Gill Sans MT" size="14.0" />
+                  <Font name="Gill Sans MT" size="25.0" />
                </font>
             </Label>
          </children>

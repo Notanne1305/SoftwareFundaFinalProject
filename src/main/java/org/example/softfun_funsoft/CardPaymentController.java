@@ -233,6 +233,7 @@ public class CardPaymentController implements Initializable {
         );
 
         orderItemsArea.setText(generateReceiptLayout(order));
-        grandTotal.setText("Grand Total: " + order.getGrandTotal());
+        grandTotal.setStyle("-fx-text-fill: green;");
+        grandTotal.setText("Total: " + order.getGrandTotal() + "Php");
     }
 }
