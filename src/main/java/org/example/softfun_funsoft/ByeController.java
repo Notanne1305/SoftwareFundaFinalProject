@@ -13,6 +13,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.example.softfun_funsoft.singleton.Cart;
+import org.example.softfun_funsoft.singleton.Order;
 
 import java.io.IOException;
 import java.net.URL;
@@ -49,6 +51,10 @@ public class ByeController implements Initializable {
 
     private void changeScene() {
         System.out.println("changing scenes");
+        Cart cart = Cart.getInstance();
+        cart.removeAll();
+
+
         try {
             Stage currentStage = (Stage) mainAnchorpane.getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StartUp.fxml"));

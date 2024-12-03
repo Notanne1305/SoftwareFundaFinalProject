@@ -418,12 +418,13 @@ public class MainMenuController implements Initializable {
             orderPanel.setVisible(false);
         }
     }
-private void setChosenFood(Food food){
 
-        chosenFood = food;
-        confirmPanelItemname.setText(chosenFood.getName());
-        orderPanelItemPrice.setText("PHP " + chosenFood.getPrice());
-        confirmPanelImg.setImage(new Image(getClass().getResourceAsStream(chosenFood.getImgSrc())));
+    private void setChosenFood(Food food){
+
+            chosenFood = food;
+            confirmPanelItemname.setText(chosenFood.getName());
+            orderPanelItemPrice.setText("PHP " + chosenFood.getPrice());
+            confirmPanelImg.setImage(new Image(getClass().getResourceAsStream(chosenFood.getImgSrc())));
     }
 
 
