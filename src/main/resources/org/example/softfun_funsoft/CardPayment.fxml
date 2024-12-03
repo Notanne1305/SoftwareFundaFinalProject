@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="788.0" prefWidth="1541.0" style="-fx-background-color: f8cd2b;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.CardPaymentController">
+<AnchorPane prefHeight="788.0" prefWidth="1541.0" style="-fx-background-color: f8cd2b;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.CardPaymentController">
    <children>
       <AnchorPane prefHeight="791.0" prefWidth="771.0" style="-fx-background-color: f8cd2b;">
          <children>
@@ -59,7 +59,7 @@
                   <Image url="@../../../pic_resources/Fries%20Border.png" />
                </image>
             </ImageView>
-            <WebView fx:id="webViewLink" layoutY="-2.0" prefHeight="800.0" prefWidth="771.0" visible="false" />
+            <WebView fx:id="webViewLink" layoutY="-2.0" prefHeight="791.0" prefWidth="771.0" visible="false" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="802.0" layoutY="37.0" prefHeight="702.0" prefWidth="706.0" style="-fx-background-color: transparent;">

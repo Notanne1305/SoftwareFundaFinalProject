@@ -152,6 +152,8 @@ public class StartUpCont extends Application implements Initializable {
          delay.setOnFinished(e -> playStartSound()); // Play the sound after delay
          delay.play();
 
+         initializeMedia();
+
           System.out.println("Initializing StartUpController");
 
           // TITLE animation

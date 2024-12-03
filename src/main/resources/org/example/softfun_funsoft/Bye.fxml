@@ -8,7 +8,7 @@
 
 <AnchorPane fx:id="mainAnchorpane" prefHeight="800.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.ByeController">
     <children>
-      <ImageView fitHeight="802.0" fitWidth="1555.0" layoutX="-11.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="802.0" fitWidth="1555.0" layoutX="-5.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../pic_resources/thankyou.jpg" />
          </image>
@@ -23,7 +23,7 @@
             <Font name="Eras Bold ITC" size="92.0" />
          </font>
       </Text>
-      <Text fill="#ffd400" layoutX="1006.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="there is">
+      <Text fill="WHITE" layoutX="1006.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="there is">
          <font>
             <Font name="Eras Bold ITC" size="43.0" />
          </font>

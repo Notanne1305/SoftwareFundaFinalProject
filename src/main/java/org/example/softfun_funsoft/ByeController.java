@@ -9,12 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.example.softfun_funsoft.singleton.Cart;
-import org.example.softfun_funsoft.singleton.Order;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,8 +23,6 @@ public class ByeController implements Initializable {
 
     @FXML
     private AnchorPane mainAnchorpane;
-
-
 
 
 
@@ -51,10 +45,6 @@ public class ByeController implements Initializable {
 
     private void changeScene() {
         System.out.println("changing scenes");
-        Cart cart = Cart.getInstance();
-        cart.removeAll();
-
-
         try {
             Stage currentStage = (Stage) mainAnchorpane.getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StartUp.fxml"));
@@ -83,21 +73,8 @@ public class ByeController implements Initializable {
         }
     }
 
-    private void playBye() {
-        try {
-            String soundPath = getClass().getResource("/sounds/ty_Eng.mp3").toExternalForm();
-            Media sound = new Media(soundPath);
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            mediaPlayer.play();
-        } catch (Exception e) {
-            System.out.println("Error playing sound: " + e.getMessage());
-        }
-    }
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        playBye();
         startTimer();
     }
 }
