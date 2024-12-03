@@ -27,155 +27,156 @@ import java.util.ResourceBundle;
 
 public class StartUpCont extends Application implements Initializable {
 
- @FXML
- private Text TITLE;
+     @FXML
+     private Text TITLE;
 
- @FXML
- private JFXButton StartButton;
+     @FXML
+     private JFXButton StartButton;
 
- @FXML
- private MediaView mediaView;
+     @FXML
+     private MediaView mediaView;
 
- private MediaPlayer soundPlayer;
+     private MediaPlayer soundPlayer;
 
- @FXML
- private void onProceedButtonClick() {
-  System.out.println("Proceed button clicked!");
+     @FXML
+     private void onProceedButtonClick() {
+      System.out.println("Proceed button clicked!");
  }
 
- @Override
- public void start(Stage stage) throws Exception {
-  FXMLLoader loader = new FXMLLoader(getClass().getResource("StartUp.fxml"));
-  Parent root = loader.load();
+     @Override
+     public void start(Stage stage) throws Exception {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("StartUp.fxml"));
+          Parent root = loader.load();
 
-  StartUpCont controller = loader.getController();
-  controller.initializeMedia();
+          StartUpCont controller = loader.getController();
+          controller.initializeMedia();
 
-  Scene scene = new Scene(root);
-  stage.setTitle("Team Hilux Fastfood Kiosk Ordering System");
-  stage.setScene(scene);
-  stage.show();
+          Scene scene = new Scene(root);
+          stage.setTitle("Team Hilux Fastfood Kiosk Ordering System");
+          stage.setScene(scene);
+          stage.show();
 
-  javafx.animation.PauseTransition delay = new javafx.animation.PauseTransition(Duration.seconds(1)); // 2-second delay
-  delay.setOnFinished(e -> controller.playStartSound()); // Play the sound after delay
-  delay.play();
- }
+          javafx.animation.PauseTransition delay = new javafx.animation.PauseTransition(Duration.seconds(1)); // 2-second delay
+          delay.setOnFinished(e -> controller.playStartSound()); // Play the sound after delay
+          delay.play();
+     }
 
-public void initializeMedia() {
+    public void initializeMedia() {
 
-    String filePath = "src/main/resources/pic_resources/1122(1).mp4";
-    File file = new File(filePath);
+        String filePath = "src/main/resources/pic_resources/1122(1).mp4";
+        File file = new File(filePath);
 
-    if (!file.exists()) {
-        showError("Media file not found at: " + filePath);
-        return;
+        if (!file.exists()) {
+            showError("Media file not found at: " + filePath);
+            return;
+        }
+
+        Media media = new Media(file.toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaView.setMediaPlayer(mediaPlayer);
+
+        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.setOnError(() -> showError("Error occurred while playing media: " + mediaPlayer.getError().getMessage()));
+        mediaPlayer.setOnReady(() -> {
+            System.out.println("Media is ready to play.");
+            mediaPlayer.play();
+        });
+
+        mediaPlayer.setOnEndOfMedia(() -> {
+            mediaPlayer.seek(Duration.ZERO);
+            mediaPlayer.play();
+        });
     }
 
-    Media media = new Media(file.toURI().toString());
-    MediaPlayer mediaPlayer = new MediaPlayer(media);
-    mediaView.setMediaPlayer(mediaPlayer);
+    private void showError(String message) {
+          Alert alert = new Alert(Alert.AlertType.ERROR);
+          alert.setTitle("Error");
+          alert.setContentText(message);
+          alert.showAndWait();
+     }
 
-    mediaPlayer.setAutoPlay(true);
-    mediaPlayer.setOnError(() -> showError("Error occurred while playing media: " + mediaPlayer.getError().getMessage()));
-    mediaPlayer.setOnReady(() -> {
-        System.out.println("Media is ready to play.");
-        mediaPlayer.play();
-    });
+     private void playStartSound(){
+          String soundPath = "src/main/resources/sounds/start_Eng.mp3";
+          File soundFile = new File(soundPath);
 
-    mediaPlayer.setOnEndOfMedia(() -> {
-        mediaPlayer.seek(Duration.ZERO);
-        mediaPlayer.play();
-    });
-}
-private void showError(String message) {
-  Alert alert = new Alert(Alert.AlertType.ERROR);
-  alert.setTitle("Error");
-  alert.setContentText(message);
-  alert.showAndWait();
+          if (!soundFile.exists()){
+           showError("Sound file not found at: " + soundPath);
+           return;
+      }
+
+      Media sound = new Media(soundFile.toURI().toString());
+      soundPlayer = new MediaPlayer(sound);
+
+      if(LangCheck.isEnglish()){ soundPlayer.play();
+      }else{
+       System.out.println("Sound not played for current language: " + LangCheck.getLanguage());
+      }
+     }
+
+     public static void main(String[] args) {
+      launch(args);
  }
 
- private void playStartSound(){
-  String soundPath = "src/main/resources/sounds/start_Eng.mp3";
-  File soundFile = new File(soundPath);
+     @FXML
+     public void handleStartButton(ActionEvent event) throws IOException {
+          System.out.println("Start button pressed");
 
-  if (!soundFile.exists()){
-   showError("Sound file not found at: " + soundPath);
-   return;
-  }
+          if (event.getSource() == StartButton) {
+           Stage currentStage = (Stage) StartButton.getScene().getWindow();
+           Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("DineInOrTakeout.fxml")));
+           Scene currentScene = currentStage.getScene();
 
-  Media sound = new Media(soundFile.toURI().toString());
-  soundPlayer = new MediaPlayer(sound);
+           // Create a fade-out transition for the current scene
+           FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentScene.getRoot());
+           fadeOut.setFromValue(1.0);
+           fadeOut.setToValue(0.0);
 
-  if(LangCheck.isEnglish()){
-   soundPlayer.play();
-  }else{
-   System.out.println("Sound not played for current language: " + LangCheck.getLanguage());
-  }
- }
+           // Set an event handler to change the scene after the fade-out
+           fadeOut.setOnFinished(e -> {
+            currentScene.setRoot(newRoot);
 
- public static void main(String[] args) {
-  launch(args);
- }
+            // Create a fade-in transition for the new scene
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newRoot);
+            fadeIn.setFromValue(0.0);
+            fadeIn.setToValue(1.0);
+            fadeIn.play();
+           });
 
- @FXML
- public void handleStartButton(ActionEvent event) throws IOException {
-  System.out.println("Start button pressed");
+           fadeOut.play();
+          }
+     }
 
-  if (event.getSource() == StartButton) {
-   Stage currentStage = (Stage) StartButton.getScene().getWindow();
-   Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("DineInOrTakeout.fxml")));
-   Scene currentScene = currentStage.getScene();
+     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-   // Create a fade-out transition for the current scene
-   FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentScene.getRoot());
-   fadeOut.setFromValue(1.0);
-   fadeOut.setToValue(0.0);
+          System.out.println("Initializing StartUpController");
 
-   // Set an event handler to change the scene after the fade-out
-   fadeOut.setOnFinished(e -> {
-    currentScene.setRoot(newRoot);
+          // TITLE animation
+          if (TITLE == null) {
+               System.out.println("TITLE is null. Check FXML configuration.");
+          } else {
+               // Set TITLE to fade in and out indefinitely
+               TITLE.setOpacity(0);
+               FadeTransition fade = new FadeTransition(Duration.millis(2000), TITLE);
+               fade.setCycleCount(FadeTransition.INDEFINITE);
+               fade.setInterpolator(Interpolator.LINEAR);
+               fade.setFromValue(0);
+               fade.setToValue(1);
+               fade.setAutoReverse(true);
+               fade.play();
+          }
 
-    // Create a fade-in transition for the new scene
-    FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newRoot);
-    fadeIn.setFromValue(0.0);
-    fadeIn.setToValue(1.0);
-    fadeIn.play();
-   });
-
-   fadeOut.play();
-  }
- }
- public void initialize(URL url, ResourceBundle resourceBundle) {
-
-  System.out.println("Initializing StartUpController");
-
-  // TITLE animation
-  if (TITLE == null) {
-   System.out.println("TITLE is null. Check FXML configuration.");
-  } else {
-   // Set TITLE to fade in and out indefinitely
-   TITLE.setOpacity(0);
-   FadeTransition fade = new FadeTransition(Duration.millis(2000), TITLE);
-   fade.setCycleCount(FadeTransition.INDEFINITE);
-   fade.setInterpolator(Interpolator.LINEAR);
-   fade.setFromValue(0);
-   fade.setToValue(1);
-   fade.setAutoReverse(true);
-   fade.play();
-  }
-
-  if (StartButton == null) {
-   System.out.println("StartButton is null. Check FXML configuration.");
-  } else {
-   // Set StartButton to fade in and out indefinitely
-   StartButton.setOpacity(0);
-   FadeTransition fading = new FadeTransition(Duration.millis(2000), StartButton);
-   fading.setCycleCount(FadeTransition.INDEFINITE);
-   fading.setInterpolator(Interpolator.LINEAR);
-   fading.setFromValue(0);
-   fading.setToValue(1);
-   fading.setAutoReverse(true);
-   fading.play();
-  }
- }
+          if (StartButton == null) {
+               System.out.println("StartButton is null. Check FXML configuration.");
+          } else {
+               // Set StartButton to fade in and out indefinitely
+               StartButton.setOpacity(0);
+               FadeTransition fading = new FadeTransition(Duration.millis(2000), StartButton);
+               fading.setCycleCount(FadeTransition.INDEFINITE);
+               fading.setInterpolator(Interpolator.LINEAR);
+               fading.setFromValue(0);
+               fading.setToValue(1);
+               fading.setAutoReverse(true);
+               fading.play();
+          }
+     }
 }
