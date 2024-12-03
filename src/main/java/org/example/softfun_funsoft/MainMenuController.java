@@ -132,16 +132,24 @@ public class MainMenuController implements Initializable {
         foodImage.setFitWidth(70);
         foodImage.setFitHeight(70);
 
-
-
-
         Label foodDetails = new Label("Added " + food.getName() + " to cart\nPrice: ₱" + food.getPrice());
         foodDetails.setStyle("-fx-text-fill: white;");
 
         notification.getChildren().addAll(foodImage, foodDetails);
 
-        notification.setLayoutX(mainAnchorpane.getWidth() - 250);
-        notification.setLayoutY(mainAnchorpane.getHeight() - 190);
+// Add listener to the AnchorPane size to update the position dynamically
+        mainAnchorpane.widthProperty().addListener((observable, oldValue, newValue) -> {
+            double notificationWidth = notification.prefWidth(-1);  // Get the preferred width of the notification
+            double xPosition = newValue.doubleValue() - 250 - notificationWidth;  // 250px from the right
+
+            notification.setLayoutX(xPosition);
+        });
+
+// Add listener to the AnchorPane height to update the Y position dynamically
+        mainAnchorpane.heightProperty().addListener((observable, oldValue, newValue) -> {
+            double yPosition = newValue.doubleValue() - 190;  // Adjust as needed for vertical placement
+            notification.setLayoutY(yPosition);
+        });
 
         mainAnchorpane.getChildren().add(notification);
 

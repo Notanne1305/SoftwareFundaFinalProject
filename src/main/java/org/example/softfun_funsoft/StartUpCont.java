@@ -54,11 +54,12 @@ public class StartUpCont extends Application implements Initializable {
           Scene scene = new Scene(root);
           stage.setTitle("Team Hilux Fastfood Kiosk Ordering System");
           stage.setScene(scene);
+          stage.setResizable(false);
           stage.show();
 
-          javafx.animation.PauseTransition delay = new javafx.animation.PauseTransition(Duration.seconds(1)); // 2-second delay
-          delay.setOnFinished(e -> controller.playStartSound()); // Play the sound after delay
-          delay.play();
+//          javafx.animation.PauseTransition delay = new javafx.animation.PauseTransition(Duration.seconds(1)); // 2-second delay
+//          delay.setOnFinished(e -> controller.playStartSound()); // Play the sound after delay
+//          delay.play();
      }
 
     public void initializeMedia() {
@@ -147,6 +148,9 @@ public class StartUpCont extends Application implements Initializable {
      }
 
      public void initialize(URL url, ResourceBundle resourceBundle) {
+         javafx.animation.PauseTransition delay = new javafx.animation.PauseTransition(Duration.seconds(1)); // 2-second delay
+         delay.setOnFinished(e -> playStartSound()); // Play the sound after delay
+         delay.play();
 
           System.out.println("Initializing StartUpController");
 

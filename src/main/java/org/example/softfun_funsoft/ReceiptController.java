@@ -100,10 +100,9 @@ public class ReceiptController implements Initializable {
             itemsContainer.getChildren().add(itemLabel);
         }
 
-        startTimer();
     }
 
-    private void startTimer() {
+    public void startTimer() {
         timeline = new Timeline(
                 new KeyFrame(Duration.seconds(1), event -> {
                     // Update the label every second
