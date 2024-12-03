@@ -12,45 +12,30 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.ReceiptController">
+<AnchorPane prefHeight="800.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.ReceiptController">
    <children>
       <Rectangle fill="RED" height="800.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
       <Rectangle fill="#f7cc2a" height="108.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
-      <ImageView fitHeight="656.0" fitWidth="684.0" layoutX="184.0" layoutY="120.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../pic_resources/McLUX_logo.png" />
-         </image>
-      </ImageView>
-      <Text fill="WHITE" layoutX="116.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="McLUXIBEE is for green growth!" wrappingWidth="797.3367614746094">
+      <Text fill="WHITE" layoutX="116.0" layoutY="346.0" stroke="#00000080" strokeType="OUTSIDE" text="McLUXIBEE is for green growth!" wrappingWidth="797.3367614746094">
          <font>
             <Font name="Gill Sans MT Bold" size="49.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="265.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Help us save trees?" wrappingWidth="467.7367858886719">
+      <Text fill="WHITE" layoutX="265.0" layoutY="405.0" stroke="#00000080" strokeType="OUTSIDE" text="Help us save trees?" wrappingWidth="467.7367858886719">
          <font>
             <Font name="Gill Sans MT Bold" size="49.0" />
          </font>
       </Text>
       <Rectangle arcHeight="20.0" arcWidth="20.0" height="89.0" layoutX="123.0" layoutY="547.0" opacity="0.5" stroke="#f5c92c" strokeType="INSIDE" strokeWidth="0.0" width="331.0" />
       <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#f7cc2a" height="89.0" layoutX="119.0" layoutY="542.0" stroke="#f5c92c" strokeType="INSIDE" strokeWidth="5.0" width="331.0" />
-      <JFXButton layoutX="117.0" layoutY="529.0" onAction="#printReceipt" prefHeight="97.0" prefWidth="334.0" text="Print my receipt, " textFill="WHITE">
-         <font>
-            <Font name="Gill Sans MT Bold" size="25.0" />
-         </font>
-      </JFXButton>
-      <Text fill="WHITE" layoutX="248.0" layoutY="610.0" strokeType="OUTSIDE" strokeWidth="0.0" text="please!">
+      <Text fill="WHITE" layoutX="248.0" layoutY="610.0" stroke="#00000080" strokeType="OUTSIDE" text="please!">
          <font>
             <Font name="Gill Sans MT Bold" size="25.0" />
          </font>
       </Text>
       <Rectangle arcHeight="20.0" arcWidth="20.0" height="89.0" layoutX="548.0" layoutY="546.0" opacity="0.5" stroke="#f5c92c" strokeType="INSIDE" strokeWidth="0.0" width="331.0" />
       <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#f7cc2a" height="89.0" layoutX="544.0" layoutY="542.0" stroke="#f5c92c" strokeType="INSIDE" strokeWidth="5.0" width="331.0" />
-      <JFXButton layoutX="542.0" layoutY="529.0" onAction="#startTimer" prefHeight="97.0" prefWidth="334.0" text="I'll just take a picture" textFill="WHITE">
-         <font>
-            <Font name="Gill Sans MT Bold" size="25.0" />
-         </font>
-      </JFXButton>
-      <Text fill="WHITE" layoutX="617.0" layoutY="610.0" strokeType="OUTSIDE" strokeWidth="0.0" text="of my e-receipt">
+      <Text fill="WHITE" layoutX="617.0" layoutY="610.0" stroke="#00000080" strokeType="OUTSIDE" text="of my e-receipt">
          <font>
             <Font name="Gill Sans MT Bold" size="25.0" />
          </font>
@@ -165,5 +150,40 @@
             <Font name="Gill Sans MT Bold" size="33.0" />
          </font>
       </Label>
+      <Text fill="WHITE" layoutX="182.0" layoutY="586.0" stroke="#00000080" strokeType="OUTSIDE" text="Print my e-receipt,">
+         <font>
+            <Font name="Gill Sans MT Bold" size="25.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="589.0" layoutY="585.0" stroke="#00000080" strokeType="OUTSIDE" text="I'll just take a picture">
+         <font>
+            <Font name="Gill Sans MT Bold" size="25.0" />
+         </font>
+      </Text>
+      <JFXButton layoutX="117.0" layoutY="541.0" onAction="#printReceipt" prefHeight="95.0" prefWidth="334.0" text="." textFill="#f7cc2a">
+         <font>
+            <Font name="Gill Sans MT Bold" size="25.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="542.0" layoutY="541.0" onAction="#startTimer" prefHeight="86.0" prefWidth="334.0" text="." textFill="#f7cc2a">
+         <font>
+            <Font name="Gill Sans MT Bold" size="25.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="122.0" fitWidth="1585.0" layoutX="-44.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../pic_resources/yellow%20banner.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="#ffffff00" layoutX="100.0" layoutY="71.0" stroke="BLACK" strokeType="OUTSIDE" text="You Deserve a Break today McLux's" wrappingWidth="1113.8930053710938">
+         <font>
+            <Font name="Eras Bold ITC" size="49.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="97.0" layoutY="73.0" stroke="#00000080" strokeType="OUTSIDE" strokeWidth="0.0" text="You Deserve a Break today McLux's" wrappingWidth="1113.8930053710938">
+         <font>
+            <Font name="Eras Bold ITC" size="49.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

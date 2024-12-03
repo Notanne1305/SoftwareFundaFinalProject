@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,12 +16,9 @@
             <Image url="@../../../pic_resources/back.jpg" />
          </image>
       </ImageView>
-        <Label layoutX="450.0" layoutY="155.0" text="How would you like to pay?" textFill="WHITE">
-            <font>
-                <Font name="Eras Bold ITC" size="45.0" />
-            </font>
-        </Label>
+      <Rectangle arcHeight="25.0" arcWidth="25.0" height="350.0" layoutX="445.0" layoutY="255.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
         <Rectangle arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="350.0" layoutX="440.0" layoutY="249.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Rectangle arcHeight="25.0" arcWidth="25.0" height="350.0" layoutX="792.0" layoutY="255.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
         <Rectangle arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="350.0" layoutX="787.0" layoutY="248.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
       <ImageView fitHeight="310.0" fitWidth="263.0" layoutX="459.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="309.0" fitWidth="258.0" layoutX="807.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true" />
@@ -34,12 +30,12 @@
          <image>
             <Image url="@../../../pic_resources/money.png" />
          </image></ImageView>
-      <Text fill="WHITE" layoutX="538.0" layoutY="661.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card">
+      <Text fill="WHITE" layoutX="538.0" layoutY="661.0" stroke="#00000080" strokeType="OUTSIDE" strokeWidth="2.0" text="Card">
          <font>
             <Font name="Eras Bold ITC" size="44.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="883.0" layoutY="661.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cash">
+      <Text fill="WHITE" layoutX="883.0" layoutY="661.0" stroke="#00000080" strokeType="OUTSIDE" strokeWidth="2.0" text="Cash">
          <font>
             <Font name="Eras Bold ITC" size="44.0" />
          </font>
@@ -49,6 +45,11 @@
       <Text layoutX="744.0" layoutY="662.0" strokeType="OUTSIDE" strokeWidth="0.0" text="or">
          <font>
             <Font name="Eras Light ITC" size="44.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="449.0" layoutY="174.0" stroke="#00000080" strokeType="OUTSIDE" strokeWidth="2.0" text="How would you like to pay?">
+         <font>
+            <Font name="Eras Bold ITC" size="45.0" />
          </font>
       </Text>
     </children>

@@ -141,9 +141,9 @@
                   <Image url="@../../../pic_resources/McLUX_logo.png" />
                </image>
             </ImageView>
-            <Text layoutX="345.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X">
+            <Text layoutX="353.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X">
                <font>
-                  <Font name="Gill Sans MT" size="40.0" />
+                  <Font name="Gill Sans MT" size="26.0" />
                </font>
             </Text>
             <ComboBox fx:id="regionComboBox" layoutX="91.0" layoutY="488.0" prefHeight="44.0" prefWidth="542.0" promptText="Philippines" />

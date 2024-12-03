@@ -8,42 +8,49 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.DineInOrTakeOutController">
+<AnchorPane prefHeight="800.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.DineInOrTakeOutController">
    <children>
       <Rectangle fill="#db1f2a" height="800.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
-      <Text fill="WHITE" layoutX="591.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dine in Or Take out">
+      <ImageView fitHeight="801.0" fitWidth="1557.0" layoutX="-12.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../pic_resources/back.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="558.0" layoutY="174.0" stroke="#00000080" strokeType="OUTSIDE" strokeWidth="2.0" text="For here or to go?">
+         <font>
+            <Font name="Eras Bold ITC" size="45.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="25.0" arcWidth="25.0" height="350.0" layoutX="441.0" layoutY="256.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Rectangle arcHeight="25.0" arcWidth="25.0" height="350.0" layoutX="792.0" layoutY="254.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Rectangle arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="350.0" layoutX="436.0" layoutY="251.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Rectangle arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="350.0" layoutX="787.0" layoutY="248.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+      <Text fill="WHITE" layoutX="511.0" layoutY="661.0" stroke="#00000080" strokeType="OUTSIDE" strokeWidth="2.0" text="Dine In">
          <font>
             <Font name="Eras Bold ITC" size="44.0" />
          </font>
       </Text>
-      <Rectangle arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="438.0" layoutX="381.0" layoutY="126.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="345.0" />
-      <Rectangle arcHeight="25.0" arcWidth="25.0" fill="WHITE" height="438.0" layoutX="804.0" layoutY="126.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="345.0" />
-      <Text fill="WHITE" layoutX="478.0" layoutY="611.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dine In">
+      <Text fill="WHITE" layoutX="842.0" layoutY="661.0" stroke="#00000080" strokeType="OUTSIDE" strokeWidth="2.0" text="Take Out">
          <font>
             <Font name="Eras Bold ITC" size="44.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="885.0" layoutY="612.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Take Out">
+      <JFXButton fx:id="dineIn" layoutX="436.0" layoutY="252.0" onAction="#dineIn" prefHeight="350.0" prefWidth="300.0" text="." textFill="WHITE" />
+      <JFXButton fx:id="takeOut" layoutX="787.0" layoutY="248.0" onAction="#takeOut" prefHeight="350.0" prefWidth="300.0" text="." textFill="WHITE" />
+      <ImageView fitHeight="269.0" fitWidth="266.0" layoutX="447.0" layoutY="300.0" onMouseClicked="#dineIn" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../pic_resources/dinein.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="373.0" fitWidth="391.0" layoutX="746.0" layoutY="237.0" onMouseClicked="#takeOut" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../pic_resources/takeout.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="754.0" layoutY="659.0" strokeType="OUTSIDE" strokeWidth="0.0" text="or">
          <font>
-            <Font name="Eras Bold ITC" size="44.0" />
+            <Font name="Eras Light ITC" size="44.0" />
          </font>
       </Text>
-      <JFXButton fx:id="dineIn" layoutX="383.0" layoutY="126.0" onAction="#dineIn" prefHeight="438.0" prefWidth="344.0" text="." />
-      <JFXButton fx:id="takeOut" layoutX="805.0" layoutY="126.0" onAction="#takeOut" prefHeight="441.0" prefWidth="345.0" text="." />
-      <ImageView fitHeight="620.0" fitWidth="608.0" layoutX="-239.0" layoutY="78.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../pic_resources/McLUX_logo.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="243.0" fitWidth="251.0" layoutX="435.0" layoutY="228.0" onMouseClicked="#dineIn" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../pic_resources/dinner.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="236.0" fitWidth="283.0" layoutX="857.0" layoutY="234.0" onMouseClicked="#takeOut" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../pic_resources/food-package.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>
