@@ -21,9 +21,7 @@ import javafx.print.PrinterJob;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
@@ -82,7 +80,7 @@ public class ReceiptController implements Initializable {
             grandTotal.setText("PHP " + (order.getGrandTotal() + 36));
             subTotal.setText("PHP " + order.getGrandTotal());
             orderType.setText("Order Type: " + (order.isDineIn() ? "Dine In" : "Take out"));
-        }else{
+        } else {
             orderID.setText("Order ID: " + receiptData.getReceiptId());
             paymentDate.setText("Payment Date: " + receiptData.getPaymentDateTime());
             cardHolderName.setText("Card Holder Name: " + receiptData.getCardHolderName());
@@ -91,7 +89,6 @@ public class ReceiptController implements Initializable {
             grandTotal.setText("PHP " + (order.getGrandTotal() + 36));
             subTotal.setText("PHP " + order.getGrandTotal());
             orderType.setText("Order Type: " + (order.isDineIn() ? "Dine In" : "Take out"));
-
         }
 
         for (Food food : order.getOrderItems()) {
@@ -128,23 +125,16 @@ public class ReceiptController implements Initializable {
             Parent newRoot = fxmlLoader.load();
             Scene currentScene = currentStage.getScene();
 
-            // Create a fade-out transition for the current scene
-            FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentScene.getRoot());
-            fadeOut.setFromValue(1.0);
-            fadeOut.setToValue(0.0);
+            // Preload the new scene
+            newRoot.setOpacity(0);
+            currentScene.setRoot(newRoot);
 
-            // Set an event handler to change the scene after the fade-out
-            fadeOut.setOnFinished(e -> {
-                currentScene.setRoot(newRoot);
+            // Create a fade-in transition for the new scene
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newRoot);
+            fadeIn.setFromValue(0.0);
+            fadeIn.setToValue(1.0);
+            fadeIn.play();
 
-                // Create a fade-in transition for the new scene
-                FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newRoot);
-                fadeIn.setFromValue(0.0);
-                fadeIn.setToValue(1.0);
-                fadeIn.play();
-            });
-
-            fadeOut.play();
         } catch (IOException e) {
             e.printStackTrace();
         }

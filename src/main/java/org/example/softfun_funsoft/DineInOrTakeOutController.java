@@ -4,11 +4,13 @@ import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -23,6 +25,9 @@ import java.util.Objects;
 import java.io.File;
 
 public class DineInOrTakeOutController {
+
+    @FXML
+    private StackPane rootStackPane;
 
     @FXML
     private Button dineIn;
@@ -67,30 +72,47 @@ public class DineInOrTakeOutController {
 
     private void proceedToMainMenu() {
         try {
-            Stage currentStage = (Stage) dineIn.getScene().getWindow();
-            Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
-            Scene currentScene = currentStage.getScene();
+            Node currentRoot = rootStackPane.getChildren().get(rootStackPane.getChildren().size() - 1);
 
-            // Create a fade-out transition for the current scene
-            FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentScene.getRoot());
+            FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentRoot);
             fadeOut.setFromValue(1.0);
             fadeOut.setToValue(0.0);
 
-            // Set an event handler to change the scene after the fade-out
+            Label loadingLabel = new Label("Loading Menu...");
+            loadingLabel.setStyle("-fx-font-size: 20px; -fx-text-fill: gray;");
+            loadingLabel.setOpacity(0);
+            rootStackPane.getChildren().add(loadingLabel);
+
+            FadeTransition loadingFadeIn = new FadeTransition(Duration.millis(200), loadingLabel);
+            loadingFadeIn.setFromValue(0.0);
+            loadingFadeIn.setToValue(1.0);
+
             fadeOut.setOnFinished(e -> {
-                currentScene.setRoot(newRoot);
+                loadingFadeIn.play();
 
-                // Create a fade-in transition for the new scene
-                FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newRoot);
-                fadeIn.setFromValue(0.0);
-                fadeIn.setToValue(1.0);
-                fadeIn.play();
+                new Thread(() -> {
+                    try {
+                        Parent newRoot = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
 
+                        // Back to JavaFX Application Thread to update the UI
+                        javafx.application.Platform.runLater(() -> {
+                            rootStackPane.getChildren().removeAll(currentRoot, loadingLabel);
+                            newRoot.setOpacity(0);
+                            rootStackPane.getChildren().add(newRoot);
 
+                            // Fade in the new scene
+                            FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newRoot);
+                            fadeIn.setFromValue(0.0);
+                            fadeIn.setToValue(1.0);
+                            fadeIn.play();
+                        });
+                    } catch (IOException ex) {
+                        ex.printStackTrace(); // Handle exception properly in your application
+                    }
+                }).start();
             });
-
             fadeOut.play();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

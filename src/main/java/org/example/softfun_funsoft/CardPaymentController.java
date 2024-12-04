@@ -8,14 +8,17 @@ import java.time.format.DateTimeFormatter;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.web.WebEngine;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.example.softfun_funsoft.singleton.CardReceiptData;
+import org.example.softfun_funsoft.utils.SoundManager;
 import org.json.JSONObject;
 import com.jfoenix.controls.JFXComboBox;
 import com.stripe.exception.StripeException;
@@ -35,6 +38,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class CardPaymentController implements Initializable {
+    @FXML
+    private StackPane rootStackPane;
+
     @FXML
     private TextField cardCVCField;
 
@@ -161,54 +167,41 @@ public class CardPaymentController implements Initializable {
 
 
     public void setContinueBTN() throws IOException {
-        Stage currentStage = (Stage) cancelBTN.getScene().getWindow();
-        Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Receipt.fxml")));
-        Scene currentScene = currentStage.getScene();
+        Parent newRoot = FXMLLoader.load(getClass().getResource("Receipt.fxml"));
 
-        // Create a fade-out transition for the current scene
-        FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentScene.getRoot());
+        Node currentRoot = rootStackPane.getChildren().get(rootStackPane.getChildren().size() - 1);
+
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentRoot);
         fadeOut.setFromValue(1.0);
         fadeOut.setToValue(0.0);
-
-        // Set an event handler to change the scene after the fade-out
         fadeOut.setOnFinished(e -> {
-            currentScene.setRoot(newRoot);
 
-            // Create a fade-in transition for the new scene
-            FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newRoot);
-            fadeIn.setFromValue(0.0);
-            fadeIn.setToValue(1.0);
-            fadeIn.play();
+            rootStackPane.getChildren().remove(currentRoot);
+            rootStackPane.getChildren().add(newRoot);
 
         });
+
 
         fadeOut.play();
 
     }
     public void setCancelBTN() throws IOException {
-        Stage currentStage = (Stage) cancelBTN.getScene().getWindow();
-        Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
-        Scene currentScene = currentStage.getScene();
+        Parent newRoot = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
 
-        // Create a fade-out transition for the current scene
-        FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentScene.getRoot());
+        Node currentRoot = rootStackPane.getChildren().get(rootStackPane.getChildren().size() - 1);
+
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentRoot);
         fadeOut.setFromValue(1.0);
         fadeOut.setToValue(0.0);
-
-        // Set an event handler to change the scene after the fade-out
         fadeOut.setOnFinished(e -> {
-            currentScene.setRoot(newRoot);
 
-            // Create a fade-in transition for the new scene
-            FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newRoot);
-            fadeIn.setFromValue(0.0);
-            fadeIn.setToValue(1.0);
-            fadeIn.play();
+            rootStackPane.getChildren().remove(currentRoot);
+            rootStackPane.getChildren().add(newRoot);
 
         });
 
+        SoundManager.playRemove();
         fadeOut.play();
-
     }
 
     private void showError(String message) {

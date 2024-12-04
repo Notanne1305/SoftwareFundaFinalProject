@@ -3,10 +3,12 @@ package org.example.softfun_funsoft;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -21,6 +23,8 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class PaymentController {
+    @FXML
+    private StackPane rootStackPane;
 
     @FXML
     private Button cashBTN;
@@ -55,25 +59,20 @@ public class PaymentController {
         Order order = Order.getInstance();
         if(order.getPaymentType().equals("Card")){
             try {
-                Stage currentStage = (Stage) cashBTN.getScene().getWindow();
-                Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CardPayment.fxml")));
-                Scene currentScene = currentStage.getScene();
+                Parent newRoot = FXMLLoader.load(getClass().getResource("CardPayment.fxml"));
 
-                // Create a fade-out transition for the current scene
-                FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentScene.getRoot());
+                Node currentRoot = rootStackPane.getChildren().get(rootStackPane.getChildren().size() - 1);
+
+                FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentRoot);
                 fadeOut.setFromValue(1.0);
                 fadeOut.setToValue(0.0);
-
-                // Set an event handler to change the scene after the fade-out
                 fadeOut.setOnFinished(e -> {
-                    currentScene.setRoot(newRoot);
 
-                    // Create a fade-in transition for the new scene
-                    FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newRoot);
-                    fadeIn.setFromValue(0.0);
-                    fadeIn.setToValue(1.0);
-                    fadeIn.play();
+                    rootStackPane.getChildren().remove(currentRoot);
+                    rootStackPane.getChildren().add(newRoot);
+
                 });
+
 
                 fadeOut.play();
             } catch (IOException e) {
@@ -84,25 +83,20 @@ public class PaymentController {
 
         }else{
             try {
-                Stage currentStage = (Stage) cashBTN.getScene().getWindow();
-                Parent newRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Receipt.fxml")));
-                Scene currentScene = currentStage.getScene();
+                Parent newRoot = FXMLLoader.load(getClass().getResource("Receipt.fxml"));
 
-                // Create a fade-out transition for the current scene
-                FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentScene.getRoot());
+                Node currentRoot = rootStackPane.getChildren().get(rootStackPane.getChildren().size() - 1);
+
+                FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentRoot);
                 fadeOut.setFromValue(1.0);
                 fadeOut.setToValue(0.0);
-
-                // Set an event handler to change the scene after the fade-out
                 fadeOut.setOnFinished(e -> {
-                    currentScene.setRoot(newRoot);
 
-                    // Create a fade-in transition for the new scene
-                    FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newRoot);
-                    fadeIn.setFromValue(0.0);
-                    fadeIn.setToValue(1.0);
-                    fadeIn.play();
+                    rootStackPane.getChildren().remove(currentRoot);
+                    rootStackPane.getChildren().add(newRoot);
+
                 });
+
 
                 fadeOut.play();
             } catch (IOException e) {

@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -37,6 +38,9 @@ import java.net.URL;
 import java.util.*;
 
 public class MainMenuController implements Initializable {
+
+    @FXML
+    private StackPane rootStackPane;
 
     @FXML
     private AnchorPane mainAnchorpane;
@@ -196,27 +200,19 @@ public class MainMenuController implements Initializable {
         order.addItems(cart.getCartItems());
 
         try {
-            Stage currentStage = (Stage) mainAnchorpane.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PaymentTypes.fxml"));
-            Parent newRoot = fxmlLoader.load();
-            Scene currentScene = currentStage.getScene();
+            Parent newRoot = FXMLLoader.load(getClass().getResource("PaymentTypes.fxml"));
 
-            // Create a fade-out transition for the current scene
-            FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentScene.getRoot());
+            Node currentRoot = rootStackPane.getChildren().get(rootStackPane.getChildren().size() - 1);
+
+            FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentRoot);
             fadeOut.setFromValue(1.0);
             fadeOut.setToValue(0.0);
-
-            // Set an event handler to change the scene after the fade-out
             fadeOut.setOnFinished(e -> {
-                currentScene.setRoot(newRoot);
 
-                // Create a fade-in transition for the new scene
-                FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newRoot);
-                fadeIn.setFromValue(0.0);
-                fadeIn.setToValue(1.0);
-                fadeIn.play();
+                rootStackPane.getChildren().remove(currentRoot);
+                rootStackPane.getChildren().add(newRoot);
+
             });
-
             fadeOut.play();
         } catch (IOException e) {
             e.printStackTrace();
@@ -268,7 +264,13 @@ public class MainMenuController implements Initializable {
 
         addAnchorPane.setVisible(false);
         cartPane.setVisible(true);
-        proceedToCheckoutPanel.setVisible(true);
+
+        if(cart.getCartItems().isEmpty()) {
+            proceedToCheckoutPanel.setVisible(false);
+        }else{
+            proceedToCheckoutPanel.setVisible(true);
+
+        }
 
 
     }
@@ -381,38 +383,23 @@ public class MainMenuController implements Initializable {
     }
 
     public void cancelButton() {
-        if (!proceedToCheckoutPanel.isVisible() && !orderPanel.isVisible()) {
+        if (!orderPanel.isVisible() && !cartPane.isVisible()) {
+            System.out.println("True, they are both hidden");
             cart.removeAll();
 
             try {
-                Stage currentStage = (Stage) mainAnchorpane.getScene().getWindow();
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StartUp.fxml"));
-                Parent newRoot = fxmlLoader.load();
-                Scene currentScene = currentStage.getScene();
+                Parent newRoot = FXMLLoader.load(getClass().getResource("StartUp.fxml"));
 
-                // Create a fade-out transition for the current scene
-                FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentScene.getRoot());
+                Node currentRoot = rootStackPane.getChildren().get(rootStackPane.getChildren().size() - 1);
+
+                FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentRoot);
                 fadeOut.setFromValue(1.0);
                 fadeOut.setToValue(0.0);
-
-                // Set an event handler to change the scene after the fade-out
                 fadeOut.setOnFinished(e -> {
-                    currentScene.setRoot(newRoot);
 
-                    // Create a fade-in transition for the new scene
-                    FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newRoot);
-                    fadeIn.setFromValue(0.0);
-                    fadeIn.setToValue(1.0);
-                    fadeIn.play();
+                    rootStackPane.getChildren().remove(currentRoot);
+                    rootStackPane.getChildren().add(newRoot);
 
-                    // Initialize and play the background audio
-                    StartUpCont controller = fxmlLoader.getController();
-                    if (controller != null) {
-                        System.out.println("Controller is not null, initializing media...");
-                        controller.initializeMedia();
-                    } else {
-                        System.out.println("Controller is null, cannot initialize media.");
-                    }
                 });
 
                 SoundManager.playRemove();

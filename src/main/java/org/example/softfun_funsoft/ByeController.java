@@ -6,9 +6,11 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -17,6 +19,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ByeController implements Initializable {
+    @FXML
+    private StackPane rootStackPane;
 
     private Timeline timeline;
     private int timeRemaining = 5;
@@ -46,27 +50,19 @@ public class ByeController implements Initializable {
     private void changeScene() {
         System.out.println("changing scenes");
         try {
-            Stage currentStage = (Stage) mainAnchorpane.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StartUp.fxml"));
-            Parent newRoot = fxmlLoader.load();
-            Scene currentScene = currentStage.getScene();
+            Parent newRoot = FXMLLoader.load(getClass().getResource("StartUp.fxml"));
 
-            // Create a fade-out transition for the current scene
-            FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentScene.getRoot());
+            Node currentRoot = rootStackPane.getChildren().get(rootStackPane.getChildren().size() - 1);
+
+            FadeTransition fadeOut = new FadeTransition(Duration.millis(500), currentRoot);
             fadeOut.setFromValue(1.0);
             fadeOut.setToValue(0.0);
-
-            // Set an event handler to change the scene after the fade-out
             fadeOut.setOnFinished(e -> {
-                currentScene.setRoot(newRoot);
 
-                // Create a fade-in transition for the new scene
-                FadeTransition fadeIn = new FadeTransition(Duration.millis(500), newRoot);
-                fadeIn.setFromValue(0.0);
-                fadeIn.setToValue(1.0);
-                fadeIn.play();
+                rootStackPane.getChildren().remove(currentRoot);
+                rootStackPane.getChildren().add(newRoot);
+
             });
-
             fadeOut.play();
         } catch (IOException e) {
             e.printStackTrace();
