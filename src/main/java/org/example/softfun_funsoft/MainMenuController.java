@@ -29,6 +29,7 @@ import org.example.softfun_funsoft.singleton.Cart;
 import org.example.softfun_funsoft.singleton.Categories;
 import org.example.softfun_funsoft.singleton.MenuItem;
 import org.example.softfun_funsoft.singleton.Order;
+import org.example.softfun_funsoft.utils.SoundManager;
 
 
 import java.io.IOException;
@@ -166,14 +167,14 @@ public class MainMenuController implements Initializable {
     public void setAddQuantity(){
         currentQuantity++;
         quantity.setText(String.valueOf(currentQuantity));
-        playAddSub();;
+        SoundManager.playAddandSubt();
     }
 
     public void setSubtractQuantity(){
         if(currentQuantity > 1){
             currentQuantity--;
             quantity.setText(String.valueOf(currentQuantity));
-            playAddSub();;
+            SoundManager.playAddandSubt();;
         }
     }
 
@@ -184,7 +185,7 @@ public class MainMenuController implements Initializable {
         showNotification(chosenFood);
         cart.addItem(chosenFood);
         itemsLabel.setText(String.valueOf(cart.getCartItems().size()) + " item/s in the cart");
-        playClick();
+        SoundManager.playClick();
         //TODO: There's a bug when adding two of the same item more than twice. The quantity is not updating
 
     }
@@ -414,7 +415,7 @@ public class MainMenuController implements Initializable {
                     }
                 });
 
-                playRemove();
+                SoundManager.playRemove();
                 fadeOut.play();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -575,7 +576,7 @@ private void setChosenFood(Food food){
         public void onRemoveItem(Food food) {
             cart.removeItem(food);
             itemsLabel.setText(String.valueOf(cart.getCartItems().size()) + " item/s in the cart");
-            playRemove();
+            SoundManager.playRemove();
             showCart();
 
         }
@@ -583,44 +584,5 @@ private void setChosenFood(Food food){
         embedItems();
         embedCategories();
     }
-
-    private void playClick() {
-        try {
-            // Adjusting to classpath-relative path
-            String soundPath = getClass().getResource("/sounds/click.mp3").toExternalForm();
-            Media sound = new Media(soundPath);
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            mediaPlayer.play(); // Play the sound
-        } catch (Exception e) {
-            System.out.println("Error playing sound: " + e.getMessage());
-        }
-    }
-
-    private void playRemove() {
-        try {
-            String soundPath = getClass().getResource("/sounds/remove.mp3").toExternalForm();
-            Media sound = new Media(soundPath);
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            mediaPlayer.play();
-        } catch (Exception e) {
-            System.out.println("Error playing sound: " + e.getMessage());
-        }
-    }
-
-    private void playAddSub() {
-        try {
-            String soundPath = getClass().getResource("/sounds/click_.mp3").toExternalForm();
-            Media sound = new Media(soundPath);
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            mediaPlayer.play();
-        } catch (Exception e) {
-            System.out.println("Error playing sound: " + e.getMessage());
-        }
-    }
-
-
-
-
-
 
 }

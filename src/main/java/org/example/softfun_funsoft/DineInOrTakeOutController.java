@@ -8,12 +8,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.example.softfun_funsoft.lang.LangCheck;
+import org.example.softfun_funsoft.lang.Language;
 import org.example.softfun_funsoft.singleton.Order;
+import org.example.softfun_funsoft.utils.SoundManager;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -27,24 +30,38 @@ public class DineInOrTakeOutController {
     @FXML
     private Button takeOut;
 
+//    @FXML
+//    private Button TagalogBTN;
+//
+//    @FXML Button EnglishBTN;
+//
+//    @FXML
+//    private Label LabelDineIn;
+//
+//    @FXML
+//    private Label LabelTakeOut;
+//
+//    @FXML
+//    private Label LabelDIorTO;
+//    Added if language is implemented
     private MediaPlayer soundPlayer;
 
     public void initialize(){
-        playSound();//Select a place to Eat
+        SoundManager.playSelectPlaceSound();//Select a place to Eat
     }
 
 
     public void dineIn() {
         Order order = Order.getInstance();
         order.setDineIn(true);
-        playProceedMenu();//Proceed to Menu
+        SoundManager.playProceedMenuSound();//Proceed to Menu
         proceedToMainMenu();
     }
 
     public void takeOut() {
         Order order = Order.getInstance();
         order.setDineIn(false);
-        playProceedMenu();//Proceed to Menu
+        SoundManager.playProceedMenuSound();//Proceed to Menu
         proceedToMainMenu();
     }
 
@@ -78,46 +95,4 @@ public class DineInOrTakeOutController {
         }
     }
 
-    private void playSound() {
-        String soundPath = "/sounds/place_Eng.mp3"; // Adjusted to classpath-relative path
-        try {
-            Media sound = new Media(Objects.requireNonNull(getClass().getResource(soundPath)).toString());
-            soundPlayer = new MediaPlayer(sound);
-
-            if (LangCheck.isEnglish()) {
-                soundPlayer.play();
-            } else {
-                System.out.println("Sound not played for current language: " + LangCheck.getLanguage());
-            }
-        } catch (NullPointerException e) {
-            showError("Sound file not found at: " + soundPath);
-        }
-    }
-
-    private void playProceedMenu() {
-        String soundPath = "/sounds/menu_Eng.mp3"; // Adjusted to classpath-relative path
-        try {
-            Media sound = new Media(Objects.requireNonNull(getClass().getResource(soundPath)).toString());
-            soundPlayer = new MediaPlayer(sound);
-
-            if (LangCheck.isEnglish()) {
-                soundPlayer.play();
-            } else {
-                System.out.println("Sound not played for current language: " + LangCheck.getLanguage());
-            }
-        } catch (NullPointerException e) {
-            showError("Sound file not found at: " + soundPath);
-        }
-    }
-
-
-
-    private void showError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-
-
-    }
+}

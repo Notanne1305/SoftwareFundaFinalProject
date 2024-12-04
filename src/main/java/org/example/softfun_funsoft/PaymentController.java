@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.example.softfun_funsoft.lang.LangCheck;
 import org.example.softfun_funsoft.singleton.Order;
+import org.example.softfun_funsoft.utils.SoundManager;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -27,7 +28,7 @@ public class PaymentController {
     private MediaPlayer soundPlayer;
 
     public void initialize(){
-        playPaymentType();
+        SoundManager.playPaymentType();
     }
 
     public void cardPayment() {
@@ -112,30 +113,5 @@ public class PaymentController {
         }
 
     }
-
-    private void playPaymentType() {
-        String soundPath = "/sounds/payEng.mp3"; // Adjusted to classpath-relative path
-        try {
-            Media sound = new Media(Objects.requireNonNull(getClass().getResource(soundPath)).toString());
-            soundPlayer = new MediaPlayer(sound);
-
-            if (LangCheck.isEnglish()) {
-                soundPlayer.play();
-            } else {
-                System.out.println("Sound not played for current language: " + LangCheck.getLanguage());
-            }
-        } catch (NullPointerException e) {
-            showError("Sound file not found at: " + soundPath);
-        }
-    }
-
-    private void showError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-
-
 
 }
