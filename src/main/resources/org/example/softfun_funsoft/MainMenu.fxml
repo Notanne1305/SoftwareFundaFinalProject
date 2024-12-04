@@ -16,7 +16,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <StackPane fx:id="rootStackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.softfun_funsoft.MainMenuController">
    <children>
       <AnchorPane fx:id="mainAnchorpane" prefHeight="788.0" prefWidth="1542.0">
@@ -71,7 +70,7 @@
                   </Label>
                   <Button fx:id="subtractQuantity" layoutX="398.0" layoutY="207.0" mnemonicParsing="false" onAction="#setSubtractQuantity" prefHeight="35.0" prefWidth="26.0" text="-" />
                   <Button fx:id="addQuantity" layoutX="473.0" layoutY="207.0" mnemonicParsing="false" onAction="#setAddQuantity" prefHeight="35.0" prefWidth="26.0" text="+" />
-                  <Label fx:id="confirmPanelItemname" layoutX="316.0" layoutY="11.0" prefHeight="80.0" prefWidth="604.0" text="Cheese Borgier">
+                  <Label fx:id="confirmPanelItemname" layoutX="316.0" layoutY="11.0" prefHeight="102.0" prefWidth="659.0" text="Cheese Borgier" wrapText="true">
                      <font>
                         <Font name="Gill Sans MT" size="45.0" />
                      </font>

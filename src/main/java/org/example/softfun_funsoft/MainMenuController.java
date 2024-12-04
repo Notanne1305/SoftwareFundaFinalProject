@@ -315,17 +315,17 @@ public class MainMenuController implements Initializable {
                     row++;
                 }
                 grid.add(pane, column++, row);
-                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
                 grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                grid.setMaxWidth(Region.USE_PREF_SIZE);
-
-                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
                 grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                grid.setMaxHeight(Region.USE_PREF_SIZE);
 
-                GridPane.setMargin(pane, new Insets(10));
-
+                GridPane.setMargin(pane, new Insets(25));
             }
+
+            scroll.setFitToWidth(true);
+            scroll.widthProperty().addListener((obs, oldVal, newVal) -> {
+                grid.setPrefWidth(newVal.doubleValue());
+            });
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -408,6 +408,7 @@ public class MainMenuController implements Initializable {
                 e.printStackTrace();
             }
         } else {
+            SoundManager.playRemove();
             cartPane.setVisible(false);
             proceedToCheckoutPanel.setVisible(false);
             addAnchorPane.setVisible(false);
