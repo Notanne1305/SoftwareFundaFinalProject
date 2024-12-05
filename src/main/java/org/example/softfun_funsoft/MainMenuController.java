@@ -190,7 +190,9 @@ public class MainMenuController implements Initializable {
         cart.addItem(chosenFood);
         itemsLabel.setText(String.valueOf(cart.getCartItems().size()) + " item/s in the cart");
         SoundManager.playClick();
+
         //TODO: There's a bug when adding two of the same item more than twice. The quantity is not updating
+
 
     }
 
